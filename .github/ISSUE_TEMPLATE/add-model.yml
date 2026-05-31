@@ -1,0 +1,53 @@
+name: 🆕 Add a model
+description: Suggest a new open-source TTS model for the directory
+title: "Add: <model name>"
+labels: ["new-model"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Model name
+      placeholder: "e.g. Kokoro-82M"
+    validations:
+      required: true
+  - type: input
+    id: repo
+    attributes:
+      label: GitHub URL
+      placeholder: "https://github.com/owner/repo"
+    validations:
+      required: true
+  - type: input
+    id: hf
+    attributes:
+      label: Hugging Face URL (optional)
+      placeholder: "https://huggingface.co/owner/model"
+  - type: input
+    id: license
+    attributes:
+      label: License
+      placeholder: "e.g. Apache-2.0"
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why does this model belong in the directory?
+      description: What's unique about it? What use case does it solve?
+    validations:
+      required: true
+  - type: checkboxes
+    id: capabilities
+    attributes:
+      label: Capabilities
+      options:
+        - label: Voice cloning
+        - label: Streaming
+        - label: Multilingual (3+ languages)
+        - label: Runs on CPU
+        - label: Has a Replicate hosting
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: Sample audio links, benchmarks, things to watch out for.

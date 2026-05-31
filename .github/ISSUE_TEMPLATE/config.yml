@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Open a discussion
+    url: https://github.com/sudomichael/openspeech/discussions
+    about: General questions, ideas, or feedback

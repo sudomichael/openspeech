@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  /* Light: warm off-white, deep slate, terracotta accent */
+  --canvas: #fbfaf7;
+  --surface: #ffffff;
+  --surface-2: #f4f2ed;
+  --fg: #1a1a1a;
+  --fg-muted: #5a5854;
+  --fg-subtle: #908d86;
+  --border: #e8e4dc;
+  --border-strong: #d4cfc4;
+  --accent: #c14a2b;
+  --accent-fg: #ffffff;
+  --accent-soft: #f9e8e2;
+}
+
+.dark {
+  --canvas: #0d0c0a;
+  --surface: #161510;
+  --surface-2: #1f1d18;
+  --fg: #f5f2eb;
+  --fg-muted: #a8a39a;
+  --fg-subtle: #6f6a60;
+  --border: #2a2823;
+  --border-strong: #3a3730;
+  --accent: #e87454;
+  --accent-fg: #1a1a1a;
+  --accent-soft: #2a1e18;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+}
+
+.display {
+  font-family: var(--font-display), Georgia, serif;
+  font-feature-settings: "liga", "dlig";
+  letter-spacing: -0.01em;
+}
+
+/* Subtle dotted grain on canvas */
+.grain {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    var(--border) 1px,
+    transparent 0
+  );
+  background-size: 24px 24px;
+  background-position: 0 0;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--fg);
 }

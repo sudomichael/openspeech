@@ -1,0 +1,20 @@
+{
+  "neutral": {
+    "id": "neutral",
+    "label": "Neutral",
+    "description": "Baseline naturalness — no emotion, no tricky words",
+    "text": "The quick brown fox jumps over the lazy dog near the riverbank."
+  },
+  "emotional": {
+    "id": "emotional",
+    "label": "Emotional",
+    "description": "Prosody and excitement — tests expressiveness",
+    "text": "I can't believe you actually did it. This is incredible!"
+  },
+  "numbers": {
+    "id": "numbers",
+    "label": "Numbers & Dates",
+    "description": "Number, date, and symbol pronunciation — the common failure mode",
+    "text": "On March 14th, 2025, the team raised $4.2 million at a 38% margin."
+  }
+}

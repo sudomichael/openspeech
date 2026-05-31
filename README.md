@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# OpenSpeech
 
-## Getting Started
+**An open directory of open-source text-to-speech models.**
+Every voice reads the same three scripts so you can actually compare them.
 
-First, run the development server:
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+---
+
+## Why
+
+ElevenLabs is expensive. Open-source TTS has caught up — but the models are scattered across GitHub, Hugging Face, and a dozen comparison blog posts. Finding one and actually *hearing* it usually means cloning a repo, fighting CUDA, and praying the weights still download.
+
+OpenSpeech fixes that:
+
+- Every voice reads the same three scripts.
+- Specs, license, and install in one place.
+- Filter by license, VRAM, language, capability.
+- Add a new model with one PR.
+
+## What's inside
+
+- **22 curated models** from the broader OSS TTS ecosystem
+- **~40 voices** across them
+- **3 standardized scripts** per voice: neutral, emotional, numbers
+- Side-by-side audio so you can pick the model that fits your use case
+
+## Stack
+
+- [Next.js 16](https://nextjs.org) (App Router, static site)
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [Replicate](https://replicate.com) for sample generation
+- Data lives in plain JSON in `data/` — no database
+
+## Run locally
 
 ```bash
+git clone https://github.com/sudomichael/openspeech
+cd openspeech
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The samples are committed to `public/samples/` — you don't need a Replicate token just to browse.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Generate new samples
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To add a new model or regenerate existing ones:
 
-## Learn More
+```bash
+echo "REPLICATE_API_TOKEN=r8_..." > .env.local
+npx tsx scripts/generate-replicate.ts          # full run
+npx tsx scripts/generate-replicate.ts --missing  # only missing samples
+```
 
-To learn more about Next.js, take a look at the following resources:
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+We want this to be the obvious place to compare open-source TTS. **Adding a model is one PR.**
 
-## Deploy on Vercel
+- 🆕 [Add a new model](CONTRIBUTING.md#adding-a-model)
+- 🐛 [Report a broken sample](https://github.com/sudomichael/openspeech/issues/new/choose)
+- 🗣️ [Suggest a model](https://github.com/sudomichael/openspeech/issues/new/choose)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Credits
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Model list curated from [awesome-ai-voice](https://github.com/wildminder/awesome-ai-voice)
+- Sample generation via [Replicate](https://replicate.com)
+- Not affiliated with any model author
+
+## License
+
+MIT for the code. Each model retains its own license — see the individual model cards.

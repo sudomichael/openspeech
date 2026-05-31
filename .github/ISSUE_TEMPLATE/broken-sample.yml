@@ -1,0 +1,37 @@
+name: 🐛 Broken sample
+description: Report a sample that sounds wrong, didn't generate, or is mislabeled
+title: "Broken sample: <model> / <voice>"
+labels: ["bug", "samples"]
+body:
+  - type: input
+    id: model
+    attributes:
+      label: Model ID
+      placeholder: "e.g. kokoro-82m"
+    validations:
+      required: true
+  - type: input
+    id: voice
+    attributes:
+      label: Voice ID
+      placeholder: "e.g. af_bella"
+    validations:
+      required: true
+  - type: dropdown
+    id: script
+    attributes:
+      label: Which script?
+      options:
+        - neutral
+        - emotional
+        - numbers
+        - all of them
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong with it?
+      description: e.g. wrong voice, mispronounces a word, doesn't load, etc.
+    validations:
+      required: true
