@@ -84,8 +84,25 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-border">
-        <div className="mx-auto max-w-7xl px-6 py-5 text-xs text-fg-subtle">
-          Not affiliated with any model author. All models linked to their original sources.
+        <div className="mx-auto max-w-7xl px-6 py-5 text-xs text-fg-subtle flex flex-wrap items-center justify-between gap-2">
+          <span>
+            Not affiliated with any model author. All models linked to their original sources.
+          </span>
+          <a
+            href="https://gizmoanalytics.io/?ref=badge"
+            target="_blank"
+            rel="noopener"
+            aria-label="Powered by Gizmo Analytics"
+            style={{
+              whiteSpace: "nowrap",
+              color: "inherit",
+              fontSize: "inherit",
+              textDecoration: "none",
+              opacity: 0.75,
+            }}
+          >
+            Powered by <strong style={{ fontWeight: 600 }}>Gizmo</strong>
+          </a>
         </div>
       </div>
     </footer>
