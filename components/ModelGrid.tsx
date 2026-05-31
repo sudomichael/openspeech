@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import type { Model } from "@/lib/types";
 import ModelCard from "./ModelCard";
 import Filters, { type FilterState } from "./Filters";
+import { useCompare } from "./CompareProvider";
 
 function parseParams(s: string): number {
   const m = s.match(/([\d.]+)\s*([MBK]?)/i);
@@ -14,6 +15,7 @@ function parseParams(s: string): number {
 }
 
 export default function ModelGrid({ models }: { models: Model[] }) {
+  const compare = useCompare();
   const [state, setState] = useState<FilterState>({
     license: "",
     maxVram: null,
@@ -63,10 +65,19 @@ export default function ModelGrid({ models }: { models: Model[] }) {
               </span>
             )}
           </p>
+          <p className="text-xs text-fg-subtle hidden sm:block">
+            Tip: tap the checkbox on any card to compare
+          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {filtered.map((m) => (
-            <ModelCard key={m.id} model={m} />
+            <ModelCard
+              key={m.id}
+              model={m}
+              selectable
+              selected={compare.isSelected(m.id)}
+              onToggleSelect={() => compare.toggle(m.id)}
+            />
           ))}
         </div>
         {filtered.length === 0 && (

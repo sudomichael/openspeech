@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
+import { CompareProvider } from "@/components/CompareProvider";
+import CompareBar from "@/components/CompareBar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -52,7 +54,10 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-canvas text-fg">
-        {children}
+        <CompareProvider>
+          {children}
+          <CompareBar />
+        </CompareProvider>
         {process.env.NEXT_PUBLIC_GIZMO_KEY && (
           <Script
             src="https://gizmoanalytics.io/script.js"

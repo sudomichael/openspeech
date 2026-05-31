@@ -28,6 +28,12 @@ export default function Navbar() {
             Models
           </Link>
           <Link
+            href="/compare"
+            className="hidden sm:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
+          >
+            Compare
+          </Link>
+          <Link
             href="/about"
             className="hidden sm:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
           >

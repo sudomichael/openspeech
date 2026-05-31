@@ -18,86 +18,135 @@ const CATEGORY_COLORS: Record<string, string> = {
   experimental: "bg-zinc-400",
 };
 
-export default function ModelCard({ model }: { model: Model }) {
+type Props = {
+  model: Model;
+  selectable?: boolean;
+  selected?: boolean;
+  onToggleSelect?: () => void;
+};
+
+export default function ModelCard({
+  model,
+  selectable,
+  selected,
+  onToggleSelect,
+}: Props) {
   const [voiceId, setVoiceId] = useState(model.default_voice);
   const voice = model.voices.find((v) => v.id === voiceId) ?? model.voices[0];
   const color = CATEGORY_COLORS[model.category] ?? "bg-zinc-400";
   const hasMultipleVoices = model.voices.length > 1;
+  const commercial = !/non-commercial|cc.*nc/i.test(model.license);
 
   return (
-    <div className="group relative flex flex-col bg-surface border border-border rounded-xl p-5 hover:border-border-strong hover:shadow-sm transition-all">
-      <div className="flex items-start justify-between gap-3 mb-2">
-        <Link
-          href={`/models/${model.id}`}
-          className="flex items-center gap-2.5 min-w-0 hover:underline decoration-fg-subtle underline-offset-2"
+    <div
+      className={`group relative flex flex-col bg-surface border rounded-xl overflow-hidden transition-all ${
+        selected
+          ? "border-accent shadow-[0_0_0_3px_var(--accent-soft)]"
+          : "border-border hover:border-border-strong hover:shadow-sm"
+      }`}
+    >
+      {selectable && (
+        <button
+          onClick={onToggleSelect}
+          className={`absolute top-3 right-3 z-10 w-6 h-6 rounded-md border-2 flex items-center justify-center transition-colors ${
+            selected
+              ? "bg-accent border-accent text-accent-fg"
+              : "bg-surface border-border hover:border-accent"
+          }`}
+          aria-label={selected ? "Deselect" : "Select for comparison"}
         >
-          <span className={`w-2 h-2 rounded-full ${color} flex-shrink-0`} />
-          <h3 className="font-semibold text-[15px] tracking-tight truncate">
-            {model.name}
-          </h3>
-        </Link>
-        <span className="text-[10px] uppercase tracking-wider text-fg-subtle border border-border rounded px-1.5 py-0.5 flex-shrink-0">
-          {model.license}
-        </span>
-      </div>
+          {selected && (
+            <svg viewBox="0 0 12 12" fill="currentColor" className="w-3 h-3">
+              <path d="M4.5 8.5L2 6l1-1 1.5 1.5L9 2l1 1z" />
+            </svg>
+          )}
+        </button>
+      )}
 
-      <p className="text-[13px] text-fg-muted leading-relaxed mb-4 line-clamp-2">
-        {model.tagline}
-      </p>
-
-      <div className="flex flex-wrap gap-x-2.5 gap-y-1 text-[11px] text-fg-subtle mb-4">
-        <span className="font-mono">{model.params}</span>
-        <span>·</span>
-        <span>{model.vram_gb === 0 ? "CPU OK" : `${model.vram_gb}GB`}</span>
-        <span>·</span>
-        <span>{model.languages.length} lang{model.languages.length === 1 ? "" : "s"}</span>
-        {model.voice_cloning && (
-          <>
-            <span>·</span>
-            <span>cloning</span>
-          </>
-        )}
-        {model.streaming && (
-          <>
-            <span>·</span>
-            <span>streaming</span>
-          </>
-        )}
-      </div>
-
-      <div className="mt-auto">
-        <div className="flex items-center justify-between gap-2 mb-2.5">
-          <span className="text-[11px] text-fg-subtle">Voice</span>
+      {/* Hero: audio is the product */}
+      <div className="bg-surface-2/60 px-5 pt-5 pb-4 border-b border-border">
+        <div className="flex items-center justify-between gap-2 mb-1.5">
+          <Link
+            href={`/models/${model.id}`}
+            className="flex items-center gap-2 min-w-0 hover:underline decoration-fg-subtle underline-offset-2"
+          >
+            <span className={`w-1.5 h-1.5 rounded-full ${color} flex-shrink-0`} />
+            <h3 className="font-semibold text-[15px] tracking-tight truncate">
+              {model.name}
+            </h3>
+          </Link>
           {hasMultipleVoices ? (
             <select
               value={voiceId}
               onChange={(e) => setVoiceId(e.target.value)}
-              className="text-[11px] font-medium bg-surface-2 border border-border rounded px-1.5 py-0.5 hover:border-border-strong focus:outline-none focus:border-accent transition-colors max-w-[60%]"
+              className="text-[11px] font-medium bg-surface border border-border rounded px-1.5 py-0.5 hover:border-border-strong focus:outline-none focus:border-accent transition-colors max-w-[50%]"
+              aria-label="Voice"
             >
               {model.voices.map((v) => (
                 <option key={v.id} value={v.id}>
-                  {v.name} ({v.gender === "f" ? "♀" : v.gender === "m" ? "♂" : "•"})
+                  {v.name} {v.gender === "f" ? "♀" : v.gender === "m" ? "♂" : ""}
                 </option>
               ))}
             </select>
           ) : (
-            <span className="text-[11px] font-medium text-fg-muted">{voice.name}</span>
+            <span className="text-[11px] text-fg-subtle">{voice.name}</span>
           )}
         </div>
+        <p className="text-[12px] text-fg-muted leading-snug line-clamp-1 mb-3">
+          {model.tagline}
+        </p>
         <div className="flex flex-wrap gap-1.5">
-          <SamplePlayer src={voice.samples.neutral} label="Neutral" variant="compact" />
-          <SamplePlayer src={voice.samples.emotional} label="Emotional" variant="compact" />
-          <SamplePlayer src={voice.samples.numbers} label="Numbers" variant="compact" />
+          <SamplePlayer src={voice.samples.neutral} label="Neutral" />
+          <SamplePlayer src={voice.samples.emotional} label="Emotional" />
+          <SamplePlayer src={voice.samples.numbers} label="Numbers" />
         </div>
+      </div>
+
+      {/* Capabilities as checks */}
+      <div className="px-5 py-3.5 flex flex-wrap gap-x-3.5 gap-y-1.5 text-[11.5px]">
+        <Cap label="Commercial use" on={commercial} />
+        <Cap label="Voice cloning" on={model.voice_cloning} />
+        <Cap label="Streaming" on={model.streaming} />
+        <Cap label="CPU OK" on={model.vram_gb === 0} />
+        <span className="text-fg-subtle ml-auto font-mono text-[10.5px]">
+          {model.params}
+        </span>
       </div>
 
       <Link
         href={`/models/${model.id}`}
         aria-label={`View ${model.name} details`}
-        className="absolute top-4 right-12 sm:right-14 opacity-0 group-hover:opacity-100 transition-opacity text-fg-subtle hover:text-fg"
+        className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity text-fg-subtle hover:text-fg"
       >
         <ArrowRight />
       </Link>
     </div>
+  );
+}
+
+function Cap({ label, on }: { label: string; on: boolean }) {
+  return (
+    <span
+      className={`inline-flex items-center gap-1 ${
+        on ? "text-fg" : "text-fg-subtle/60 line-through decoration-fg-subtle/40"
+      }`}
+    >
+      <span
+        className={`inline-flex items-center justify-center w-3 h-3 rounded-sm ${
+          on ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" : "bg-transparent text-fg-subtle/50"
+        }`}
+      >
+        {on ? (
+          <svg viewBox="0 0 12 12" fill="currentColor" className="w-2 h-2">
+            <path d="M4.5 8.5L2 6l1-1 1.5 1.5L9 2l1 1z" />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 12 12" fill="currentColor" className="w-2 h-2">
+            <path d="M9 4L7 6l2 2-1 1-2-2-2 2-1-1 2-2-2-2 1-1 2 2 2-2z" />
+          </svg>
+        )}
+      </span>
+      {label}
+    </span>
   );
 }

@@ -1,7 +1,10 @@
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ModelGrid from "@/components/ModelGrid";
+import CollectionShelf from "@/components/CollectionShelf";
 import { models, scripts } from "@/lib/data";
+import { COLLECTIONS } from "@/lib/collections";
 import { ArrowRight, GithubIcon, SparkIcon } from "@/components/Icons";
 
 const REPO_URL = "https://github.com/sudomichael/openspeech";
@@ -35,22 +38,28 @@ export default function Home() {
               <span className="italic text-accent">directory</span>.
             </h1>
             <p className="text-lg sm:text-xl text-fg-muted leading-relaxed max-w-2xl mb-10">
-              Every model, every voice, reading the same three scripts. Compare
-              open-source TTS side-by-side without downloading anything.
+              Every voice reads the same three scripts. Compare open-source TTS
+              side-by-side without downloading anything.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <a
-                href="#models"
+                href="#collections"
                 className="inline-flex items-center gap-2 bg-fg text-canvas rounded-full px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity"
               >
-                Browse {models.length} models
+                Start listening
                 <ArrowRight />
               </a>
+              <Link
+                href="/compare"
+                className="inline-flex items-center gap-2 border border-border bg-surface hover:bg-surface-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors"
+              >
+                Compare voices
+              </Link>
               <a
                 href={REPO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-border bg-surface hover:bg-surface-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors"
+                className="inline-flex items-center gap-2 text-fg-muted hover:text-fg px-3 py-2.5 text-sm font-medium transition-colors"
               >
                 <GithubIcon /> Source
               </a>
@@ -87,13 +96,39 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Grid */}
-        <section id="models" className="mx-auto max-w-7xl px-6 py-12 scroll-mt-20">
-          <ModelGrid models={models} />
+        {/* Collections */}
+        <section
+          id="collections"
+          className="mx-auto max-w-7xl px-6 py-14 scroll-mt-20 flex flex-col gap-14"
+        >
+          {COLLECTIONS.map((c) => (
+            <CollectionShelf
+              key={c.id}
+              label={c.label}
+              description={c.description}
+              models={c.filter(models)}
+            />
+          ))}
+        </section>
+
+        {/* Full directory */}
+        <section className="border-t border-border bg-surface-2/40">
+          <div className="mx-auto max-w-7xl px-6 py-14">
+            <div className="mb-8 max-w-2xl">
+              <h2 className="display text-3xl tracking-tight mb-2">
+                The full directory
+              </h2>
+              <p className="text-fg-muted">
+                Every model, filterable and sortable. Tap the checkbox on any
+                card to add it to the comparison.
+              </p>
+            </div>
+            <ModelGrid models={models} />
+          </div>
         </section>
 
         {/* Contribute CTA */}
-        <section className="mx-auto max-w-7xl px-6 pb-16">
+        <section className="mx-auto max-w-7xl px-6 py-16">
           <div className="relative overflow-hidden border border-border bg-surface rounded-2xl px-8 py-10 sm:py-12">
             <div className="absolute inset-0 grain opacity-30 pointer-events-none" />
             <div className="relative max-w-2xl">
