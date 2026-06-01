@@ -1,31 +1,33 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ModelGrid from "@/components/ModelGrid";
-import CollectionShelf from "@/components/CollectionShelf";
+import RecommendationCard from "@/components/RecommendationCard";
+import CompareLeaders from "@/components/CompareLeaders";
+import Shelf from "@/components/Shelf";
 import { models, scripts } from "@/lib/data";
 import { COLLECTIONS } from "@/lib/collections";
+import { getRecommendations } from "@/lib/recommendations";
 import { ArrowRight, GithubIcon, SparkIcon } from "@/components/Icons";
 
 const REPO_URL = "https://github.com/sudomichael/openspeech";
 
 export default function Home() {
   const totalVoices = models.reduce((n, m) => n + m.voices.length, 0);
+  const recs = getRecommendations();
 
   return (
     <>
       <Navbar />
       <main className="flex-1 w-full">
-        {/* Hero */}
         <section className="relative overflow-hidden border-b border-border">
           <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-canvas pointer-events-none" />
-          <div className="mx-auto max-w-7xl px-6 pt-16 pb-20 sm:pt-24 sm:pb-28 relative">
+          <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 sm:pt-20 sm:pb-12 relative">
             <a
               href={REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs text-fg-muted hover:text-fg border border-border bg-surface rounded-full pl-2 pr-3 py-1 mb-8 group transition-colors"
+              className="inline-flex items-center gap-2 text-xs text-fg-muted hover:text-fg border border-border bg-surface rounded-full pl-2 pr-3 py-1 mb-7 group transition-colors"
             >
               <span className="bg-accent-soft text-accent rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider">
                 Open Source
@@ -33,52 +35,46 @@ export default function Home() {
               <span>Star on GitHub, add a model</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
             </a>
-            <h1 className="display text-5xl sm:text-6xl md:text-7xl leading-[0.95] max-w-4xl mb-6">
-              The open-source TTS{" "}
-              <span className="italic text-accent">directory</span>.
+            <h1 className="display text-5xl sm:text-6xl md:text-7xl leading-[0.95] max-w-4xl mb-5">
+              Which open-source TTS{" "}
+              <span className="italic text-accent">should I try</span>?
             </h1>
-            <p className="text-lg sm:text-xl text-fg-muted leading-relaxed max-w-2xl mb-10">
-              Every voice reads the same three scripts. Compare open-source TTS
-              side-by-side without downloading anything.
+            <p className="text-lg sm:text-xl text-fg-muted leading-relaxed max-w-2xl">
+              Start with the three picks below. Hear them. Pick one. We&rsquo;ll
+              get into the rest later.
             </p>
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href="#collections"
-                className="inline-flex items-center gap-2 bg-fg text-canvas rounded-full px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity"
-              >
-                Start listening
-                <ArrowRight />
-              </a>
-              <Link
-                href="/compare"
-                className="inline-flex items-center gap-2 border border-border bg-surface hover:bg-surface-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors"
-              >
-                Compare voices
-              </Link>
-              <a
-                href={REPO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-fg-muted hover:text-fg px-3 py-2.5 text-sm font-medium transition-colors"
-              >
-                <GithubIcon /> Source
-              </a>
-            </div>
-
-            <div className="mt-14 grid grid-cols-3 gap-6 sm:gap-12 max-w-2xl">
-              <Stat value={models.length.toString()} label="models" />
-              <Stat value={totalVoices.toString()} label="voices" />
-              <Stat value="3" label="scripts each" />
-            </div>
           </div>
         </section>
 
-        {/* Scripts strip */}
-        <section className="border-b border-border bg-surface-2/50">
+        <section className="mx-auto max-w-7xl px-6 pt-10 sm:pt-14">
+          <div className="flex items-baseline justify-between mb-6 flex-wrap gap-2">
+            <h2 className="display text-3xl sm:text-4xl tracking-tight">
+              Start here
+            </h2>
+            <Link
+              href="/arena"
+              className="text-xs text-fg-muted hover:text-fg inline-flex items-center gap-1"
+            >
+              Picks updated by community votes
+              <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+            {recs.map((m) => (
+              <RecommendationCard key={m.id} model={m} />
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-6 mb-16">
+          <CompareLeaders models={recs} />
+        </section>
+
+        <section className="border-y border-border bg-surface-2/40">
           <div className="mx-auto max-w-7xl px-6 py-10">
             <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-fg-subtle font-semibold mb-4">
               <SparkIcon className="w-3 h-3 text-accent" />
-              The three scripts
+              The three scripts (every voice reads these)
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {Object.values(scripts).map((s) => (
@@ -96,38 +92,55 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Collections */}
-        <section
-          id="collections"
-          className="mx-auto max-w-7xl px-6 py-14 scroll-mt-20 flex flex-col gap-14"
-        >
-          {COLLECTIONS.map((c) => (
-            <CollectionShelf
-              key={c.id}
-              label={c.label}
-              description={c.description}
-              models={c.filter(models)}
-            />
-          ))}
-        </section>
-
-        {/* Full directory */}
-        <section className="border-t border-border bg-surface-2/40">
-          <div className="mx-auto max-w-7xl px-6 py-14">
-            <div className="mb-8 max-w-2xl">
-              <h2 className="display text-3xl tracking-tight mb-2">
-                The full directory
-              </h2>
-              <p className="text-fg-muted">
-                Every model, filterable and sortable. Tap the checkbox on any
-                card to add it to the comparison.
-              </p>
+        <section className="mx-auto max-w-7xl px-6 py-16">
+          <div className="mb-10 max-w-2xl">
+            <div className="text-[11px] font-semibold uppercase tracking-wider text-accent mb-2">
+              Browse by need
             </div>
-            <ModelGrid models={models} />
+            <h2 className="display text-3xl sm:text-4xl tracking-tight mb-3">
+              Not sure what you need yet?
+            </h2>
+            <p className="text-fg-muted leading-relaxed">
+              Each shelf below is hand-curated. Scroll horizontally to see all
+              picks. Add anything to the comparison bar to hear them side-by-side.
+            </p>
+          </div>
+          <div className="flex flex-col gap-14">
+            {COLLECTIONS.map((c) => (
+              <Shelf
+                key={c.id}
+                label={c.label}
+                description={c.description}
+                models={c.filter(models)}
+              />
+            ))}
           </div>
         </section>
 
-        {/* Contribute CTA */}
+        <section className="border-t border-border bg-surface-2/30">
+          <div className="mx-auto max-w-7xl px-6 py-14">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div>
+                <h2 className="display text-3xl sm:text-4xl tracking-tight mb-2">
+                  Want the full directory?
+                </h2>
+                <p className="text-fg-muted leading-relaxed max-w-xl">
+                  All {models.length} models with full filters and sort.{" "}
+                  {totalVoices} voices total. For when you&rsquo;re ready to do
+                  your own research.
+                </p>
+              </div>
+              <Link
+                href="/directory"
+                className="inline-flex items-center gap-2 bg-fg text-canvas rounded-full px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity flex-shrink-0"
+              >
+                Browse all {models.length} models
+                <ArrowRight />
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section className="mx-auto max-w-7xl px-6 py-16">
           <div className="relative overflow-hidden border border-border bg-surface rounded-2xl px-8 py-10 sm:py-12">
             <div className="absolute inset-0 grain opacity-30 pointer-events-none" />
@@ -152,12 +165,12 @@ export default function Home() {
                   <ArrowRight />
                 </a>
                 <a
-                  href={`${REPO_URL}/issues/new/choose`}
+                  href={REPO_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 border border-border bg-surface hover:bg-surface-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors"
                 >
-                  Suggest a model
+                  <GithubIcon /> Source
                 </a>
               </div>
             </div>
@@ -166,18 +179,5 @@ export default function Home() {
       </main>
       <Footer />
     </>
-  );
-}
-
-function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <div className="display text-3xl sm:text-4xl text-fg leading-none mb-1">
-        {value}
-      </div>
-      <div className="text-xs text-fg-subtle uppercase tracking-wider font-semibold">
-        {label}
-      </div>
-    </div>
   );
 }

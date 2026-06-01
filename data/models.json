@@ -113,7 +113,12 @@
         }
       }
     ],
-    "default_voice": "af_bella"
+    "default_voice": "af_bella",
+    "editorial": {
+      "rank": "gold",
+      "pitch": "The current default recommendation.",
+      "good_for": "Excellent quality. Tiny model. Runs almost anywhere."
+    }
   },
   {
     "id": "chatterbox",
@@ -166,7 +171,12 @@
         }
       }
     ],
-    "default_voice": "default"
+    "default_voice": "default",
+    "editorial": {
+      "rank": "bronze",
+      "pitch": "Best voice cloning, MIT-licensed.",
+      "good_for": "ElevenLabs-tier quality from a few seconds of reference audio."
+    }
   },
   {
     "id": "xtts-v2",
@@ -214,7 +224,11 @@
         }
       }
     ],
-    "default_voice": "ref"
+    "default_voice": "ref",
+    "editorial": {
+      "pitch": "The most-downloaded TTS on Hugging Face for a reason.",
+      "good_for": "17 languages, voice cloning from 6 seconds."
+    }
   },
   {
     "id": "fish-speech",
@@ -252,7 +266,10 @@
         }
       }
     ],
-    "default_voice": "ref"
+    "default_voice": "ref",
+    "editorial": {
+      "pitch": "Benchmarks above closed-source models on multilingual quality."
+    }
   },
   {
     "id": "piper",
@@ -406,7 +423,10 @@
         }
       }
     ],
-    "default_voice": "en_speaker_6"
+    "default_voice": "en_speaker_6",
+    "editorial": {
+      "pitch": "The chaotic one — generates laughter, sighs, even music. Use with intention."
+    }
   },
   {
     "id": "f5-tts",
@@ -438,7 +458,10 @@
         }
       }
     ],
-    "default_voice": "ref"
+    "default_voice": "ref",
+    "editorial": {
+      "pitch": "Fast, flow-matched voice cloning. Zero-shot from a short reference."
+    }
   },
   {
     "id": "parler-tts",
@@ -555,7 +578,10 @@
         }
       }
     ],
-    "default_voice": "s1"
+    "default_voice": "s1",
+    "editorial": {
+      "pitch": "Sounds like a podcast — two-speaker dialogue out of the box."
+    }
   },
   {
     "id": "cosyvoice2",
@@ -774,7 +800,12 @@
         }
       }
     ],
-    "default_voice": "tara"
+    "default_voice": "tara",
+    "editorial": {
+      "rank": "silver",
+      "pitch": "Most natural-sounding conversations.",
+      "good_for": "Llama-3 based. Empathetic. Built for interactive apps."
+    }
   },
   {
     "id": "kittentts",

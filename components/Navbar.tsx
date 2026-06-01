@@ -24,10 +24,10 @@ export default function Navbar() {
         <div className="flex items-center gap-1 sm:gap-2 text-sm">
           <SearchTrigger />
           <Link
-            href="/"
+            href="/directory"
             className="hidden sm:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
           >
-            Models
+            Directory
           </Link>
           <Link
             href="/compare"

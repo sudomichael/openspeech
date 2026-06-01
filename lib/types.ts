@@ -12,6 +12,12 @@ export type Voice = {
   samples: Sample;
 };
 
+export type Editorial = {
+  rank?: "gold" | "silver" | "bronze";
+  pitch: string;
+  good_for?: string;
+};
+
 export type Model = {
   id: string;
   name: string;
@@ -27,8 +33,9 @@ export type Model = {
   realtime_factor: number;
   install: string;
   category: string;
-  default_voice: string; // voice id used for the home grid preview
+  default_voice: string;
   voices: Voice[];
+  editorial?: Editorial;
 };
 
 export type ScriptId = "neutral" | "emotional" | "numbers";

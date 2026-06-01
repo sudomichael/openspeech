@@ -20,59 +20,60 @@ const sampled = (m: Model) =>
 
 export const COLLECTIONS: Collection[] = [
   {
-    id: "popular",
-    label: "Most popular",
-    description: "Where most people start — the workhorses of the OSS TTS scene.",
-    filter: (models) => {
-      const order = [
-        "kokoro-82m",
-        "chatterbox",
-        "xtts-v2",
-        "orpheus-tts",
-        "dia",
-        "bark",
-      ];
-      return order
-        .map((id) => models.find((m) => m.id === id))
-        .filter((m): m is Model => !!m && sampled(m));
-    },
-  },
-  {
     id: "cloning",
-    label: "Best voice cloning",
+    label: "Best for voice cloning",
     description: "Clone a voice from a short reference clip.",
     filter: (models) =>
-      models
-        .filter((m) => m.voice_cloning && sampled(m))
-        .slice(0, 6),
+      models.filter((m) => m.voice_cloning && sampled(m)).slice(0, 8),
   },
   {
     id: "fastest",
-    label: "Fastest",
-    description: "Real-time and beyond — lowest realtime factor wins.",
+    label: "Best for real-time",
+    description: "Stream tokens fast enough for voice agents.",
     filter: (models) =>
       [...models]
-        .filter(sampled)
+        .filter((m) => m.streaming && sampled(m))
         .sort((a, b) => a.realtime_factor - b.realtime_factor)
-        .slice(0, 6),
+        .slice(0, 8),
   },
   {
     id: "cpu",
-    label: "Runs on CPU",
+    label: "Best for CPU",
     description: "No GPU? No problem. These run on a laptop.",
     filter: (models) =>
-      models
-        .filter((m) => m.vram_gb === 0 && sampled(m))
-        .slice(0, 6),
+      models.filter((m) => m.vram_gb === 0 && sampled(m)).slice(0, 8),
+  },
+  {
+    id: "multilingual",
+    label: "Best for multilingual",
+    description: "Five or more languages in one model.",
+    filter: (models) =>
+      [...models]
+        .filter((m) => m.languages.length >= 5 && sampled(m))
+        .sort((a, b) => b.languages.length - a.languages.length)
+        .slice(0, 8),
   },
   {
     id: "tiny",
-    label: "Tiny models",
-    description: "Under 200M parameters — edge-ready, embed anywhere.",
+    label: "Best for edge deployment",
+    description: "Under 200M parameters — embed anywhere.",
     filter: (models) =>
       [...models]
         .filter((m) => parseParams(m.params) <= 200e6 && sampled(m))
         .sort((a, b) => parseParams(a.params) - parseParams(b.params))
-        .slice(0, 6),
+        .slice(0, 8),
+  },
+  {
+    id: "expressive",
+    label: "Best for emotion + flavor",
+    description: "Long-form, dialogue, and expressive models.",
+    filter: (models) =>
+      models
+        .filter(
+          (m) =>
+            ["expressive", "dialogue", "long-form"].includes(m.category) &&
+            sampled(m)
+        )
+        .slice(0, 8),
   },
 ];
