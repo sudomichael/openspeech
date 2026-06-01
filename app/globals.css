@@ -14,6 +14,8 @@
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
   --color-accent-soft: var(--accent-soft);
+  --color-highlight: var(--highlight);
+  --color-highlight-soft: var(--highlight-soft);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -21,46 +23,51 @@
 }
 
 :root {
-  /* Light: warm off-white, deep slate, terracotta accent */
-  --canvas: #fbfaf7;
+  /* Light: pure neutral. Near-black text. */
+  --canvas: #ffffff;
   --surface: #ffffff;
-  --surface-2: #f4f2ed;
-  --fg: #1a1a1a;
-  --fg-muted: #5a5854;
-  --fg-subtle: #908d86;
-  --border: #e8e4dc;
-  --border-strong: #d4cfc4;
-  --accent: #c14a2b;
+  --surface-2: #f5f5f5;
+  --fg: #0a0a0a;
+  --fg-muted: #404040;
+  --fg-subtle: #737373;
+  --border: #e5e5e5;
+  --border-strong: #d4d4d4;
+  --accent: #0a0a0a;
   --accent-fg: #ffffff;
-  --accent-soft: #f9e8e2;
+  --accent-soft: #f5f5f5;
+  --highlight: #2563eb;
+  --highlight-soft: #eff6ff;
 }
 
 .dark {
-  --canvas: #0d0c0a;
-  --surface: #161510;
-  --surface-2: #1f1d18;
-  --fg: #f5f2eb;
-  --fg-muted: #a8a39a;
-  --fg-subtle: #6f6a60;
-  --border: #2a2823;
-  --border-strong: #3a3730;
-  --accent: #e87454;
-  --accent-fg: #1a1a1a;
-  --accent-soft: #2a1e18;
+  --canvas: #0a0a0a;
+  --surface: #111111;
+  --surface-2: #171717;
+  --fg: #fafafa;
+  --fg-muted: #a3a3a3;
+  --fg-subtle: #737373;
+  --border: #262626;
+  --border-strong: #404040;
+  --accent: #fafafa;
+  --accent-fg: #0a0a0a;
+  --accent-soft: #1a1a1a;
+  --highlight: #60a5fa;
+  --highlight-soft: #1e3a5f;
 }
 
 body {
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .display {
   font-family: var(--font-display), Georgia, serif;
   font-feature-settings: "liga", "dlig";
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
 }
 
-/* Subtle dotted grain on canvas */
 .grain {
   background-image: radial-gradient(
     circle at 1px 1px,
@@ -72,6 +79,18 @@ body {
 }
 
 ::selection {
-  background: var(--accent-soft);
-  color: var(--fg);
+  background: var(--fg);
+  color: var(--canvas);
+}
+
+/* Slim scrollbars on horizontal shelves */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
 }

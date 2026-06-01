@@ -6,16 +6,30 @@ import { PROVIDERS, formatUsd, type Provider } from "@/lib/pricing";
 type Granularity = "day" | "month";
 
 const CATEGORY_LABELS: Record<Provider["category"], string> = {
+  openspeech: "OpenSpeech Cloud",
   closed: "Closed-source",
   "hosted-oss": "OSS on Replicate",
   "self-hosted": "Self-hosted OSS",
 };
 
-const CATEGORY_COLORS: Record<Provider["category"], string> = {
+const CATEGORY_DOT: Record<Provider["category"], string> = {
+  openspeech: "bg-highlight",
   closed: "bg-rose-500",
   "hosted-oss": "bg-violet-500",
   "self-hosted": "bg-emerald-500",
 };
+
+const CATEGORY_BAR: Record<Provider["category"], string> = {
+  openspeech: "bg-highlight",
+  closed: "bg-rose-500/80",
+  "hosted-oss": "bg-violet-500/80",
+  "self-hosted": "bg-emerald-500/80",
+};
+
+// We rank cheapest/most-expensive using only models that are actually shippable
+// today. OpenSpeech Cloud is teaser pricing — exclude it from headline numbers
+// until it goes live.
+const VISIBLE_FOR_RANKING = PROVIDERS.filter((p) => !p.comingSoon);
 
 export default function Calculator() {
   const [minutes, setMinutes] = useState(60);
@@ -24,7 +38,8 @@ export default function Calculator() {
   const minutesPerMonth = granularity === "day" ? minutes * 30 : minutes;
 
   const grouped = useMemo(() => {
-    const groups: Record<string, Provider[]> = {
+    const groups: Record<Provider["category"], Provider[]> = {
+      openspeech: [],
       closed: [],
       "hosted-oss": [],
       "self-hosted": [],
@@ -34,20 +49,18 @@ export default function Calculator() {
   }, []);
 
   const cheapest = useMemo(
-    () =>
-      [...PROVIDERS].sort((a, b) => a.perMinUsd - b.perMinUsd)[0],
+    () => [...VISIBLE_FOR_RANKING].sort((a, b) => a.perMinUsd - b.perMinUsd)[0],
     []
   );
   const mostExpensive = useMemo(
-    () =>
-      [...PROVIDERS].sort((a, b) => b.perMinUsd - a.perMinUsd)[0],
+    () => [...VISIBLE_FOR_RANKING].sort((a, b) => b.perMinUsd - a.perMinUsd)[0],
     []
   );
 
   return (
     <div>
       {/* Input controls */}
-      <div className="bg-surface border border-border rounded-2xl p-6 mb-8">
+      <div className="bg-surface border border-border rounded-lg p-6 mb-8">
         <div className="text-[11px] font-semibold uppercase tracking-wider text-fg-subtle mb-3">
           Your usage
         </div>
@@ -61,7 +74,7 @@ export default function Calculator() {
               min={0}
               value={minutes}
               onChange={(e) => setMinutes(Math.max(0, parseInt(e.target.value || "0", 10)))}
-              className="w-full bg-canvas border border-border rounded-md px-3 py-2 text-2xl font-mono focus:outline-none focus:border-accent"
+              className="w-full bg-canvas border border-border rounded-md px-3 py-2 text-2xl font-mono focus:outline-none focus:border-fg"
             />
           </div>
           <div className="inline-flex border border-border rounded-md overflow-hidden">
@@ -115,16 +128,18 @@ export default function Calculator() {
 
       {/* Comparison table */}
       <div className="space-y-8">
-        {(["closed", "hosted-oss", "self-hosted"] as const).map((cat) => (
+        {(["openspeech", "closed", "hosted-oss", "self-hosted"] as const).map((cat) => (
           <section key={cat}>
             <div className="flex items-center gap-2 mb-3">
-              <span className={`w-2 h-2 rounded-full ${CATEGORY_COLORS[cat]}`} />
+              <span className={`w-2 h-2 rounded-full ${CATEGORY_DOT[cat]}`} />
               <h2 className="font-semibold text-sm">{CATEGORY_LABELS[cat]}</h2>
             </div>
-            <div className="bg-surface border border-border rounded-xl overflow-hidden">
+            <div className="bg-surface border border-border rounded-lg overflow-hidden">
               {grouped[cat].map((p, i) => {
                 const monthly = p.perMinUsd * minutesPerMonth;
-                const ratio = monthly / Math.max(mostExpensive.perMinUsd * minutesPerMonth, 0.0001);
+                const ratio =
+                  monthly /
+                  Math.max(mostExpensive.perMinUsd * minutesPerMonth, 0.0001);
                 return (
                   <div
                     key={p.id}
@@ -133,21 +148,44 @@ export default function Calculator() {
                     }`}
                   >
                     <div className="flex items-baseline justify-between gap-3 mb-1.5">
-                      <div className="font-medium text-sm">{p.name}</div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="font-medium text-sm">{p.name}</span>
+                        {p.comingSoon && (
+                          <span className="text-[10px] uppercase tracking-wider font-semibold bg-highlight-soft text-highlight rounded px-1.5 py-0.5">
+                            Coming soon
+                          </span>
+                        )}
+                      </div>
                       <div className="font-mono text-lg">
                         {formatUsd(monthly)}
                         <span className="text-xs text-fg-subtle font-sans ml-1">/mo</span>
                       </div>
                     </div>
                     <div className="text-[11px] text-fg-subtle mb-2">
-                      {p.notes} · <span className="font-mono">{formatUsd(p.perMinUsd)}/min</span>
+                      {p.notes} ·{" "}
+                      <span className="font-mono">
+                        {formatUsd(p.perMinUsd)}/min
+                      </span>
                     </div>
                     <div className="h-1 bg-surface-2 rounded-full overflow-hidden">
                       <div
-                        className={CATEGORY_COLORS[cat]}
-                        style={{ width: `${Math.max(ratio * 100, 1)}%`, height: "100%" }}
+                        className={CATEGORY_BAR[cat]}
+                        style={{
+                          width: `${Math.max(ratio * 100, 1)}%`,
+                          height: "100%",
+                        }}
                       />
                     </div>
+                    {p.waitlistUrl && (
+                      <a
+                        href={p.waitlistUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 mt-3 text-xs font-medium text-highlight hover:underline"
+                      >
+                        Join the waitlist →
+                      </a>
+                    )}
                   </div>
                 );
               })}
@@ -171,7 +209,7 @@ function Headline({
   accent: string;
 }) {
   return (
-    <div className="bg-surface border border-border rounded-xl p-5">
+    <div className="bg-surface border border-border rounded-lg p-5">
       <div className="text-[11px] font-semibold uppercase tracking-wider text-fg-subtle mb-1.5">
         {label}
       </div>

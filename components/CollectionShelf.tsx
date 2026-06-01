@@ -18,7 +18,7 @@ export default function CollectionShelf({ label, description, models }: Props) {
     <section>
       <div className="flex items-baseline justify-between gap-3 mb-4 flex-wrap">
         <div>
-          <h2 className="display text-2xl tracking-tight">{label}</h2>
+          <h2 className="text-xl font-semibold tracking-tight">{label}</h2>
           <p className="text-sm text-fg-muted mt-0.5">{description}</p>
         </div>
         <span className="text-xs text-fg-subtle">{models.length} models</span>

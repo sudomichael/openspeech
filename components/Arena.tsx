@@ -108,9 +108,9 @@ export default function Arena({ models }: { models: Model[] }) {
   }
 
   return (
-    <div className="bg-surface border border-border rounded-2xl p-6">
+    <div className="bg-surface border border-border rounded-xl p-6">
       <div className="flex items-baseline justify-between mb-2">
-        <div className="text-[11px] font-semibold uppercase tracking-wider text-accent">
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-highlight">
           {scripts[pair.scriptId].label}
         </div>
         <div className="text-[11px] text-fg-subtle">Round {voteCount + 1}</div>

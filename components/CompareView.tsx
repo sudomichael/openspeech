@@ -91,7 +91,7 @@ function ScriptRow({
     <section>
       <div className="flex items-baseline justify-between gap-3 mb-3 flex-wrap">
         <div>
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-accent mb-1">
+          <div className="text-[11px] font-semibold uppercase tracking-wider text-highlight mb-1">
             {scripts[scriptId].label}
           </div>
           <div className="display text-xl italic max-w-3xl">

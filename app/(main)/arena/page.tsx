@@ -24,8 +24,8 @@ export default function ArenaPage() {
       <Navbar />
       <main className="flex-1 w-full">
         <div className="mx-auto max-w-5xl px-6 pt-10 pb-20">
-          <h1 className="display text-5xl sm:text-6xl tracking-tight mb-4">
-            The <span className="italic text-accent">arena</span>.
+          <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-4">
+            The arena.
           </h1>
           <p className="text-lg text-fg-muted leading-relaxed max-w-2xl mb-10">
             Two random voices, same script. You pick which sounds better. Over
@@ -43,7 +43,7 @@ export default function ArenaPage() {
             <>
               <Arena models={sampledModels} />
               <div className="mt-16">
-                <h2 className="display text-3xl mb-4">Leaderboard</h2>
+                <h2 className="text-2xl font-semibold tracking-tight mb-4">Leaderboard</h2>
                 <Leaderboard />
               </div>
             </>

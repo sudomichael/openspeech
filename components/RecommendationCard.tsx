@@ -35,7 +35,7 @@ export default function RecommendationCard({ model }: { model: Model }) {
 
   return (
     <div
-      className={`group relative flex flex-col bg-surface border border-border rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow ring-1 ${style.ring}`}
+      className={`group relative flex flex-col bg-surface border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow ring-1 ${style.ring}`}
     >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2.5">
@@ -64,7 +64,7 @@ export default function RecommendationCard({ model }: { model: Model }) {
 
       <Link
         href={`/models/${model.id}`}
-        className="display text-4xl tracking-tight mb-2 hover:underline decoration-fg-subtle underline-offset-4"
+        className="text-2xl font-semibold tracking-tight mb-2 hover:underline decoration-fg-subtle underline-offset-4"
       >
         {model.name}
       </Link>

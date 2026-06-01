@@ -97,7 +97,7 @@ export default async function ModelPage({
               </div>
             </div>
             <div className="flex flex-wrap items-baseline gap-4 mb-4">
-              <h1 className="display text-5xl sm:text-6xl tracking-tight">
+              <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight">
                 {model.name}
               </h1>
               <span className="text-xs uppercase tracking-wider text-fg-muted border border-border rounded-full px-3 py-1">
@@ -113,7 +113,7 @@ export default async function ModelPage({
             <div className="lg:col-span-2 min-w-0">
               {/* Voices */}
               <div className="flex items-baseline justify-between mb-5">
-                <h2 className="display text-2xl">Voices</h2>
+                <h2 className="text-xl font-semibold tracking-tight">Voices</h2>
                 <span className="text-xs text-fg-subtle">
                   {model.voices.length} {model.voices.length === 1 ? "voice" : "voices"}
                 </span>
@@ -141,7 +141,7 @@ export default async function ModelPage({
                                     {voice.name}
                                   </span>
                                   {voice.id === model.default_voice && (
-                                    <span className="text-[9px] uppercase tracking-wider text-accent bg-accent-soft rounded px-1.5 py-0.5 font-semibold">
+                                    <span className="text-[9px] uppercase tracking-wider text-highlight bg-highlight-soft rounded px-1.5 py-0.5 font-semibold">
                                       default
                                     </span>
                                   )}
@@ -178,14 +178,14 @@ export default async function ModelPage({
               </div>
 
               {/* Scripts */}
-              <h2 className="display text-2xl mb-4">The scripts</h2>
+              <h2 className="text-xl font-semibold tracking-tight mb-4">The scripts</h2>
               <div className="flex flex-col gap-3 mb-12">
                 {scriptIds.map((sid) => (
                   <div
                     key={sid}
-                    className="border-l-2 border-accent pl-4 py-1"
+                    className="border-l-2 border-highlight pl-4 py-1"
                   >
-                    <div className="text-[11px] font-semibold uppercase tracking-wider text-accent mb-1">
+                    <div className="text-[11px] font-semibold uppercase tracking-wider text-highlight mb-1">
                       {scripts[sid].label}
                     </div>
                     <div className="display text-lg italic leading-snug">
@@ -196,7 +196,7 @@ export default async function ModelPage({
               </div>
 
               {/* Install */}
-              <h2 className="display text-2xl mb-4">Install</h2>
+              <h2 className="text-xl font-semibold tracking-tight mb-4">Install</h2>
               <pre className="bg-surface-2 border border-border rounded-xl p-4 text-sm font-mono overflow-x-auto">
                 {model.install}
               </pre>

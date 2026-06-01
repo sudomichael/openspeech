@@ -17,7 +17,7 @@ export default function CompareBar() {
 
   return (
     <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 max-w-[calc(100vw-2rem)]">
-      <div className="bg-fg text-canvas rounded-2xl shadow-2xl px-3 py-2.5 flex items-center gap-3">
+      <div className="bg-fg text-canvas rounded-xl shadow-2xl px-3 py-2.5 flex items-center gap-3">
         <div className="flex items-center gap-1 text-xs font-medium pl-2">
           <span>{selected.length} / {maxItems}</span>
           <span className="text-canvas/60">selected</span>

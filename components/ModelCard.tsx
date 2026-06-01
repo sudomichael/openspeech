@@ -7,7 +7,7 @@ import SamplePlayer from "./SamplePlayer";
 import { ArrowRight } from "./Icons";
 
 const CATEGORY_COLORS: Record<string, string> = {
-  flagship: "bg-accent",
+  flagship: "bg-blue-500",
   lightweight: "bg-emerald-500",
   "voice-cloning": "bg-violet-500",
   expressive: "bg-amber-500",
@@ -102,14 +102,17 @@ export default function ModelCard({
         </div>
       </div>
 
-      {/* Capabilities as checks */}
-      <div className="px-5 py-3.5 flex flex-wrap gap-x-3.5 gap-y-1.5 text-[11.5px]">
-        <Cap label="Commercial use" on={commercial} />
-        <Cap label="Voice cloning" on={model.voice_cloning} />
-        <Cap label="Streaming" on={model.streaming} />
-        <Cap label="CPU OK" on={model.vram_gb === 0} />
+      {/* Capability tags — positives only, plus specs */}
+      <div className="px-5 py-3 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[11px]">
+        {commercial && <Tag>Commercial</Tag>}
+        {model.voice_cloning && <Tag>Cloning</Tag>}
+        {model.streaming && <Tag>Streaming</Tag>}
+        {model.vram_gb === 0 && <Tag>CPU</Tag>}
         <span className="text-fg-subtle ml-auto font-mono text-[10.5px]">
           {model.params}
+          {model.vram_gb > 0 && (
+            <span className="ml-1.5 text-fg-subtle">· {model.vram_gb}GB</span>
+          )}
         </span>
       </div>
 
@@ -124,29 +127,11 @@ export default function ModelCard({
   );
 }
 
-function Cap({ label, on }: { label: string; on: boolean }) {
+function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span
-      className={`inline-flex items-center gap-1 ${
-        on ? "text-fg" : "text-fg-subtle/60 line-through decoration-fg-subtle/40"
-      }`}
-    >
-      <span
-        className={`inline-flex items-center justify-center w-3 h-3 rounded-sm ${
-          on ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" : "bg-transparent text-fg-subtle/50"
-        }`}
-      >
-        {on ? (
-          <svg viewBox="0 0 12 12" fill="currentColor" className="w-2 h-2">
-            <path d="M4.5 8.5L2 6l1-1 1.5 1.5L9 2l1 1z" />
-          </svg>
-        ) : (
-          <svg viewBox="0 0 12 12" fill="currentColor" className="w-2 h-2">
-            <path d="M9 4L7 6l2 2-1 1-2-2-2 2-1-1 2-2-2-2 1-1 2 2 2-2z" />
-          </svg>
-        )}
-      </span>
-      {label}
+    <span className="inline-flex items-center gap-1 bg-surface-2 border border-border rounded px-1.5 py-0.5 text-fg-muted">
+      {children}
     </span>
   );
 }
+

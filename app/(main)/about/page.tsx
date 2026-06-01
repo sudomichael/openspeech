@@ -11,8 +11,8 @@ export default function About() {
       <main className="flex-1 w-full">
         <div className="mx-auto max-w-7xl px-6 py-16">
           <div className="max-w-2xl">
-            <h1 className="display text-5xl sm:text-6xl tracking-tight mb-6">
-              About <span className="italic text-accent">OpenSpeech</span>
+            <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-6">
+              About OpenSpeech
             </h1>
             <div className="text-lg text-fg-muted leading-relaxed space-y-5">
               <p>
@@ -43,7 +43,7 @@ export default function About() {
             </div>
 
             <div className="mt-10 border-t border-border pt-10">
-              <h2 className="display text-2xl mb-4">The three scripts</h2>
+              <h2 className="text-xl font-semibold tracking-tight mb-4">The three scripts</h2>
               <div className="text-sm text-fg-muted space-y-2">
                 <p>
                   <span className="font-semibold text-fg">Neutral</span> —

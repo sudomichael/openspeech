@@ -28,7 +28,7 @@ export default function Shelf({ label, description, models }: Props) {
     <section className="relative">
       <div className="flex items-baseline justify-between gap-3 mb-4 flex-wrap">
         <div>
-          <h2 className="display text-2xl sm:text-3xl tracking-tight">{label}</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">{label}</h2>
           <p className="text-sm text-fg-muted mt-0.5">{description}</p>
         </div>
         <div className="hidden sm:flex items-center gap-1">

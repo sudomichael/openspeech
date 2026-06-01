@@ -21,7 +21,7 @@ export default function CompareWith({ current, similar }: Props) {
         <h3 className="font-semibold text-sm">Compare with similar</h3>
         <Link
           href={`/compare?ids=${compareIds}`}
-          className="text-xs text-accent hover:underline"
+          className="text-xs text-highlight hover:underline"
         >
           Compare all →
         </Link>

@@ -15,9 +15,9 @@ export default function CalculatorPage() {
       <Navbar />
       <main className="flex-1 w-full">
         <div className="mx-auto max-w-5xl px-6 pt-10 pb-20">
-          <h1 className="display text-5xl sm:text-6xl tracking-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-4">
             How much will TTS{" "}
-            <span className="italic text-accent">actually cost</span>?
+            actually cost?
           </h1>
           <p className="text-lg text-fg-muted leading-relaxed max-w-2xl mb-10">
             Same job, different vendors, wildly different price tags. Estimate

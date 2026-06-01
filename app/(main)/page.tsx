@@ -35,9 +35,9 @@ export default function Home() {
               <span>Star on GitHub, add a model</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
             </a>
-            <h1 className="display text-5xl sm:text-6xl md:text-7xl leading-[0.95] max-w-4xl mb-5">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] max-w-4xl mb-5">
               Which open-source TTS{" "}
-              <span className="italic text-accent">should I try</span>?
+              should I try?
             </h1>
             <p className="text-lg sm:text-xl text-fg-muted leading-relaxed max-w-2xl">
               Start with the three picks below. Hear them. Pick one. We&rsquo;ll
@@ -48,7 +48,7 @@ export default function Home() {
 
         <section className="mx-auto max-w-7xl px-6 pt-10 sm:pt-14">
           <div className="flex items-baseline justify-between mb-6 flex-wrap gap-2">
-            <h2 className="display text-3xl sm:text-4xl tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">
               Start here
             </h2>
             <Link
@@ -79,7 +79,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {Object.values(scripts).map((s) => (
                 <div key={s.id} className="flex flex-col gap-1.5">
-                  <div className="text-[11px] font-semibold uppercase tracking-wider text-accent">
+                  <div className="text-[11px] font-semibold uppercase tracking-wider text-highlight">
                     {s.label}
                   </div>
                   <div className="display text-lg italic text-fg leading-snug">
@@ -94,10 +94,10 @@ export default function Home() {
 
         <section className="mx-auto max-w-7xl px-6 py-16">
           <div className="mb-10 max-w-2xl">
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-accent mb-2">
+            <div className="text-[11px] font-semibold uppercase tracking-wider text-highlight mb-2">
               Browse by need
             </div>
-            <h2 className="display text-3xl sm:text-4xl tracking-tight mb-3">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-3">
               Not sure what you need yet?
             </h2>
             <p className="text-fg-muted leading-relaxed">
@@ -121,7 +121,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6 py-14">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div>
-                <h2 className="display text-3xl sm:text-4xl tracking-tight mb-2">
+                <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-2">
                   Want the full directory?
                 </h2>
                 <p className="text-fg-muted leading-relaxed max-w-xl">
@@ -142,12 +142,12 @@ export default function Home() {
         </section>
 
         <section className="mx-auto max-w-7xl px-6 py-16">
-          <div className="relative overflow-hidden border border-border bg-surface rounded-2xl px-8 py-10 sm:py-12">
+          <div className="relative overflow-hidden border border-border bg-surface rounded-xl px-8 py-10 sm:py-12">
             <div className="absolute inset-0 grain opacity-30 pointer-events-none" />
             <div className="relative max-w-2xl">
-              <h2 className="display text-3xl sm:text-4xl mb-3">
+              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-3">
                 Missing a model?{" "}
-                <span className="italic text-accent">Add it.</span>
+                Add it.
               </h2>
               <p className="text-fg-muted leading-relaxed mb-6">
                 OpenSpeech is community-maintained. Adding a model is a single

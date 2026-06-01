@@ -32,7 +32,7 @@ export default async function ComparePage({
             <ArrowRight className="w-3.5 h-3.5 rotate-180" />
             All models
           </Link>
-          <h1 className="display text-4xl sm:text-5xl tracking-tight mb-3">
+          <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight mb-3">
             Side-by-side
           </h1>
           <p className="text-fg-muted max-w-2xl mb-10">

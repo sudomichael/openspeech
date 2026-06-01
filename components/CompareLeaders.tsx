@@ -21,14 +21,14 @@ export default function CompareLeaders({ models }: Props) {
   const compareHref = `/compare?ids=${ids.join(",")}`;
 
   return (
-    <div className="relative overflow-hidden border border-border bg-surface rounded-2xl p-6 sm:p-8">
+    <div className="relative overflow-hidden border border-border bg-surface rounded-xl p-6 sm:p-8">
       <div className="absolute inset-0 grain opacity-30 pointer-events-none" />
       <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-accent mb-1.5">
+          <div className="text-[11px] font-semibold uppercase tracking-wider text-highlight mb-1.5">
             Side-by-side
           </div>
-          <h2 className="display text-3xl sm:text-4xl mb-2">
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-2">
             Hear the leaders back-to-back
           </h2>
           <p className="text-fg-muted leading-relaxed max-w-xl">

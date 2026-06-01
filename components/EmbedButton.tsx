@@ -33,10 +33,10 @@ export default function EmbedButton({ modelId }: { modelId: string }) {
           onClick={() => setOpen(false)}
         >
           <div
-            className="bg-surface border border-border rounded-2xl max-w-lg w-full p-6"
+            className="bg-surface border border-border rounded-xl max-w-lg w-full p-6"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="display text-xl mb-2">Embed this model</h3>
+            <h3 className="text-lg font-semibold tracking-tight mb-2">Embed this model</h3>
             <p className="text-sm text-fg-muted mb-4">
               Drop this iframe into any blog post or page.
             </p>

@@ -8,13 +8,26 @@
 export type Provider = {
   id: string;
   name: string;
-  category: "closed" | "hosted-oss" | "self-hosted";
+  category: "closed" | "hosted-oss" | "self-hosted" | "openspeech";
   perMinUsd: number;
   notes: string;
   source?: string;
+  comingSoon?: boolean;
+  waitlistUrl?: string;
 };
 
 export const PROVIDERS: Provider[] = [
+  // OpenSpeech Cloud — our hosted offering (coming soon)
+  {
+    id: "openspeech-cloud",
+    name: "OpenSpeech Cloud",
+    category: "openspeech",
+    perMinUsd: 0.015,
+    notes: "OSS models, hosted by us. Pay per minute, no commitments.",
+    comingSoon: true,
+    waitlistUrl: "https://app.openspeech.dev",
+  },
+
   // Closed-source incumbents
   {
     id: "elevenlabs-creator",
