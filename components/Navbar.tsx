@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import SearchTrigger from "./SearchTrigger";
 import { GithubIcon } from "./Icons";
 
 const REPO_URL = "https://github.com/sudomichael/openspeech";
@@ -21,6 +22,7 @@ export default function Navbar() {
         </Link>
 
         <div className="flex items-center gap-1 sm:gap-2 text-sm">
+          <SearchTrigger />
           <Link
             href="/"
             className="hidden sm:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
@@ -32,6 +34,18 @@ export default function Navbar() {
             className="hidden sm:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
           >
             Compare
+          </Link>
+          <Link
+            href="/arena"
+            className="hidden sm:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
+          >
+            Arena
+          </Link>
+          <Link
+            href="/calculator"
+            className="hidden md:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
+          >
+            Calculator
           </Link>
           <Link
             href="/about"

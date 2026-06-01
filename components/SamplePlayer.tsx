@@ -7,12 +7,19 @@ type Props = {
   src: string | null;
   label: string;
   variant?: "default" | "compact";
+  autoplayKey?: string;
 };
 
-export default function SamplePlayer({ src, label, variant = "default" }: Props) {
+export default function SamplePlayer({
+  src,
+  label,
+  variant = "default",
+  autoplayKey,
+}: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const triggered = useRef(false);
 
   useEffect(() => {
     const a = audioRef.current;
@@ -23,6 +30,20 @@ export default function SamplePlayer({ src, label, variant = "default" }: Props)
     a.addEventListener("timeupdate", update);
     return () => a.removeEventListener("timeupdate", update);
   }, [src]);
+
+  useEffect(() => {
+    if (!autoplayKey || !src || triggered.current) return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("play") === autoplayKey) {
+      triggered.current = true;
+      const a = audioRef.current;
+      if (a) {
+        a.play().catch(() => {
+          // Browser blocked autoplay (no user gesture). Silent fail.
+        });
+      }
+    }
+  }, [autoplayKey, src]);
 
   const toggle = () => {
     const a = audioRef.current;

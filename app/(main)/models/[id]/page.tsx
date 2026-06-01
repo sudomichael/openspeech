@@ -3,6 +3,9 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SamplePlayer from "@/components/SamplePlayer";
+import ShareButton from "@/components/ShareButton";
+import CompareWith from "@/components/CompareWith";
+import EmbedButton from "@/components/EmbedButton";
 import { ArrowRight, GithubIcon } from "@/components/Icons";
 import { getModel, models, scripts } from "@/lib/data";
 import type { ScriptId, Voice } from "@/lib/types";
@@ -25,6 +28,24 @@ const CATEGORY_COLORS: Record<string, string> = {
   experimental: "bg-zinc-400",
 };
 
+function findSimilar(current: (typeof models)[number], all: typeof models) {
+  return all
+    .filter((m) => m.id !== current.id)
+    .filter((m) => m.voices.some((v) => v.samples.neutral))
+    .map((m) => {
+      let score = 0;
+      if (m.category === current.category) score += 3;
+      if (m.voice_cloning === current.voice_cloning) score += 1;
+      if (m.streaming === current.streaming) score += 1;
+      const sharedLangs = m.languages.filter((l) => current.languages.includes(l)).length;
+      score += Math.min(sharedLangs, 3) * 0.5;
+      return { m, score };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map((x) => x.m);
+}
+
 export default async function ModelPage({
   params,
 }: {
@@ -45,6 +66,8 @@ export default async function ModelPage({
     n: "Neutral",
   };
   const color = CATEGORY_COLORS[model.category] ?? "bg-zinc-400";
+  const similar = findSimilar(model, models);
+  const modelPath = `/models/${model.id}`;
 
   return (
     <>
@@ -61,11 +84,17 @@ export default async function ModelPage({
 
           {/* Header */}
           <div className="border-b border-border pb-10 mb-10">
-            <div className="flex items-center gap-2.5 mb-3">
-              <span className={`w-2 h-2 rounded-full ${color}`} />
-              <span className="text-xs uppercase tracking-wider text-fg-subtle font-semibold">
-                {model.category}
-              </span>
+            <div className="flex items-center justify-between gap-3 mb-3">
+              <div className="flex items-center gap-2.5">
+                <span className={`w-2 h-2 rounded-full ${color}`} />
+                <span className="text-xs uppercase tracking-wider text-fg-subtle font-semibold">
+                  {model.category}
+                </span>
+              </div>
+              <div className="flex items-center gap-4">
+                <ShareButton url={modelPath} />
+                <EmbedButton modelId={model.id} />
+              </div>
             </div>
             <div className="flex flex-wrap items-baseline gap-4 mb-4">
               <h1 className="display text-5xl sm:text-6xl tracking-tight">
@@ -102,7 +131,8 @@ export default async function ModelPage({
                         {grouped[g].map((voice) => (
                           <div
                             key={voice.id}
-                            className="bg-surface border border-border rounded-xl p-4 hover:border-border-strong transition-colors"
+                            id={`voice-${voice.id}`}
+                            className="bg-surface border border-border rounded-xl p-4 hover:border-border-strong transition-colors scroll-mt-20"
                           >
                             <div className="flex items-start justify-between gap-3 mb-3">
                               <div className="min-w-0">
@@ -122,6 +152,11 @@ export default async function ModelPage({
                                     : "—"}
                                 </div>
                               </div>
+                              <ShareButton
+                                url={`${modelPath}?voice=${voice.id}`}
+                                label=""
+                                className="opacity-0 group-hover:opacity-100"
+                              />
                             </div>
                             <div className="flex flex-wrap gap-1.5">
                               {scriptIds.map((sid) => (
@@ -130,6 +165,7 @@ export default async function ModelPage({
                                   src={voice.samples[sid]}
                                   label={scripts[sid].label}
                                   variant="compact"
+                                  autoplayKey={`${voice.id}:${sid}`}
                                 />
                               ))}
                             </div>
@@ -200,6 +236,8 @@ export default async function ModelPage({
                 </div>
               </div>
 
+              <CompareWith current={model} similar={similar} />
+
               <div className="flex flex-col gap-2">
                 <a
                   href={model.repo_url}
@@ -238,7 +276,31 @@ export default async function ModelPage({
         </div>
       </main>
       <Footer />
+      <VoiceAnchorScroll />
     </>
+  );
+}
+
+function VoiceAnchorScroll() {
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `
+          (function() {
+            try {
+              var params = new URLSearchParams(window.location.search);
+              var v = params.get('voice');
+              if (v) {
+                requestAnimationFrame(function() {
+                  var el = document.getElementById('voice-' + v);
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+              }
+            } catch (e) {}
+          })();
+        `,
+      }}
+    />
   );
 }
 

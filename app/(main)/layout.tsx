@@ -3,7 +3,8 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
 import { CompareProvider } from "@/components/CompareProvider";
 import CompareBar from "@/components/CompareBar";
-import "./globals.css";
+import SearchPalette from "@/components/SearchPalette";
+import "../globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -57,6 +58,7 @@ export default function RootLayout({
         <CompareProvider>
           {children}
           <CompareBar />
+          <SearchPalette />
         </CompareProvider>
         {process.env.NEXT_PUBLIC_GIZMO_KEY && (
           <Script
