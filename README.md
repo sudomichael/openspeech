@@ -3,8 +3,11 @@
 **An open directory of open-source text-to-speech models.**
 Every voice reads the same three scripts so you can actually compare them.
 
+🌐 **Live at [openspeech.dev](https://www.openspeech.dev)**
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Site](https://img.shields.io/badge/site-openspeech.dev-blue)](https://www.openspeech.dev)
 
 ---
 
@@ -42,7 +45,7 @@ npm install
 npm run dev
 ```
 
-The samples are committed to `public/samples/` — you don't need a Replicate token just to browse.
+The samples are committed to `public/samples/` — you don't need a Replicate token just to browse. Or just visit [openspeech.dev](https://www.openspeech.dev) and skip the clone entirely.
 
 ## Generate new samples
 

@@ -23,10 +23,34 @@ const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://www.openspeech.dev";
+const SITE_TITLE = "OpenSpeech — Open-source TTS, side-by-side";
+const SITE_DESCRIPTION =
+  "Browse open-source text-to-speech models with standardized samples. Every voice reads the same three scripts so you can actually compare them.";
+
 export const metadata: Metadata = {
-  title: "OpenSpeech — Open-source TTS, side-by-side",
-  description:
-    "Browse open-source text-to-speech models with standardized samples. Every voice reads the same three scripts so you can actually compare them.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: "%s — OpenSpeech",
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: "OpenSpeech",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "OpenSpeech",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({
