@@ -1,1077 +1,1239 @@
 [
-  {
-    "id": "kokoro-82m",
-    "name": "Kokoro-82M",
-    "tagline": "82M params, Apache 2.0, runs on a potato",
-    "repo_url": "https://github.com/hexgrad/kokoro",
-    "hf_url": "https://huggingface.co/hexgrad/Kokoro-82M",
-    "license": "Apache-2.0",
-    "params": "82M",
-    "vram_gb": 1,
-    "languages": [
-      "en",
-      "ja",
-      "zh",
-      "es",
-      "fr",
-      "hi",
-      "it",
-      "pt"
-    ],
-    "voice_cloning": false,
-    "streaming": true,
-    "realtime_factor": 0.005,
-    "install": "pip install kokoro",
-    "category": "lightweight",
-    "voices": [
-      {
-        "id": "af_bella",
-        "name": "Bella",
-        "gender": "f",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/kokoro-82m/af_bella/neutral.wav",
-          "emotional": "/samples/kokoro-82m/af_bella/emotional.wav",
-          "numbers": "/samples/kokoro-82m/af_bella/numbers.wav"
-        }
-      },
-      {
-        "id": "af_nicole",
-        "name": "Nicole",
-        "gender": "f",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/kokoro-82m/af_nicole/neutral.wav",
-          "emotional": "/samples/kokoro-82m/af_nicole/emotional.wav",
-          "numbers": "/samples/kokoro-82m/af_nicole/numbers.wav"
-        }
-      },
-      {
-        "id": "am_michael",
-        "name": "Michael",
-        "gender": "m",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/kokoro-82m/am_michael/neutral.wav",
-          "emotional": "/samples/kokoro-82m/am_michael/emotional.wav",
-          "numbers": "/samples/kokoro-82m/am_michael/numbers.wav"
-        }
-      },
-      {
-        "id": "am_adam",
-        "name": "Adam",
-        "gender": "m",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/kokoro-82m/am_adam/neutral.wav",
-          "emotional": "/samples/kokoro-82m/am_adam/emotional.wav",
-          "numbers": "/samples/kokoro-82m/am_adam/numbers.wav"
-        }
-      },
-      {
-        "id": "bf_emma",
-        "name": "Emma",
-        "gender": "f",
-        "accent": "british",
-        "samples": {
-          "neutral": "/samples/kokoro-82m/bf_emma/neutral.wav",
-          "emotional": "/samples/kokoro-82m/bf_emma/emotional.wav",
-          "numbers": "/samples/kokoro-82m/bf_emma/numbers.wav"
-        }
-      },
-      {
-        "id": "bm_george",
-        "name": "George",
-        "gender": "m",
-        "accent": "british",
-        "samples": {
-          "neutral": "/samples/kokoro-82m/bm_george/neutral.wav",
-          "emotional": "/samples/kokoro-82m/bm_george/emotional.wav",
-          "numbers": "/samples/kokoro-82m/bm_george/numbers.wav"
-        }
-      },
-      {
-        "id": "af_sky",
-        "name": "Sky",
-        "gender": "f",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/kokoro-82m/af_sky/neutral.wav",
-          "emotional": "/samples/kokoro-82m/af_sky/emotional.wav",
-          "numbers": "/samples/kokoro-82m/af_sky/numbers.wav"
-        }
-      },
-      {
-        "id": "am_onyx",
-        "name": "Onyx",
-        "gender": "m",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/kokoro-82m/am_onyx/neutral.wav",
-          "emotional": "/samples/kokoro-82m/am_onyx/emotional.wav",
-          "numbers": "/samples/kokoro-82m/am_onyx/numbers.wav"
-        }
-      }
-    ],
-    "default_voice": "af_bella",
-    "editorial": {
-      "rank": "gold",
-      "pitch": "The current default recommendation.",
-      "good_for": "Excellent quality. Tiny model. Runs almost anywhere."
+ {
+  "id": "kokoro-82m",
+  "name": "Kokoro-82M",
+  "tagline": "82M params, Apache 2.0, runs on a potato",
+  "repo_url": "https://github.com/hexgrad/kokoro",
+  "hf_url": "https://huggingface.co/hexgrad/Kokoro-82M",
+  "license": "Apache-2.0",
+  "params": "82M",
+  "vram_gb": 1,
+  "languages": [
+   "en",
+   "ja",
+   "zh",
+   "es",
+   "fr",
+   "hi",
+   "it",
+   "pt"
+  ],
+  "voice_cloning": false,
+  "streaming": true,
+  "realtime_factor": 0.005,
+  "install": "pip install kokoro",
+  "category": "lightweight",
+  "voices": [
+   {
+    "id": "af_bella",
+    "name": "Bella",
+    "gender": "f",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/kokoro-82m/af_bella/neutral.wav",
+     "emotional": "/samples/kokoro-82m/af_bella/emotional.wav",
+     "numbers": "/samples/kokoro-82m/af_bella/numbers.wav"
     }
-  },
-  {
-    "id": "chatterbox",
-    "name": "Chatterbox",
-    "tagline": "ElevenLabs-tier quality, MIT licensed, voice cloning from a clip",
-    "repo_url": "https://github.com/resemble-ai/chatterbox",
-    "license": "MIT",
-    "params": "500M",
-    "vram_gb": 8,
-    "languages": [
-      "en",
-      "es",
-      "fr",
-      "de",
-      "it",
-      "pt",
-      "ja",
-      "zh",
-      "ko",
-      "ar",
-      "hi",
-      "ru",
-      "tr",
-      "nl",
-      "pl",
-      "sv",
-      "id",
-      "th",
-      "vi",
-      "he",
-      "cs",
-      "el",
-      "ro"
-    ],
-    "voice_cloning": true,
-    "streaming": true,
-    "realtime_factor": 0.2,
-    "install": "pip install chatterbox-tts",
-    "category": "flagship",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "f",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/chatterbox/default/neutral.wav",
-          "emotional": "/samples/chatterbox/default/emotional.wav",
-          "numbers": "/samples/chatterbox/default/numbers.wav"
-        }
-      }
-    ],
-    "default_voice": "default",
-    "editorial": {
-      "rank": "bronze",
-      "pitch": "Best voice cloning, MIT-licensed.",
-      "good_for": "ElevenLabs-tier quality from a few seconds of reference audio."
+   },
+   {
+    "id": "af_nicole",
+    "name": "Nicole",
+    "gender": "f",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/kokoro-82m/af_nicole/neutral.wav",
+     "emotional": "/samples/kokoro-82m/af_nicole/emotional.wav",
+     "numbers": "/samples/kokoro-82m/af_nicole/numbers.wav"
     }
-  },
-  {
-    "id": "xtts-v2",
-    "name": "XTTS v2",
-    "tagline": "Most-downloaded TTS on HF, 6-second voice cloning",
-    "repo_url": "https://github.com/coqui-ai/TTS",
-    "hf_url": "https://huggingface.co/coqui/XTTS-v2",
-    "license": "CPML (non-commercial)",
-    "params": "750M",
-    "vram_gb": 6,
-    "languages": [
-      "en",
-      "es",
-      "fr",
-      "de",
-      "it",
-      "pt",
-      "pl",
-      "tr",
-      "ru",
-      "nl",
-      "cs",
-      "ar",
-      "zh",
-      "ja",
-      "hu",
-      "ko",
-      "hi"
-    ],
-    "voice_cloning": true,
-    "streaming": true,
-    "realtime_factor": 0.3,
-    "install": "pip install TTS",
-    "category": "voice-cloning",
-    "voices": [
-      {
-        "id": "ref",
-        "name": "Reference clone",
-        "gender": "f",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/xtts-v2/ref/neutral.wav",
-          "emotional": "/samples/xtts-v2/ref/emotional.wav",
-          "numbers": "/samples/xtts-v2/ref/numbers.wav"
-        }
-      }
-    ],
-    "default_voice": "ref",
-    "editorial": {
-      "pitch": "The most-downloaded TTS on Hugging Face for a reason.",
-      "good_for": "17 languages, voice cloning from 6 seconds."
+   },
+   {
+    "id": "am_michael",
+    "name": "Michael",
+    "gender": "m",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/kokoro-82m/am_michael/neutral.wav",
+     "emotional": "/samples/kokoro-82m/am_michael/emotional.wav",
+     "numbers": "/samples/kokoro-82m/am_michael/numbers.wav"
     }
-  },
-  {
-    "id": "fish-speech",
-    "name": "Fish Speech",
-    "tagline": "Open-source TTS that benchmarks above closed-source",
-    "repo_url": "https://github.com/fishaudio/fish-speech",
-    "license": "Apache-2.0",
-    "params": "0.5B / 4B",
-    "vram_gb": 12,
-    "languages": [
-      "en",
-      "zh",
-      "ja",
-      "ko",
-      "fr",
-      "de",
-      "ar",
-      "es"
-    ],
-    "voice_cloning": true,
-    "streaming": true,
-    "realtime_factor": 0.14,
-    "install": "pip install fish-speech",
-    "category": "flagship",
-    "voices": [
-      {
-        "id": "ref",
-        "name": "Reference clone",
-        "gender": "f",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/fish-speech/ref/neutral.wav",
-          "emotional": "/samples/fish-speech/ref/emotional.wav",
-          "numbers": "/samples/fish-speech/ref/numbers.wav"
-        }
-      }
-    ],
-    "default_voice": "ref",
-    "editorial": {
-      "pitch": "Benchmarks above closed-source models on multilingual quality."
+   },
+   {
+    "id": "am_adam",
+    "name": "Adam",
+    "gender": "m",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/kokoro-82m/am_adam/neutral.wav",
+     "emotional": "/samples/kokoro-82m/am_adam/emotional.wav",
+     "numbers": "/samples/kokoro-82m/am_adam/numbers.wav"
     }
-  },
-  {
-    "id": "piper",
-    "name": "Piper",
-    "tagline": "Tiny, fast, runs offline on a Raspberry Pi",
-    "repo_url": "https://github.com/rhasspy/piper",
-    "license": "MIT",
-    "params": "20M",
-    "vram_gb": 0,
-    "languages": [
-      "en",
-      "es",
-      "de",
-      "fr",
-      "it",
-      "nl",
-      "pl",
-      "pt",
-      "ru",
-      "uk",
-      "zh",
-      "ar",
-      "cs",
-      "da",
-      "el",
-      "fi",
-      "hu",
-      "no",
-      "sv",
-      "tr",
-      "vi",
-      "ca",
-      "ro",
-      "sk",
-      "sr",
-      "sl"
-    ],
-    "voice_cloning": false,
-    "streaming": true,
-    "realtime_factor": 0.01,
-    "install": "pip install piper-tts",
-    "category": "lightweight",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
-  },
-  {
-    "id": "bark",
-    "name": "Bark",
-    "tagline": "Generates laughter, sighs, and music — the chaotic one",
-    "repo_url": "https://github.com/suno-ai/bark",
-    "license": "MIT",
-    "params": "1.5B",
-    "vram_gb": 12,
-    "languages": [
-      "en",
-      "zh",
-      "fr",
-      "de",
-      "hi",
-      "it",
-      "ja",
-      "ko",
-      "pl",
-      "pt",
-      "ru",
-      "es",
-      "tr"
-    ],
-    "voice_cloning": true,
-    "streaming": false,
-    "realtime_factor": 1,
-    "install": "pip install git+https://github.com/suno-ai/bark.git",
-    "category": "expressive",
-    "voices": [
-      {
-        "id": "en_speaker_6",
-        "name": "Speaker 6",
-        "gender": "m",
-        "accent": "english",
-        "samples": {
-          "neutral": "/samples/bark/en_speaker_6/neutral.wav",
-          "emotional": "/samples/bark/en_speaker_6/emotional.wav",
-          "numbers": "/samples/bark/en_speaker_6/numbers.wav"
-        }
-      },
-      {
-        "id": "en_speaker_3",
-        "name": "Speaker 3",
-        "gender": "f",
-        "accent": "english",
-        "samples": {
-          "neutral": "/samples/bark/en_speaker_3/neutral.wav",
-          "emotional": "/samples/bark/en_speaker_3/emotional.wav",
-          "numbers": "/samples/bark/en_speaker_3/numbers.wav"
-        }
-      },
-      {
-        "id": "en_speaker_0",
-        "name": "Speaker 0",
-        "gender": "f",
-        "accent": "english",
-        "samples": {
-          "neutral": "/samples/bark/en_speaker_0/neutral.wav",
-          "emotional": "/samples/bark/en_speaker_0/emotional.wav",
-          "numbers": "/samples/bark/en_speaker_0/numbers.wav"
-        }
-      },
-      {
-        "id": "en_speaker_5",
-        "name": "Speaker 5",
-        "gender": "m",
-        "accent": "english",
-        "samples": {
-          "neutral": "/samples/bark/en_speaker_5/neutral.wav",
-          "emotional": "/samples/bark/en_speaker_5/emotional.wav",
-          "numbers": "/samples/bark/en_speaker_5/numbers.wav"
-        }
-      },
-      {
-        "id": "en_speaker_9",
-        "name": "Speaker 9",
-        "gender": "f",
-        "accent": "english",
-        "samples": {
-          "neutral": "/samples/bark/en_speaker_9/neutral.wav",
-          "emotional": "/samples/bark/en_speaker_9/emotional.wav",
-          "numbers": "/samples/bark/en_speaker_9/numbers.wav"
-        }
-      },
-      {
-        "id": "announcer",
-        "name": "Announcer",
-        "gender": "n",
-        "accent": "english",
-        "samples": {
-          "neutral": "/samples/bark/announcer/neutral.wav",
-          "emotional": "/samples/bark/announcer/emotional.wav",
-          "numbers": "/samples/bark/announcer/numbers.wav"
-        }
-      }
-    ],
-    "default_voice": "en_speaker_6",
-    "editorial": {
-      "pitch": "The chaotic one — generates laughter, sighs, even music. Use with intention."
+   },
+   {
+    "id": "bf_emma",
+    "name": "Emma",
+    "gender": "f",
+    "accent": "british",
+    "samples": {
+     "neutral": "/samples/kokoro-82m/bf_emma/neutral.wav",
+     "emotional": "/samples/kokoro-82m/bf_emma/emotional.wav",
+     "numbers": "/samples/kokoro-82m/bf_emma/numbers.wav"
     }
-  },
-  {
-    "id": "f5-tts",
-    "name": "F5-TTS",
-    "tagline": "Flow-matching TTS, fast zero-shot voice cloning",
-    "repo_url": "https://github.com/SWivid/F5-TTS",
-    "license": "MIT",
-    "params": "335M",
-    "vram_gb": 8,
-    "languages": [
-      "en",
-      "zh"
-    ],
-    "voice_cloning": true,
-    "streaming": false,
-    "realtime_factor": 0.15,
-    "install": "pip install f5-tts",
-    "category": "voice-cloning",
-    "voices": [
-      {
-        "id": "ref",
-        "name": "Reference clone",
-        "gender": "f",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/f5-tts/ref/neutral.wav",
-          "emotional": "/samples/f5-tts/ref/emotional.wav",
-          "numbers": "/samples/f5-tts/ref/numbers.wav"
-        }
-      }
-    ],
-    "default_voice": "ref",
-    "editorial": {
-      "pitch": "Fast, flow-matched voice cloning. Zero-shot from a short reference."
+   },
+   {
+    "id": "bm_george",
+    "name": "George",
+    "gender": "m",
+    "accent": "british",
+    "samples": {
+     "neutral": "/samples/kokoro-82m/bm_george/neutral.wav",
+     "emotional": "/samples/kokoro-82m/bm_george/emotional.wav",
+     "numbers": "/samples/kokoro-82m/bm_george/numbers.wav"
     }
-  },
-  {
-    "id": "parler-tts",
-    "name": "Parler-TTS",
-    "tagline": "Describe the voice in natural language ('soft female, fast, clear')",
-    "repo_url": "https://github.com/huggingface/parler-tts",
-    "license": "Apache-2.0",
-    "params": "880M",
-    "vram_gb": 6,
-    "languages": [
-      "en"
-    ],
-    "voice_cloning": false,
-    "streaming": true,
-    "realtime_factor": 0.1,
-    "install": "pip install parler-tts",
-    "category": "controllable",
-    "voices": [
-      {
-        "id": "clear-female",
-        "name": "Clear female, calm",
-        "gender": "f",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/parler-tts/clear-female/neutral.wav",
-          "emotional": "/samples/parler-tts/clear-female/emotional.wav",
-          "numbers": "/samples/parler-tts/clear-female/numbers.wav"
-        }
-      },
-      {
-        "id": "deep-male",
-        "name": "Deep male, confident",
-        "gender": "m",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/parler-tts/deep-male/neutral.wav",
-          "emotional": "/samples/parler-tts/deep-male/emotional.wav",
-          "numbers": "/samples/parler-tts/deep-male/numbers.wav"
-        }
-      },
-      {
-        "id": "warm-female",
-        "name": "Warm female, expressive",
-        "gender": "f",
-        "accent": "british",
-        "samples": {
-          "neutral": "/samples/parler-tts/warm-female/neutral.wav",
-          "emotional": "/samples/parler-tts/warm-female/emotional.wav",
-          "numbers": "/samples/parler-tts/warm-female/numbers.wav"
-        }
-      },
-      {
-        "id": "newscaster",
-        "name": "Newscaster, formal",
-        "gender": "m",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/parler-tts/newscaster/neutral.wav",
-          "emotional": "/samples/parler-tts/newscaster/emotional.wav",
-          "numbers": "/samples/parler-tts/newscaster/numbers.wav"
-        }
-      },
-      {
-        "id": "friendly-male",
-        "name": "Friendly male, casual",
-        "gender": "m",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/parler-tts/friendly-male/neutral.wav",
-          "emotional": "/samples/parler-tts/friendly-male/emotional.wav",
-          "numbers": "/samples/parler-tts/friendly-male/numbers.wav"
-        }
-      }
-    ],
-    "default_voice": "clear-female"
-  },
-  {
-    "id": "dia",
-    "name": "Dia",
-    "tagline": "Ultra-realistic two-speaker dialogue, sounds like a podcast",
-    "repo_url": "https://github.com/nari-labs/dia",
-    "license": "Apache-2.0",
-    "params": "1.6B",
-    "vram_gb": 10,
-    "languages": [
-      "en"
-    ],
-    "voice_cloning": true,
-    "streaming": true,
-    "realtime_factor": 0.4,
-    "install": "pip install nari-tts",
-    "category": "dialogue",
-    "voices": [
-      {
-        "id": "s1",
-        "name": "Speaker 1",
-        "gender": "f",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/dia/s1/neutral.wav",
-          "emotional": "/samples/dia/s1/emotional.wav",
-          "numbers": "/samples/dia/s1/numbers.wav"
-        }
-      },
-      {
-        "id": "s2",
-        "name": "Speaker 2",
-        "gender": "m",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/dia/s2/neutral.wav",
-          "emotional": "/samples/dia/s2/emotional.wav",
-          "numbers": "/samples/dia/s2/numbers.wav"
-        }
-      }
-    ],
-    "default_voice": "s1",
-    "editorial": {
-      "pitch": "Sounds like a podcast — two-speaker dialogue out of the box."
+   },
+   {
+    "id": "af_sky",
+    "name": "Sky",
+    "gender": "f",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/kokoro-82m/af_sky/neutral.wav",
+     "emotional": "/samples/kokoro-82m/af_sky/emotional.wav",
+     "numbers": "/samples/kokoro-82m/af_sky/numbers.wav"
     }
-  },
-  {
-    "id": "cosyvoice2",
-    "name": "CosyVoice 2",
-    "tagline": "Alibaba's real-time TTS, 150ms streaming latency",
-    "repo_url": "https://github.com/FunAudioLLM/CosyVoice",
-    "license": "Apache-2.0",
-    "params": "500M",
-    "vram_gb": 6,
-    "languages": [
-      "zh",
-      "en",
-      "ja",
-      "ko",
-      "yue",
-      "wuu",
-      "sichuanese"
-    ],
-    "voice_cloning": true,
-    "streaming": true,
-    "realtime_factor": 0.15,
-    "install": "pip install cosyvoice",
-    "category": "realtime",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
-  },
-  {
-    "id": "indextts2",
-    "name": "IndexTTS 2",
-    "tagline": "Bilibili's TTS with multi-speaker and precise emotion control",
-    "repo_url": "https://github.com/index-tts/index-tts",
-    "license": "Apache-2.0",
-    "params": "1B",
-    "vram_gb": 8,
-    "languages": [
-      "zh",
-      "en"
-    ],
-    "voice_cloning": true,
-    "streaming": true,
-    "realtime_factor": 0.2,
-    "install": "pip install indextts",
-    "category": "expressive",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
-  },
-  {
-    "id": "vibevoice",
-    "name": "VibeVoice",
-    "tagline": "Microsoft's long-form TTS — 90 minutes, 4 speakers",
-    "repo_url": "https://github.com/microsoft/VibeVoice",
-    "license": "MIT",
-    "params": "1.5B",
-    "vram_gb": 16,
-    "languages": [
-      "en",
-      "zh",
-      "es",
-      "fr",
-      "de",
-      "ja",
-      "ko"
-    ],
-    "voice_cloning": true,
-    "streaming": true,
-    "realtime_factor": 0.3,
-    "install": "pip install vibevoice",
-    "category": "long-form",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
-  },
-  {
-    "id": "qwen3-tts",
-    "name": "Qwen3-TTS",
-    "tagline": "Alibaba's flagship, 97ms latency, 10 languages",
-    "repo_url": "https://github.com/QwenLM/Qwen3-TTS",
-    "license": "Apache-2.0",
-    "params": "1.7B",
-    "vram_gb": 8,
-    "languages": [
-      "zh",
-      "en",
-      "ja",
-      "ko",
-      "de",
-      "fr",
-      "ru",
-      "pt",
-      "es",
-      "it"
-    ],
-    "voice_cloning": true,
-    "streaming": true,
-    "realtime_factor": 0.1,
-    "install": "pip install qwen3-tts",
-    "category": "flagship",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
-  },
-  {
-    "id": "orpheus-tts",
-    "name": "Orpheus TTS",
-    "tagline": "Llama-3 based, empathetic, low-latency for interactive apps",
-    "repo_url": "https://github.com/canopyai/Orpheus-TTS",
-    "license": "Apache-2.0",
-    "params": "3B",
-    "vram_gb": 12,
-    "languages": [
-      "en",
-      "es",
-      "fr",
-      "de",
-      "it",
-      "pt",
-      "hi",
-      "zh",
-      "ja",
-      "ko"
-    ],
-    "voice_cloning": true,
-    "streaming": true,
-    "realtime_factor": 0.15,
-    "install": "pip install orpheus-speech",
-    "category": "realtime",
-    "voices": [
-      {
-        "id": "tara",
-        "name": "Tara",
-        "gender": "f",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/orpheus-tts/tara/neutral.wav",
-          "emotional": "/samples/orpheus-tts/tara/emotional.wav",
-          "numbers": "/samples/orpheus-tts/tara/numbers.wav"
-        }
-      },
-      {
-        "id": "dan",
-        "name": "Dan",
-        "gender": "m",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/orpheus-tts/dan/neutral.wav",
-          "emotional": "/samples/orpheus-tts/dan/emotional.wav",
-          "numbers": "/samples/orpheus-tts/dan/numbers.wav"
-        }
-      },
-      {
-        "id": "josh",
-        "name": "Josh",
-        "gender": "m",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/orpheus-tts/josh/neutral.wav",
-          "emotional": "/samples/orpheus-tts/josh/emotional.wav",
-          "numbers": "/samples/orpheus-tts/josh/numbers.wav"
-        }
-      },
-      {
-        "id": "emma",
-        "name": "Emma",
-        "gender": "f",
-        "accent": "american",
-        "samples": {
-          "neutral": "/samples/orpheus-tts/emma/neutral.wav",
-          "emotional": "/samples/orpheus-tts/emma/emotional.wav",
-          "numbers": "/samples/orpheus-tts/emma/numbers.wav"
-        }
-      }
-    ],
-    "default_voice": "tara",
-    "editorial": {
-      "rank": "silver",
-      "pitch": "Most natural-sounding conversations.",
-      "good_for": "Llama-3 based. Empathetic. Built for interactive apps."
+   },
+   {
+    "id": "am_onyx",
+    "name": "Onyx",
+    "gender": "m",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/kokoro-82m/am_onyx/neutral.wav",
+     "emotional": "/samples/kokoro-82m/am_onyx/emotional.wav",
+     "numbers": "/samples/kokoro-82m/am_onyx/numbers.wav"
     }
+   }
+  ],
+  "default_voice": "af_bella",
+  "editorial": {
+   "rank": "gold",
+   "pitch": "The current default recommendation.",
+   "good_for": "Excellent quality. Tiny model. Runs almost anywhere."
   },
-  {
-    "id": "kittentts",
-    "name": "KittenTTS",
-    "tagline": "15M params, under 25MB, runs anywhere — even your phone",
-    "repo_url": "https://github.com/KittenML/KittenTTS",
-    "license": "Apache-2.0",
-    "params": "15M",
-    "vram_gb": 0,
-    "languages": [
-      "en"
-    ],
-    "voice_cloning": false,
-    "streaming": true,
-    "realtime_factor": 0.02,
-    "install": "pip install kittentts",
-    "category": "lightweight",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
+  "about": "Kokoro is an 82-million-parameter text-to-speech model that consistently punches far above its weight, topping community TTS leaderboards against models many times its size. It ships with a set of polished preset voices and is fast enough to run in real time on modest hardware — which makes it even faster behind a hosted API."
+ },
+ {
+  "id": "chatterbox",
+  "name": "Chatterbox",
+  "tagline": "ElevenLabs-tier quality, MIT licensed, voice cloning from a clip",
+  "repo_url": "https://github.com/resemble-ai/chatterbox",
+  "license": "MIT",
+  "params": "500M",
+  "vram_gb": 8,
+  "languages": [
+   "en",
+   "es",
+   "fr",
+   "de",
+   "it",
+   "pt",
+   "ja",
+   "zh",
+   "ko",
+   "ar",
+   "hi",
+   "ru",
+   "tr",
+   "nl",
+   "pl",
+   "sv",
+   "id",
+   "th",
+   "vi",
+   "he",
+   "cs",
+   "el",
+   "ro"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.2,
+  "install": "pip install chatterbox-tts",
+  "category": "flagship",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "f",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/chatterbox/default/neutral.wav",
+     "emotional": "/samples/chatterbox/default/emotional.wav",
+     "numbers": "/samples/chatterbox/default/numbers.wav"
+    }
+   }
+  ],
+  "default_voice": "default",
+  "editorial": {
+   "rank": "bronze",
+   "pitch": "Best voice cloning, MIT-licensed.",
+   "good_for": "ElevenLabs-tier quality from a few seconds of reference audio."
   },
-  {
-    "id": "openvoice-v2",
-    "name": "OpenVoice v2",
-    "tagline": "Tone-color cloning + cross-lingual transfer",
-    "repo_url": "https://github.com/myshell-ai/OpenVoice",
-    "license": "MIT",
-    "params": "300M",
-    "vram_gb": 4,
-    "languages": [
-      "en",
-      "es",
-      "fr",
-      "zh",
-      "ja",
-      "ko"
-    ],
-    "voice_cloning": true,
-    "streaming": false,
-    "realtime_factor": 0.2,
-    "install": "pip install openvoice",
-    "category": "voice-cloning",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
+  "about": "Chatterbox is Resemble AI's open-source TTS model — a 0.5B-parameter system with zero-shot voice cloning from a few seconds of reference audio and a unique emotion-exaggeration control. In blind tests it's frequently preferred over leading commercial systems. Outputs include Resemble's PerTh watermark."
+ },
+ {
+  "id": "xtts-v2",
+  "name": "XTTS v2",
+  "tagline": "Most-downloaded TTS on HF, 6-second voice cloning",
+  "repo_url": "https://github.com/coqui-ai/TTS",
+  "hf_url": "https://huggingface.co/coqui/XTTS-v2",
+  "license": "CPML (non-commercial)",
+  "params": "750M",
+  "vram_gb": 6,
+  "languages": [
+   "en",
+   "es",
+   "fr",
+   "de",
+   "it",
+   "pt",
+   "pl",
+   "tr",
+   "ru",
+   "nl",
+   "cs",
+   "ar",
+   "zh",
+   "ja",
+   "hu",
+   "ko",
+   "hi"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.3,
+  "install": "pip install TTS",
+  "category": "voice-cloning",
+  "voices": [
+   {
+    "id": "ref",
+    "name": "Reference clone",
+    "gender": "f",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/xtts-v2/ref/neutral.wav",
+     "emotional": "/samples/xtts-v2/ref/emotional.wav",
+     "numbers": "/samples/xtts-v2/ref/numbers.wav"
+    }
+   }
+  ],
+  "default_voice": "ref",
+  "editorial": {
+   "pitch": "The most-downloaded TTS on Hugging Face for a reason.",
+   "good_for": "17 languages, voice cloning from 6 seconds."
   },
-  {
-    "id": "styletts2",
-    "name": "StyleTTS 2",
-    "tagline": "Diffusion-based, human-level naturalness on LibriTTS",
-    "repo_url": "https://github.com/yl4579/StyleTTS2",
-    "license": "MIT",
-    "params": "148M",
-    "vram_gb": 4,
-    "languages": [
-      "en"
-    ],
-    "voice_cloning": true,
-    "streaming": false,
-    "realtime_factor": 0.1,
-    "install": "pip install styletts2",
-    "category": "expressive",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
+  "about": "XTTS v2 is the flagship model of the Coqui TTS framework and one of the most widely used open voice-cloning models ever released. It clones a voice from a ~6-second sample and speaks 17 languages, with cross-language cloning — record in English, speak in Japanese. Coqui the company shut down, but the model remains a community staple."
+ },
+ {
+  "id": "fish-speech",
+  "name": "Fish Speech",
+  "tagline": "Open-source TTS that benchmarks above closed-source",
+  "repo_url": "https://github.com/fishaudio/fish-speech",
+  "license": "Apache-2.0",
+  "params": "0.5B / 4B",
+  "vram_gb": 12,
+  "languages": [
+   "en",
+   "zh",
+   "ja",
+   "ko",
+   "fr",
+   "de",
+   "ar",
+   "es"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.14,
+  "install": "pip install fish-speech",
+  "category": "flagship",
+  "voices": [
+   {
+    "id": "ref",
+    "name": "Reference clone",
+    "gender": "f",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/fish-speech/ref/neutral.wav",
+     "emotional": "/samples/fish-speech/ref/emotional.wav",
+     "numbers": "/samples/fish-speech/ref/numbers.wav"
+    }
+   }
+  ],
+  "default_voice": "ref",
+  "editorial": {
+   "pitch": "Benchmarks above closed-source models on multilingual quality."
   },
-  {
-    "id": "melotts",
-    "name": "MeloTTS",
-    "tagline": "Multilingual, real-time on CPU",
-    "repo_url": "https://github.com/myshell-ai/MeloTTS",
-    "license": "MIT",
-    "params": "52M",
-    "vram_gb": 0,
-    "languages": [
-      "en",
-      "es",
-      "fr",
-      "zh",
-      "ja",
-      "ko"
-    ],
-    "voice_cloning": false,
-    "streaming": true,
-    "realtime_factor": 0.05,
-    "install": "pip install melotts",
-    "category": "lightweight",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
+  "about": "Fish Speech (and its successor OpenAudio) is a multilingual TTS family with strong zero-shot voice cloning across a dozen-plus languages, no phoneme dependency, and consistently top rankings on open TTS leaderboards. The hosted version skips its fairly heavy local setup."
+ },
+ {
+  "id": "piper",
+  "name": "Piper",
+  "tagline": "Tiny, fast, runs offline on a Raspberry Pi",
+  "repo_url": "https://github.com/rhasspy/piper",
+  "license": "MIT",
+  "params": "20M",
+  "vram_gb": 0,
+  "languages": [
+   "en",
+   "es",
+   "de",
+   "fr",
+   "it",
+   "nl",
+   "pl",
+   "pt",
+   "ru",
+   "uk",
+   "zh",
+   "ar",
+   "cs",
+   "da",
+   "el",
+   "fi",
+   "hu",
+   "no",
+   "sv",
+   "tr",
+   "vi",
+   "ca",
+   "ro",
+   "sk",
+   "sr",
+   "sl"
+  ],
+  "voice_cloning": false,
+  "streaming": true,
+  "realtime_factor": 0.01,
+  "install": "pip install piper-tts",
+  "category": "lightweight",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "Piper is the workhorse of local text-to-speech — built by the Rhasspy voice-assistant project to run in real time on devices as small as a Raspberry Pi. It offers a huge catalog of community voices across dozens of languages. Through the API you get the same dependable output without managing voice files or ONNX runtimes."
+ },
+ {
+  "id": "bark",
+  "name": "Bark",
+  "tagline": "Generates laughter, sighs, and music — the chaotic one",
+  "repo_url": "https://github.com/suno-ai/bark",
+  "license": "MIT",
+  "params": "1.5B",
+  "vram_gb": 12,
+  "languages": [
+   "en",
+   "zh",
+   "fr",
+   "de",
+   "hi",
+   "it",
+   "ja",
+   "ko",
+   "pl",
+   "pt",
+   "ru",
+   "es",
+   "tr"
+  ],
+  "voice_cloning": true,
+  "streaming": false,
+  "realtime_factor": 1,
+  "install": "pip install git+https://github.com/suno-ai/bark.git",
+  "category": "expressive",
+  "voices": [
+   {
+    "id": "en_speaker_6",
+    "name": "Speaker 6",
+    "gender": "m",
+    "accent": "english",
+    "samples": {
+     "neutral": "/samples/bark/en_speaker_6/neutral.wav",
+     "emotional": "/samples/bark/en_speaker_6/emotional.wav",
+     "numbers": "/samples/bark/en_speaker_6/numbers.wav"
+    }
+   },
+   {
+    "id": "en_speaker_3",
+    "name": "Speaker 3",
+    "gender": "f",
+    "accent": "english",
+    "samples": {
+     "neutral": "/samples/bark/en_speaker_3/neutral.wav",
+     "emotional": "/samples/bark/en_speaker_3/emotional.wav",
+     "numbers": "/samples/bark/en_speaker_3/numbers.wav"
+    }
+   },
+   {
+    "id": "en_speaker_0",
+    "name": "Speaker 0",
+    "gender": "f",
+    "accent": "english",
+    "samples": {
+     "neutral": "/samples/bark/en_speaker_0/neutral.wav",
+     "emotional": "/samples/bark/en_speaker_0/emotional.wav",
+     "numbers": "/samples/bark/en_speaker_0/numbers.wav"
+    }
+   },
+   {
+    "id": "en_speaker_5",
+    "name": "Speaker 5",
+    "gender": "m",
+    "accent": "english",
+    "samples": {
+     "neutral": "/samples/bark/en_speaker_5/neutral.wav",
+     "emotional": "/samples/bark/en_speaker_5/emotional.wav",
+     "numbers": "/samples/bark/en_speaker_5/numbers.wav"
+    }
+   },
+   {
+    "id": "en_speaker_9",
+    "name": "Speaker 9",
+    "gender": "f",
+    "accent": "english",
+    "samples": {
+     "neutral": "/samples/bark/en_speaker_9/neutral.wav",
+     "emotional": "/samples/bark/en_speaker_9/emotional.wav",
+     "numbers": "/samples/bark/en_speaker_9/numbers.wav"
+    }
+   },
+   {
+    "id": "announcer",
+    "name": "Announcer",
+    "gender": "n",
+    "accent": "english",
+    "samples": {
+     "neutral": "/samples/bark/announcer/neutral.wav",
+     "emotional": "/samples/bark/announcer/emotional.wav",
+     "numbers": "/samples/bark/announcer/numbers.wav"
+    }
+   }
+  ],
+  "default_voice": "en_speaker_6",
+  "editorial": {
+   "pitch": "The chaotic one — generates laughter, sighs, even music. Use with intention."
   },
-  {
-    "id": "spark-tts",
-    "name": "Spark-TTS",
-    "tagline": "Built on Qwen2.5, zero-shot voice cloning + style control",
-    "repo_url": "https://github.com/SparkAudio/Spark-TTS",
-    "license": "Apache-2.0",
-    "params": "500M",
-    "vram_gb": 8,
-    "languages": [
-      "zh",
-      "en"
-    ],
-    "voice_cloning": true,
-    "streaming": true,
-    "realtime_factor": 0.18,
-    "install": "pip install spark-tts",
-    "category": "voice-cloning",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
+  "about": "Bark, from Suno, is a generative text-to-audio model rather than a plain TTS system. Beyond multilingual speech it produces laughter, sighs, crying, music, and background sounds from inline cues — trading precise control for creative range. Still unmatched for character and chaos."
+ },
+ {
+  "id": "f5-tts",
+  "name": "F5-TTS",
+  "tagline": "Flow-matching TTS, fast zero-shot voice cloning",
+  "repo_url": "https://github.com/SWivid/F5-TTS",
+  "license": "MIT",
+  "params": "335M",
+  "vram_gb": 8,
+  "languages": [
+   "en",
+   "zh"
+  ],
+  "voice_cloning": true,
+  "streaming": false,
+  "realtime_factor": 0.15,
+  "install": "pip install f5-tts",
+  "category": "voice-cloning",
+  "voices": [
+   {
+    "id": "ref",
+    "name": "Reference clone",
+    "gender": "f",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/f5-tts/ref/neutral.wav",
+     "emotional": "/samples/f5-tts/ref/emotional.wav",
+     "numbers": "/samples/f5-tts/ref/numbers.wav"
+    }
+   }
+  ],
+  "default_voice": "ref",
+  "editorial": {
+   "pitch": "Fast, flow-matched voice cloning. Zero-shot from a short reference."
   },
-  {
-    "id": "megatts3",
-    "name": "MegaTTS 3",
-    "tagline": "ByteDance's TTS with sparse alignment — robust prosody",
-    "repo_url": "https://github.com/bytedance/MegaTTS3",
-    "license": "Apache-2.0",
-    "params": "450M",
-    "vram_gb": 8,
-    "languages": [
-      "zh",
-      "en"
-    ],
-    "voice_cloning": true,
-    "streaming": true,
-    "realtime_factor": 0.15,
-    "install": "pip install megatts3",
-    "category": "expressive",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
+  "about": "F5-TTS uses flow matching with a diffusion transformer to produce fluent, faithful zero-shot voice clones from a single short reference. It became a community favorite for its simple architecture, fast inference, and surprisingly robust cloning quality."
+ },
+ {
+  "id": "parler-tts",
+  "name": "Parler-TTS",
+  "tagline": "Describe the voice in natural language ('soft female, fast, clear')",
+  "repo_url": "https://github.com/huggingface/parler-tts",
+  "license": "Apache-2.0",
+  "params": "880M",
+  "vram_gb": 6,
+  "languages": [
+   "en"
+  ],
+  "voice_cloning": false,
+  "streaming": true,
+  "realtime_factor": 0.1,
+  "install": "pip install parler-tts",
+  "category": "controllable",
+  "voices": [
+   {
+    "id": "clear-female",
+    "name": "Clear female, calm",
+    "gender": "f",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/parler-tts/clear-female/neutral.wav",
+     "emotional": "/samples/parler-tts/clear-female/emotional.wav",
+     "numbers": "/samples/parler-tts/clear-female/numbers.wav"
+    }
+   },
+   {
+    "id": "deep-male",
+    "name": "Deep male, confident",
+    "gender": "m",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/parler-tts/deep-male/neutral.wav",
+     "emotional": "/samples/parler-tts/deep-male/emotional.wav",
+     "numbers": "/samples/parler-tts/deep-male/numbers.wav"
+    }
+   },
+   {
+    "id": "warm-female",
+    "name": "Warm female, expressive",
+    "gender": "f",
+    "accent": "british",
+    "samples": {
+     "neutral": "/samples/parler-tts/warm-female/neutral.wav",
+     "emotional": "/samples/parler-tts/warm-female/emotional.wav",
+     "numbers": "/samples/parler-tts/warm-female/numbers.wav"
+    }
+   },
+   {
+    "id": "newscaster",
+    "name": "Newscaster, formal",
+    "gender": "m",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/parler-tts/newscaster/neutral.wav",
+     "emotional": "/samples/parler-tts/newscaster/emotional.wav",
+     "numbers": "/samples/parler-tts/newscaster/numbers.wav"
+    }
+   },
+   {
+    "id": "friendly-male",
+    "name": "Friendly male, casual",
+    "gender": "m",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/parler-tts/friendly-male/neutral.wav",
+     "emotional": "/samples/parler-tts/friendly-male/emotional.wav",
+     "numbers": "/samples/parler-tts/friendly-male/numbers.wav"
+    }
+   }
+  ],
+  "default_voice": "clear-female",
+  "about": "Parler-TTS, from Hugging Face's audio team, takes a different approach: instead of cloning a reference, you describe the speaker in text — \"a calm female voice with a slight British accent, speaking slowly\" — and it synthesizes that voice. Fully open training code and data recipes."
+ },
+ {
+  "id": "dia",
+  "name": "Dia",
+  "tagline": "Ultra-realistic two-speaker dialogue, sounds like a podcast",
+  "repo_url": "https://github.com/nari-labs/dia",
+  "license": "Apache-2.0",
+  "params": "1.6B",
+  "vram_gb": 10,
+  "languages": [
+   "en"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.4,
+  "install": "pip install nari-tts",
+  "category": "dialogue",
+  "voices": [
+   {
+    "id": "s1",
+    "name": "Speaker 1",
+    "gender": "f",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/dia/s1/neutral.wav",
+     "emotional": "/samples/dia/s1/emotional.wav",
+     "numbers": "/samples/dia/s1/numbers.wav"
+    }
+   },
+   {
+    "id": "s2",
+    "name": "Speaker 2",
+    "gender": "m",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/dia/s2/neutral.wav",
+     "emotional": "/samples/dia/s2/emotional.wav",
+     "numbers": "/samples/dia/s2/numbers.wav"
+    }
+   }
+  ],
+  "default_voice": "s1",
+  "editorial": {
+   "pitch": "Sounds like a podcast — two-speaker dialogue out of the box."
   },
-  {
-    "id": "whisperspeech",
-    "name": "WhisperSpeech",
-    "tagline": "Whisper, but inverted — TTS by 'unwrapping' OpenAI's ASR",
-    "repo_url": "https://github.com/collabora/WhisperSpeech",
-    "license": "MIT",
-    "params": "300M",
-    "vram_gb": 6,
-    "languages": [
-      "en",
-      "pl"
-    ],
-    "voice_cloning": true,
-    "streaming": false,
-    "realtime_factor": 0.25,
-    "install": "pip install whisperspeech",
-    "category": "experimental",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
+  "about": "Dia generates full conversations directly from screenplay-style text — tag lines with [S1] and [S2] and it renders a natural two-voice dialogue in a single pass, complete with laughs, coughs, and throat-clears. A 1.6B model that went viral for podcast-style output rivaling paid tools."
+ },
+ {
+  "id": "cosyvoice2",
+  "name": "CosyVoice 2",
+  "tagline": "Alibaba's real-time TTS, 150ms streaming latency",
+  "repo_url": "https://github.com/FunAudioLLM/CosyVoice",
+  "license": "Apache-2.0",
+  "params": "500M",
+  "vram_gb": 6,
+  "languages": [
+   "zh",
+   "en",
+   "ja",
+   "ko",
+   "yue",
+   "wuu",
+   "sichuanese"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.15,
+  "install": "pip install cosyvoice",
+  "category": "realtime",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "CosyVoice 2 from Alibaba's FunAudioLLM team is engineered for real-time use: streaming synthesis at roughly 150ms first-packet latency with quality nearly identical to offline mode. It supports zero-shot cloning, cross-lingual synthesis, dialect control, and natural-language instructions over emotion and style."
+ },
+ {
+  "id": "indextts2",
+  "name": "IndexTTS 2",
+  "tagline": "Bilibili's TTS with multi-speaker and precise emotion control",
+  "repo_url": "https://github.com/index-tts/index-tts",
+  "license": "Apache-2.0",
+  "params": "1B",
+  "vram_gb": 8,
+  "languages": [
+   "zh",
+   "en"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.2,
+  "install": "pip install indextts",
+  "category": "expressive",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "IndexTTS 2, from Bilibili, targets professional dubbing: it's the rare autoregressive TTS with explicit duration control (hit an exact clip length) and disentangled emotion control — take the voice from one reference and the emotion from another, or steer it with text."
+ },
+ {
+  "id": "vibevoice",
+  "name": "VibeVoice",
+  "tagline": "Microsoft's long-form TTS — 90 minutes, 4 speakers",
+  "repo_url": "https://github.com/microsoft/VibeVoice",
+  "license": "MIT",
+  "params": "1.5B",
+  "vram_gb": 16,
+  "languages": [
+   "en",
+   "zh",
+   "es",
+   "fr",
+   "de",
+   "ja",
+   "ko"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.3,
+  "install": "pip install vibevoice",
+  "category": "long-form",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "VibeVoice is Microsoft's long-form TTS: it can synthesize up to ~90 minutes of continuous audio with up to four distinct speakers in a single generation — built for podcast-style content. Ultra-low-frame-rate tokenizers keep generation efficient despite the scale."
+ },
+ {
+  "id": "qwen3-tts",
+  "name": "Qwen3-TTS",
+  "tagline": "Alibaba's flagship, 97ms latency, 10 languages",
+  "repo_url": "https://github.com/QwenLM/Qwen3-TTS",
+  "license": "Apache-2.0",
+  "params": "1.7B",
+  "vram_gb": 8,
+  "languages": [
+   "zh",
+   "en",
+   "ja",
+   "ko",
+   "de",
+   "fr",
+   "ru",
+   "pt",
+   "es",
+   "it"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.1,
+  "install": "pip install qwen3-tts",
+  "category": "flagship",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "Qwen3-TTS is the text-to-speech line from Alibaba's Qwen team, known for strong multilingual coverage — including Chinese dialects like Cantonese, Wu, and Sichuanese — with expressive preset voices and fast synthesis backed by the Qwen model family."
+ },
+ {
+  "id": "orpheus-tts",
+  "name": "Orpheus TTS",
+  "tagline": "Llama-3 based, empathetic, low-latency for interactive apps",
+  "repo_url": "https://github.com/canopyai/Orpheus-TTS",
+  "license": "Apache-2.0",
+  "params": "3B",
+  "vram_gb": 12,
+  "languages": [
+   "en",
+   "es",
+   "fr",
+   "de",
+   "it",
+   "pt",
+   "hi",
+   "zh",
+   "ja",
+   "ko"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.15,
+  "install": "pip install orpheus-speech",
+  "category": "realtime",
+  "voices": [
+   {
+    "id": "tara",
+    "name": "Tara",
+    "gender": "f",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/orpheus-tts/tara/neutral.wav",
+     "emotional": "/samples/orpheus-tts/tara/emotional.wav",
+     "numbers": "/samples/orpheus-tts/tara/numbers.wav"
+    }
+   },
+   {
+    "id": "dan",
+    "name": "Dan",
+    "gender": "m",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/orpheus-tts/dan/neutral.wav",
+     "emotional": "/samples/orpheus-tts/dan/emotional.wav",
+     "numbers": "/samples/orpheus-tts/dan/numbers.wav"
+    }
+   },
+   {
+    "id": "josh",
+    "name": "Josh",
+    "gender": "m",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/orpheus-tts/josh/neutral.wav",
+     "emotional": "/samples/orpheus-tts/josh/emotional.wav",
+     "numbers": "/samples/orpheus-tts/josh/numbers.wav"
+    }
+   },
+   {
+    "id": "emma",
+    "name": "Emma",
+    "gender": "f",
+    "accent": "american",
+    "samples": {
+     "neutral": "/samples/orpheus-tts/emma/neutral.wav",
+     "emotional": "/samples/orpheus-tts/emma/emotional.wav",
+     "numbers": "/samples/orpheus-tts/emma/numbers.wav"
+    }
+   }
+  ],
+  "default_voice": "tara",
+  "editorial": {
+   "rank": "silver",
+   "pitch": "Most natural-sounding conversations.",
+   "good_for": "Llama-3 based. Empathetic. Built for interactive apps."
   },
-  {
-    "id": "higgs-audio-v2",
-    "name": "Higgs Audio v2",
-    "tagline": "Built on Llama 3.2 3B, 10M+ hours of training audio",
-    "repo_url": "https://github.com/boson-ai/higgs-audio",
-    "license": "Apache-2.0",
-    "params": "3B",
-    "vram_gb": 12,
-    "languages": [
-      "en",
-      "zh",
-      "es",
-      "fr",
-      "de",
-      "ja",
-      "ko"
-    ],
-    "voice_cloning": true,
-    "streaming": true,
-    "realtime_factor": 0.2,
-    "install": "pip install higgs-audio",
-    "category": "flagship",
-    "voices": [
-      {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
-        "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
-        }
-      }
-    ],
-    "default_voice": "default"
-  }
+  "about": "Orpheus is a Llama-3B-based speech model from Canopy Labs. It generates remarkably human intonation and supports inline emotive tags like laughter and sighs, plus zero-shot voice cloning and low-latency streaming. One of the most natural conversational voices in open source."
+ },
+ {
+  "id": "kittentts",
+  "name": "KittenTTS",
+  "tagline": "15M params, under 25MB, runs anywhere — even your phone",
+  "repo_url": "https://github.com/KittenML/KittenTTS",
+  "license": "Apache-2.0",
+  "params": "15M",
+  "vram_gb": 0,
+  "languages": [
+   "en"
+  ],
+  "voice_cloning": false,
+  "streaming": true,
+  "realtime_factor": 0.02,
+  "install": "pip install kittentts",
+  "category": "lightweight",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "KittenTTS is an ultra-lightweight English TTS model — around 15 million parameters, small enough to run without a GPU entirely. It trades some expressiveness for extreme efficiency, with a handful of clean preset voices. Via the API it's effectively instant."
+ },
+ {
+  "id": "openvoice-v2",
+  "name": "OpenVoice v2",
+  "tagline": "Tone-color cloning + cross-lingual transfer",
+  "repo_url": "https://github.com/myshell-ai/OpenVoice",
+  "license": "MIT",
+  "params": "300M",
+  "vram_gb": 4,
+  "languages": [
+   "en",
+   "es",
+   "fr",
+   "zh",
+   "ja",
+   "ko"
+  ],
+  "voice_cloning": true,
+  "streaming": false,
+  "realtime_factor": 0.2,
+  "install": "pip install openvoice",
+  "category": "voice-cloning",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "OpenVoice v2 clones the tone color of a reference speaker and then lets you control style — emotion, accent, rhythm, pauses, intonation — independently. It supports cross-lingual cloning into languages the reference speaker never spoke, and v2 moved to a permissive MIT license."
+ },
+ {
+  "id": "styletts2",
+  "name": "StyleTTS 2",
+  "tagline": "Diffusion-based, human-level naturalness on LibriTTS",
+  "repo_url": "https://github.com/yl4579/StyleTTS2",
+  "license": "MIT",
+  "params": "148M",
+  "vram_gb": 4,
+  "languages": [
+   "en"
+  ],
+  "voice_cloning": true,
+  "streaming": false,
+  "realtime_factor": 0.1,
+  "install": "pip install styletts2",
+  "category": "expressive",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "StyleTTS 2 made waves by reaching human-level naturalness on standard English benchmarks using style diffusion and adversarial training with large speech-language models. It supports zero-shot speaker adaptation from a short reference clip and remains a favorite for natural prosody."
+ },
+ {
+  "id": "melotts",
+  "name": "MeloTTS",
+  "tagline": "Multilingual, real-time on CPU",
+  "repo_url": "https://github.com/myshell-ai/MeloTTS",
+  "license": "MIT",
+  "params": "52M",
+  "vram_gb": 0,
+  "languages": [
+   "en",
+   "es",
+   "fr",
+   "zh",
+   "ja",
+   "ko"
+  ],
+  "voice_cloning": false,
+  "streaming": true,
+  "realtime_factor": 0.05,
+  "install": "pip install melotts",
+  "category": "lightweight",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "MeloTTS from MyShell.ai is one of the most-downloaded open TTS models on Hugging Face. It covers English (with multiple accents), Spanish, French, Chinese, Japanese and Korean, and was designed for real-time inference even on CPU. A clean, dependable choice for multilingual products."
+ },
+ {
+  "id": "spark-tts",
+  "name": "Spark-TTS",
+  "tagline": "Built on Qwen2.5, zero-shot voice cloning + style control",
+  "repo_url": "https://github.com/SparkAudio/Spark-TTS",
+  "license": "Apache-2.0",
+  "params": "500M",
+  "vram_gb": 8,
+  "languages": [
+   "zh",
+   "en"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.18,
+  "install": "pip install spark-tts",
+  "category": "voice-cloning",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "Spark-TTS builds speech generation directly on a 0.5B Qwen backbone with a single-stream codec, making it unusually simple and efficient. It does zero-shot cloning plus controllable voice creation — set gender, pitch, and speaking style to synthesize a new voice from scratch."
+ },
+ {
+  "id": "megatts3",
+  "name": "MegaTTS 3",
+  "tagline": "ByteDance's TTS with sparse alignment — robust prosody",
+  "repo_url": "https://github.com/bytedance/MegaTTS3",
+  "license": "Apache-2.0",
+  "params": "450M",
+  "vram_gb": 8,
+  "languages": [
+   "zh",
+   "en"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.15,
+  "install": "pip install megatts3",
+  "category": "expressive",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "MegaTTS 3 is ByteDance's open release: a compact 0.45B diffusion-transformer TTS with high-quality zero-shot cloning, bilingual Chinese/English support with code-switching, and unusual extras like adjustable accent intensity for pronunciation control."
+ },
+ {
+  "id": "whisperspeech",
+  "name": "WhisperSpeech",
+  "tagline": "Whisper, but inverted — TTS by 'unwrapping' OpenAI's ASR",
+  "repo_url": "https://github.com/collabora/WhisperSpeech",
+  "license": "MIT",
+  "params": "300M",
+  "vram_gb": 6,
+  "languages": [
+   "en",
+   "pl"
+  ],
+  "voice_cloning": true,
+  "streaming": false,
+  "realtime_factor": 0.25,
+  "install": "pip install whisperspeech",
+  "category": "experimental",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "WhisperSpeech, from Collabora, flips OpenAI's Whisper architecture around to generate speech instead of transcribing it. It's trained entirely on properly licensed open data — a deliberately transparent, commercially safe stack — with voice cloning from reference audio."
+ },
+ {
+  "id": "higgs-audio-v2",
+  "name": "Higgs Audio v2",
+  "tagline": "Built on Llama 3.2 3B, 10M+ hours of training audio",
+  "repo_url": "https://github.com/boson-ai/higgs-audio",
+  "license": "Apache-2.0",
+  "params": "3B",
+  "vram_gb": 12,
+  "languages": [
+   "en",
+   "zh",
+   "es",
+   "fr",
+   "de",
+   "ja",
+   "ko"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.2,
+  "install": "pip install higgs-audio",
+  "category": "flagship",
+  "voices": [
+   {
+    "id": "default",
+    "name": "Default",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ],
+  "default_voice": "default",
+  "about": "Higgs Audio v2 builds audio generation on top of a Llama-3-class language model trained on 10M+ hours of audio. It wins the majority of emotion benchmarks against leading commercial models and does things few others can: multi-speaker dialogue, melodic humming, and voice cloning with deep prosody understanding."
+ },
+ {
+  "id": "gpt-sovits",
+  "name": "GPT-SoVITS",
+  "tagline": "The community's favorite few-shot voice-cloning toolkit",
+  "about": "GPT-SoVITS has one of the largest communities in open voice AI. It does zero-shot cloning from a few seconds of audio, but its signature trick is few-shot training: with just one minute of a voice it produces a dramatically more faithful clone. That workflow made it the de facto standard for hobbyist voice cloning, especially across the Chinese and Japanese communities.",
+  "repo_url": "https://github.com/RVC-Boss/GPT-SoVITS",
+  "hf_url": "https://huggingface.co/lj1995/GPT-SoVITS",
+  "license": "MIT",
+  "params": "~0.7B",
+  "vram_gb": 4,
+  "languages": [
+   "en",
+   "zh",
+   "ja",
+   "ko",
+   "yue"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.3,
+  "install": "git clone https://github.com/RVC-Boss/GPT-SoVITS",
+  "category": "voice-cloning",
+  "default_voice": "reference",
+  "voices": [
+   {
+    "id": "reference",
+    "name": "Reference-based",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ]
+ },
+ {
+  "id": "sesame-csm-1b",
+  "name": "Sesame CSM-1B",
+  "tagline": "The conversational speech model behind the viral Maya demo",
+  "about": "CSM-1B is the open model from Sesame, whose 'Maya' assistant demo went viral for sounding uncannily present — breath, hesitation, tone shifts and all. It generates speech conditioned on conversation context, so replies sound like part of a dialogue rather than isolated lines. The open release is the base generation model behind that demo.",
+  "repo_url": "https://github.com/SesameAILabs/csm",
+  "hf_url": "https://huggingface.co/sesame/csm-1b",
+  "license": "Apache-2.0",
+  "params": "1B",
+  "vram_gb": 8,
+  "languages": [
+   "en"
+  ],
+  "voice_cloning": true,
+  "streaming": false,
+  "realtime_factor": 0.8,
+  "install": "git clone https://github.com/SesameAILabs/csm",
+  "category": "dialogue",
+  "default_voice": "context",
+  "voices": [
+   {
+    "id": "context",
+    "name": "Context-conditioned",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ]
+ },
+ {
+  "id": "zonos",
+  "name": "Zonos",
+  "tagline": "44kHz studio-quality output with emotion control",
+  "about": "Zonos from Zyphra generates native 44kHz audio — noticeably crisper than the 22-24kHz most open models produce — with zero-shot cloning from a short reference and explicit control over emotions like happiness, sadness, and anger. It ships in both pure-transformer and SSM-hybrid variants.",
+  "repo_url": "https://github.com/Zyphra/Zonos",
+  "hf_url": "https://huggingface.co/Zyphra/Zonos-v0.1-transformer",
+  "license": "Apache-2.0",
+  "params": "1.6B",
+  "vram_gb": 8,
+  "languages": [
+   "en",
+   "ja",
+   "zh",
+   "fr",
+   "de"
+  ],
+  "voice_cloning": true,
+  "streaming": false,
+  "realtime_factor": 0.5,
+  "install": "git clone https://github.com/Zyphra/Zonos",
+  "category": "expressive",
+  "default_voice": "reference",
+  "voices": [
+   {
+    "id": "reference",
+    "name": "Reference-based",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ]
+ },
+ {
+  "id": "neutts-air",
+  "name": "NeuTTS Air",
+  "tagline": "On-device-class TTS with instant cloning from ~3 seconds",
+  "about": "NeuTTS Air from Neuphonic is built to run in real time on a CPU — a ~0.7B-parameter model on a Qwen backbone that still manages instant voice cloning from around three seconds of reference audio. It's designed for on-device privacy, which also makes it one of the cheapest modern TTS models to serve.",
+  "repo_url": "https://github.com/neuphonic/neutts-air",
+  "hf_url": "https://huggingface.co/neuphonic/neutts-air",
+  "license": "Apache-2.0",
+  "params": "748M",
+  "vram_gb": 0,
+  "languages": [
+   "en"
+  ],
+  "voice_cloning": true,
+  "streaming": true,
+  "realtime_factor": 0.3,
+  "install": "git clone https://github.com/neuphonic/neutts-air",
+  "category": "lightweight",
+  "default_voice": "reference",
+  "voices": [
+   {
+    "id": "reference",
+    "name": "Reference-based",
+    "gender": "n",
+    "accent": "unspecified",
+    "samples": {
+     "neutral": null,
+     "emotional": null,
+     "numbers": null
+    }
+   }
+  ]
+ }
 ]

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -6,14 +7,72 @@ import SamplePlayer from "@/components/SamplePlayer";
 import ShareButton from "@/components/ShareButton";
 import CompareWith from "@/components/CompareWith";
 import EmbedButton from "@/components/EmbedButton";
+import HostedCta from "@/components/HostedCta";
 import { ArrowRight, GithubIcon } from "@/components/Icons";
 import { getModel, models, scripts } from "@/lib/data";
-import type { ScriptId, Voice } from "@/lib/types";
+import { languageNames } from "@/lib/site";
+import type { Model, ScriptId, Voice } from "@/lib/types";
 
 const REPO_URL = "https://github.com/sudomichael/openspeech";
 
 export function generateStaticParams() {
   return models.map((m) => ({ id: m.id }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const model = getModel(id);
+  if (!model) return {};
+  const sampleCount = model.voices.filter((v) => v.samples.neutral).length;
+  const title = `${model.name} — voice samples, specs & how to run it`;
+  const description = `${model.tagline}. ${
+    sampleCount > 0
+      ? `Listen to ${model.name} voice samples, `
+      : `${model.name} specs, `
+  }compare it against ${
+    models.length - 1
+  } other open-source TTS models, and see VRAM, license, and language support.`;
+  return {
+    title,
+    description,
+    alternates: { canonical: `/models/${model.id}` },
+    openGraph: { title, description, url: `/models/${model.id}` },
+    twitter: { card: "summary_large_image", title, description },
+  };
+}
+
+function buildFaq(model: Model) {
+  return [
+    {
+      q: `Do I need a GPU to run ${model.name}?`,
+      a:
+        model.vram_gb === 0
+          ? `No — ${model.name} runs in real time on a CPU, no GPU required. It's one of the few open TTS models that does.`
+          : `For practical speeds, yes — plan on roughly ${model.vram_gb} GB of VRAM. If you'd rather not manage a GPU, hosted access to every model in this directory is coming via OpenSpeech Cloud.`,
+    },
+    {
+      q: `Can ${model.name} clone voices?`,
+      a: model.voice_cloning
+        ? `Yes — ${model.name} supports voice cloning from reference audio.`
+        : `No — ${model.name} uses preset voices. Browse the voice-cloning category for models that clone from reference audio.`,
+    },
+    {
+      q: `What license is ${model.name} released under?`,
+      a: `${model.name} is released under the ${model.license} license. Always check the repository for the exact terms — some models license code and weights separately.`,
+    },
+    {
+      q: `What languages does ${model.name} support?`,
+      a: `${model.name} supports ${languageNames(model.languages)}.`,
+    },
+    {
+      q: `Is there a hosted ${model.name} API?`,
+      a: `Yes — OpenSpeech Cloud is launching hosted, pay-per-minute access to ${model.name} and every other model in this directory. No CUDA, Docker, or GPU needed.`,
+    },
+  ];
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -68,6 +127,29 @@ export default async function ModelPage({
   const color = CATEGORY_COLORS[model.category] ?? "bg-zinc-400";
   const similar = findSimilar(model, models);
   const modelPath = `/models/${model.id}`;
+  const faq = buildFaq(model);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        name: model.name,
+        applicationCategory: "MultimediaApplication",
+        operatingSystem: "Linux, macOS, Windows",
+        description: model.about ?? model.tagline,
+        license: model.repo_url,
+        url: `/models/${model.id}`,
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faq.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      },
+    ],
+  };
 
   return (
     <>
@@ -107,6 +189,11 @@ export default async function ModelPage({
             <p className="text-lg text-fg-muted leading-relaxed max-w-3xl">
               {model.tagline}
             </p>
+            {model.about && (
+              <p className="text-sm text-fg-muted leading-relaxed max-w-3xl mt-4">
+                {model.about}
+              </p>
+            )}
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
@@ -197,9 +284,24 @@ export default async function ModelPage({
 
               {/* Install */}
               <h2 className="text-xl font-semibold tracking-tight mb-4">Install</h2>
-              <pre className="bg-surface-2 border border-border rounded-xl p-4 text-sm font-mono overflow-x-auto">
+              <pre className="bg-surface-2 border border-border rounded-xl p-4 text-sm font-mono overflow-x-auto mb-12">
                 {model.install}
               </pre>
+
+              {/* FAQ */}
+              <h2 className="text-xl font-semibold tracking-tight mb-5">
+                {model.name} FAQ
+              </h2>
+              <div className="flex flex-col gap-5">
+                {faq.map((item) => (
+                  <div key={item.q}>
+                    <h3 className="font-medium text-sm mb-1">{item.q}</h3>
+                    <p className="text-sm text-fg-muted leading-relaxed">
+                      {item.a}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Sidebar */}
@@ -235,6 +337,8 @@ export default async function ModelPage({
                   </div>
                 </div>
               </div>
+
+              <HostedCta modelName={model.name} />
 
               <CompareWith current={model} similar={similar} />
 
@@ -276,6 +380,10 @@ export default async function ModelPage({
         </div>
       </main>
       <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <VoiceAnchorScroll />
     </>
   );

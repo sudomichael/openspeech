@@ -35,7 +35,7 @@ export default function RecommendationCard({ model }: { model: Model }) {
 
   return (
     <div
-      className={`group relative flex flex-col bg-surface border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow ring-1 ${style.ring}`}
+      className={`group relative flex flex-col bg-surface border border-border rounded-xl p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 motion-reduce:hover:translate-y-0 transition-all duration-200 ring-1 ${style.ring}`}
     >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2.5">

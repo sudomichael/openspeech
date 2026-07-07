@@ -22,6 +22,8 @@ export type Model = {
   id: string;
   name: string;
   tagline: string;
+  /** Longer SEO/editorial prose shown on the model page. */
+  about?: string;
   repo_url: string;
   hf_url?: string;
   license: string;

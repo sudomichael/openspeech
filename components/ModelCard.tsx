@@ -39,10 +39,10 @@ export default function ModelCard({
 
   return (
     <div
-      className={`group relative flex flex-col bg-surface border rounded-xl overflow-hidden transition-all ${
+      className={`group relative flex flex-col bg-surface border rounded-xl overflow-hidden transition-all duration-200 ${
         selected
           ? "border-accent shadow-[0_0_0_3px_var(--accent-soft)]"
-          : "border-border hover:border-border-strong hover:shadow-sm"
+          : "border-border hover:border-border-strong hover:shadow-md hover:shadow-black/5 hover:-translate-y-0.5 motion-reduce:hover:translate-y-0"
       }`}
     >
       {selectable && (

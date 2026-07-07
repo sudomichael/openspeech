@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { GithubIcon } from "./Icons";
+import { CLOUD_URL } from "@/lib/site";
 
 const REPO_URL = "https://github.com/sudomichael/openspeech";
 
@@ -41,6 +43,24 @@ export default function Footer() {
                 className="text-fg-muted hover:text-fg"
               >
                 Contribute a model
+              </a>
+            </li>
+            <li>
+              <Link
+                href="/elevenlabs-alternatives"
+                className="text-fg-muted hover:text-fg"
+              >
+                ElevenLabs alternatives
+              </Link>
+            </li>
+            <li>
+              <a
+                href={CLOUD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-fg-muted hover:text-fg"
+              >
+                Hosted API (Cloud)
               </a>
             </li>
             <li>

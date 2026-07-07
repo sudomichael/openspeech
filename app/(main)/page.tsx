@@ -11,6 +11,12 @@ import { ArrowRight, GithubIcon, SparkIcon } from "@/components/Icons";
 
 const REPO_URL = "https://github.com/sudomichael/openspeech";
 
+// Deterministic bar heights for the decorative hero waveform (SSR-safe).
+const WAVE = [
+  5, 9, 14, 8, 18, 24, 12, 30, 22, 36, 16, 28, 40, 20, 34, 26, 44, 18, 38, 30,
+  48, 24, 36, 14, 42, 28, 20, 32, 10, 22, 16, 8, 12, 6,
+];
+
 export default function Home() {
   const totalVoices = models.reduce((n, m) => n + m.voices.length, 0);
   const recs = getRecommendations();
@@ -22,24 +28,47 @@ export default function Home() {
         <section className="relative overflow-hidden border-b border-border">
           <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-canvas pointer-events-none" />
+          <div
+            aria-hidden
+            className="hidden lg:flex absolute right-12 top-1/2 -translate-y-1/2 items-center gap-[5px] opacity-70"
+          >
+            {WAVE.map((h, i) => (
+              <span
+                key={i}
+                className={`w-[3px] rounded-full waveform-bar ${
+                  i % 7 === 3 ? "bg-highlight" : "bg-fg-subtle/40"
+                }`}
+                style={{
+                  height: `${h}px`,
+                  animationDelay: `${i * 0.09}s`,
+                }}
+              />
+            ))}
+          </div>
           <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 sm:pt-20 sm:pb-12 relative">
             <a
               href={REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs text-fg-muted hover:text-fg border border-border bg-surface rounded-full pl-2 pr-3 py-1 mb-7 group transition-colors"
+              className="inline-flex items-center gap-2 text-xs text-fg-muted hover:text-fg border border-border bg-surface rounded-full pl-2 pr-3 py-1 mb-7 group transition-colors animate-rise"
             >
-              <span className="bg-accent-soft text-accent rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider">
+              <span className="bg-highlight-soft text-highlight rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider">
                 Open Source
               </span>
               <span>Star on GitHub, add a model</span>
               <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
             </a>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] max-w-4xl mb-5">
-              Which open-source TTS{" "}
-              should I try?
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.05] max-w-4xl mb-5 animate-rise"
+              style={{ animationDelay: "0.06s" }}
+            >
+              Which open-source TTS should I{" "}
+              <em className="display italic font-normal">try</em>?
             </h1>
-            <p className="text-lg sm:text-xl text-fg-muted leading-relaxed max-w-2xl">
+            <p
+              className="text-lg sm:text-xl text-fg-muted leading-relaxed max-w-2xl animate-rise"
+              style={{ animationDelay: "0.12s" }}
+            >
               Start with the three picks below. Hear them. Pick one. We&rsquo;ll
               get into the rest later.
             </p>
@@ -125,9 +154,7 @@ export default function Home() {
                   Want the full directory?
                 </h2>
                 <p className="text-fg-muted leading-relaxed max-w-xl">
-                  All {models.length} models with full filters and sort.{" "}
-                  {totalVoices} voices total. For when you&rsquo;re ready to do
-                  your own research.
+                  {`All ${models.length} models with full filters and sort. ${totalVoices} voices total. For when you're ready to do your own research.`}
                 </p>
               </div>
               <Link

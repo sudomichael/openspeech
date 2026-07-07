@@ -23,39 +23,49 @@
 }
 
 :root {
-  /* Light: pure neutral. Near-black text. */
-  --canvas: #ffffff;
+  /* Light: warm paper. Ink text. Amber highlight (matches OpenSpeech Cloud). */
+  --canvas: #faf9f7;
   --surface: #ffffff;
-  --surface-2: #f5f5f5;
-  --fg: #0a0a0a;
-  --fg-muted: #404040;
-  --fg-subtle: #737373;
-  --border: #e5e5e5;
-  --border-strong: #d4d4d4;
-  --accent: #0a0a0a;
-  --accent-fg: #ffffff;
-  --accent-soft: #f5f5f5;
-  --highlight: #2563eb;
-  --highlight-soft: #eff6ff;
+  --surface-2: #f2f1ec;
+  --fg: #1c1b17;
+  --fg-muted: #57554b;
+  --fg-subtle: #8d8a7d;
+  --border: #e6e4db;
+  --border-strong: #d3d0c4;
+  --accent: #1c1b17;
+  --accent-fg: #faf9f7;
+  --accent-soft: #f2f1ec;
+  --highlight: #b45309;
+  --highlight-soft: #f8ecdd;
 }
 
 .dark {
-  --canvas: #0a0a0a;
-  --surface: #111111;
-  --surface-2: #171717;
-  --fg: #fafafa;
-  --fg-muted: #a3a3a3;
-  --fg-subtle: #737373;
-  --border: #262626;
-  --border-strong: #404040;
-  --accent: #fafafa;
-  --accent-fg: #0a0a0a;
-  --accent-soft: #1a1a1a;
-  --highlight: #60a5fa;
-  --highlight-soft: #1e3a5f;
+  --canvas: #0f0e0c;
+  --surface: #171613;
+  --surface-2: #1e1d19;
+  --fg: #f1efe8;
+  --fg-muted: #a5a297;
+  --fg-subtle: #6f6d63;
+  --border: #2b2a24;
+  --border-strong: #403e35;
+  --accent: #f1efe8;
+  --accent-fg: #0f0e0c;
+  --accent-soft: #24221d;
+  --highlight: #f5a742;
+  --highlight-soft: #33250c;
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
+  background: var(--canvas);
+  color: var(--fg);
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
@@ -93,4 +103,47 @@ body {
 }
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background: var(--border-strong);
+}
+
+:focus-visible {
+  outline: 2px solid var(--highlight);
+  outline-offset: 2px;
+}
+
+/* Hero entrance */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise 0.5s ease-out both;
+}
+
+/* Decorative waveform (hero) */
+.waveform-bar {
+  animation: waveform 1.8s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes waveform {
+  from {
+    transform: scaleY(0.45);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .waveform-bar {
+    animation: none;
+  }
 }

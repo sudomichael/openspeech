@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/arena`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE_URL}/calculator`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE_URL}/elevenlabs-alternatives`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
   ];
 
   const modelRoutes: MetadataRoute.Sitemap = models.map((m) => ({
