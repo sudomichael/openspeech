@@ -14,3 +14,7 @@ export function getDefaultVoice(model: Model): Voice {
     model.voices.find((v) => v.id === model.default_voice) ?? model.voices[0]
   );
 }
+
+export function hasSamples(m: Model): boolean {
+  return m.voices.some((v) => v.samples.neutral);
+}

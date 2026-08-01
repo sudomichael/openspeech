@@ -9,7 +9,7 @@ import CompareWith from "@/components/CompareWith";
 import EmbedButton from "@/components/EmbedButton";
 import HostedCta from "@/components/HostedCta";
 import { ArrowRight, GithubIcon } from "@/components/Icons";
-import { getModel, models, scripts } from "@/lib/data";
+import { getModel, hasSamples, models, scripts } from "@/lib/data";
 import { languageNames } from "@/lib/site";
 import type { Model, ScriptId, Voice } from "@/lib/types";
 
@@ -198,89 +198,112 @@ export default async function ModelPage({
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="lg:col-span-2 min-w-0">
-              {/* Voices */}
-              <div className="flex items-baseline justify-between mb-5">
-                <h2 className="text-xl font-semibold tracking-tight">Voices</h2>
-                <span className="text-xs text-fg-subtle">
-                  {model.voices.length} {model.voices.length === 1 ? "voice" : "voices"}
-                </span>
-              </div>
+              {hasSamples(model) ? (
+                <>
+                  {/* Voices */}
+                  <div className="flex items-baseline justify-between mb-5">
+                    <h2 className="text-xl font-semibold tracking-tight">Voices</h2>
+                    <span className="text-xs text-fg-subtle">
+                      {model.voices.length} {model.voices.length === 1 ? "voice" : "voices"}
+                    </span>
+                  </div>
 
-              <div className="flex flex-col gap-8 mb-12">
-                {(["f", "m", "n"] as const).map((g) => {
-                  if (!grouped[g]?.length) return null;
-                  return (
-                    <div key={g}>
-                      <div className="text-[11px] font-semibold uppercase tracking-wider text-fg-subtle mb-3">
-                        {groupLabels[g]}
-                      </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {grouped[g].map((voice) => (
-                          <div
-                            key={voice.id}
-                            id={`voice-${voice.id}`}
-                            className="bg-surface border border-border rounded-xl p-4 hover:border-border-strong transition-colors scroll-mt-20"
-                          >
-                            <div className="flex items-start justify-between gap-3 mb-3">
-                              <div className="min-w-0">
-                                <div className="flex items-center gap-2 mb-0.5">
-                                  <span className="font-medium text-sm truncate">
-                                    {voice.name}
-                                  </span>
-                                  {voice.id === model.default_voice && (
-                                    <span className="text-[9px] uppercase tracking-wider text-highlight bg-highlight-soft rounded px-1.5 py-0.5 font-semibold">
-                                      default
-                                    </span>
-                                  )}
+                  <div className="flex flex-col gap-8 mb-12">
+                    {(["f", "m", "n"] as const).map((g) => {
+                      if (!grouped[g]?.length) return null;
+                      return (
+                        <div key={g}>
+                          <div className="text-[11px] font-semibold uppercase tracking-wider text-fg-subtle mb-3">
+                            {groupLabels[g]}
+                          </div>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            {grouped[g].map((voice) => (
+                              <div
+                                key={voice.id}
+                                id={`voice-${voice.id}`}
+                                className="bg-surface border border-border rounded-xl p-4 hover:border-border-strong transition-colors scroll-mt-20"
+                              >
+                                <div className="flex items-start justify-between gap-3 mb-3">
+                                  <div className="min-w-0">
+                                    <div className="flex items-center gap-2 mb-0.5">
+                                      <span className="font-medium text-sm truncate">
+                                        {voice.name}
+                                      </span>
+                                      {voice.id === model.default_voice && (
+                                        <span className="text-[9px] uppercase tracking-wider text-highlight bg-highlight-soft rounded px-1.5 py-0.5 font-semibold">
+                                          default
+                                        </span>
+                                      )}
+                                    </div>
+                                    <div className="text-[11px] text-fg-subtle">
+                                      {voice.accent !== "unspecified"
+                                        ? voice.accent
+                                        : "—"}
+                                    </div>
+                                  </div>
+                                  <ShareButton
+                                    url={`${modelPath}?voice=${voice.id}`}
+                                    label=""
+                                    className="opacity-0 group-hover:opacity-100"
+                                  />
                                 </div>
-                                <div className="text-[11px] text-fg-subtle">
-                                  {voice.accent !== "unspecified"
-                                    ? voice.accent
-                                    : "—"}
+                                <div className="flex flex-wrap gap-1.5">
+                                  {scriptIds.map((sid) => (
+                                    <SamplePlayer
+                                      key={sid}
+                                      src={voice.samples[sid]}
+                                      label={scripts[sid].label}
+                                      variant="compact"
+                                      autoplayKey={`${voice.id}:${sid}`}
+                                    />
+                                  ))}
                                 </div>
                               </div>
-                              <ShareButton
-                                url={`${modelPath}?voice=${voice.id}`}
-                                label=""
-                                className="opacity-0 group-hover:opacity-100"
-                              />
-                            </div>
-                            <div className="flex flex-wrap gap-1.5">
-                              {scriptIds.map((sid) => (
-                                <SamplePlayer
-                                  key={sid}
-                                  src={voice.samples[sid]}
-                                  label={scripts[sid].label}
-                                  variant="compact"
-                                  autoplayKey={`${voice.id}:${sid}`}
-                                />
-                              ))}
-                            </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Scripts */}
-              <h2 className="text-xl font-semibold tracking-tight mb-4">The scripts</h2>
-              <div className="flex flex-col gap-3 mb-12">
-                {scriptIds.map((sid) => (
-                  <div
-                    key={sid}
-                    className="border-l-2 border-highlight pl-4 py-1"
-                  >
-                    <div className="text-[11px] font-semibold uppercase tracking-wider text-highlight mb-1">
-                      {scripts[sid].label}
-                    </div>
-                    <div className="display text-lg italic leading-snug">
-                      &ldquo;{scripts[sid].text}&rdquo;
-                    </div>
+                        </div>
+                      );
+                    })}
                   </div>
-                ))}
-              </div>
+
+                  {/* Scripts */}
+                  <h2 className="text-xl font-semibold tracking-tight mb-4">The scripts</h2>
+                  <div className="flex flex-col gap-3 mb-12">
+                    {scriptIds.map((sid) => (
+                      <div
+                        key={sid}
+                        className="border-l-2 border-highlight pl-4 py-1"
+                      >
+                        <div className="text-[11px] font-semibold uppercase tracking-wider text-highlight mb-1">
+                          {scripts[sid].label}
+                        </div>
+                        <div className="display text-lg italic leading-snug">
+                          &ldquo;{scripts[sid].text}&rdquo;
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="border border-border bg-surface rounded-xl p-6 mb-12">
+                  <h2 className="text-xl font-semibold tracking-tight mb-3">
+                    No samples yet
+                  </h2>
+                  <p className="text-sm text-fg-muted leading-relaxed mb-5">
+                    Every model in this directory is read against the same
+                    three scripts so voices can be compared honestly — {model.name}&rsquo;s
+                    samples just haven&rsquo;t been generated yet.
+                  </p>
+                  <a
+                    href={REPO_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+                  >
+                    Contribute samples on GitHub →
+                  </a>
+                </div>
+              )}
 
               {/* Install */}
               <h2 className="text-xl font-semibold tracking-tight mb-4">Install</h2>

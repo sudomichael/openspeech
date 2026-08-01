@@ -6,7 +6,7 @@ import { models } from "@/lib/data";
 import { isVotingEnabled } from "@/lib/redis";
 
 export const metadata = {
-  title: "Arena — OpenSpeech",
+  title: "Arena",
   description:
     "Blind A/B test open-source TTS models. Vote on which voice sounds better, drive a community Elo leaderboard.",
 };
@@ -23,7 +23,7 @@ export default function ArenaPage() {
     <>
       <Navbar />
       <main className="flex-1 w-full">
-        <div className="mx-auto max-w-5xl px-6 pt-10 pb-20">
+        <div className="mx-auto max-w-7xl px-6 pt-10 pb-20">
           <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-4">
             The arena.
           </h1>
@@ -41,7 +41,9 @@ export default function ArenaPage() {
             </div>
           ) : (
             <>
-              <Arena models={sampledModels} />
+              <div className="max-w-3xl">
+                <Arena models={sampledModels} />
+              </div>
               <div className="mt-16">
                 <h2 className="text-2xl font-semibold tracking-tight mb-4">Leaderboard</h2>
                 <Leaderboard />

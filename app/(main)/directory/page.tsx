@@ -4,7 +4,7 @@ import ModelGrid from "@/components/ModelGrid";
 import { models } from "@/lib/data";
 
 export const metadata = {
-  title: "Full directory — OpenSpeech",
+  title: "Full directory",
   description:
     "Every open-source text-to-speech model in OpenSpeech. Filter by license, VRAM, language, and capability.",
 };

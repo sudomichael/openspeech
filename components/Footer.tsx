@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { GithubIcon } from "./Icons";
-import { CLOUD_URL } from "@/lib/site";
 
 const REPO_URL = "https://github.com/sudomichael/openspeech";
 
@@ -54,14 +53,9 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <a
-                href={CLOUD_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-fg-muted hover:text-fg"
-              >
-                Hosted API (Cloud)
-              </a>
+              <Link href="/calculator" className="text-fg-muted hover:text-fg">
+                Cloud (coming soon)
+              </Link>
             </li>
             <li>
               <a

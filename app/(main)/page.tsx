@@ -157,13 +157,22 @@ export default function Home() {
                   {`All ${models.length} models with full filters and sort. ${totalVoices} voices total. For when you're ready to do your own research.`}
                 </p>
               </div>
-              <Link
-                href="/directory"
-                className="inline-flex items-center gap-2 bg-fg text-canvas rounded-full px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity flex-shrink-0"
-              >
-                Browse all {models.length} models
-                <ArrowRight />
-              </Link>
+              <div className="flex flex-col items-start md:items-end gap-2 flex-shrink-0">
+                <Link
+                  href="/directory"
+                  className="inline-flex items-center gap-2 bg-fg text-canvas rounded-full px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity"
+                >
+                  Browse all {models.length} models
+                  <ArrowRight />
+                </Link>
+                <Link
+                  href="/elevenlabs-alternatives"
+                  className="text-xs text-fg-muted hover:text-fg inline-flex items-center gap-1"
+                >
+                  Switching from ElevenLabs? See the alternatives ranked
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>

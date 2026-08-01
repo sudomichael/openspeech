@@ -127,6 +127,97 @@ const MAP: Record<string, { slug: string; buildInput: InputBuilder }> = {
       seed: voice === "s2" ? 123 : 42,
     }),
   },
+  zonos: {
+    slug: "jaaari/zonos",
+    buildInput: (text, _v, ctx) => ({
+      text,
+      audio: ctx.refUrl,
+      language: "en-us",
+    }),
+  },
+  cosyvoice2: {
+    slug: "chenxwh/cosyvoice2-0.5b",
+    buildInput: (text, _v, ctx) => ({
+      tts_text: text,
+      task: "zero-shot voice clone",
+      source_audio: ctx.refUrl,
+      source_transcript: REF_TEXT,
+    }),
+  },
+  indextts2: {
+    slug: "lucataco/indextts-2",
+    buildInput: (text, _v, ctx) => ({
+      text,
+      speaker_audio: ctx.refUrl,
+    }),
+  },
+  vibevoice: {
+    slug: "microsoft/vibevoice",
+    buildInput: (text) => ({
+      script: text,
+      speaker_1: "en-Alice_woman",
+    }),
+  },
+  "qwen3-tts": {
+    slug: "qwen/qwen3-tts",
+    buildInput: (text) => ({
+      text,
+      mode: "custom_voice",
+      speaker: "Serena",
+      language: "English",
+    }),
+  },
+  kittentts: {
+    slug: "alicewuv/kitten-tts",
+    buildInput: (text) => ({ text, voice_type: "female" }),
+  },
+  "openvoice-v2": {
+    slug: "chenxwh/openvoice",
+    buildInput: (text, _v, ctx) => ({
+      text,
+      audio: ctx.refUrl,
+      language: "EN_NEWEST",
+    }),
+  },
+  styletts2: {
+    slug: "adirik/styletts2",
+    // Text-only — omitting `reference` avoids the slower long-text/reference code path.
+    buildInput: (text) => ({ text }),
+  },
+  melotts: {
+    slug: "cjwbw/melotts",
+    buildInput: (text) => ({ text, speaker: "EN-US", language: "EN" }),
+  },
+  "spark-tts": {
+    slug: "jichengdu/spark-tts",
+    buildInput: (text, _v, ctx) => ({
+      text,
+      mode: "voice_cloning",
+      prompt_speech_path: ctx.refUrl,
+      prompt_text: REF_TEXT,
+    }),
+  },
+  whisperspeech: {
+    slug: "lucataco/whisperspeech-small",
+    buildInput: (text, _v, ctx) => ({ prompt: text, speaker: ctx.refUrl }),
+  },
+  "higgs-audio-v2": {
+    slug: "lucataco/higgs-audio-v2",
+    // No ref-audio param in the schema — text-only.
+    buildInput: (text) => ({ text }),
+  },
+  "sesame-csm-1b": {
+    slug: "lucataco/csm-1b",
+    buildInput: (text) => ({ text, speaker: 0 }),
+  },
+  "neutts-air": {
+    slug: "lucataco/neutts-air",
+    buildInput: (text, _v, ctx) => ({
+      text,
+      ref_audio: ctx.refUrl,
+      ref_text: REF_TEXT,
+    }),
+  },
 };
 
 const PARLER_DESCRIPTIONS: Record<string, string> = {

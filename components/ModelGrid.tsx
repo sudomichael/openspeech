@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Model } from "@/lib/types";
+import { hasSamples } from "@/lib/data";
 import ModelCard from "./ModelCard";
 import Filters, { type FilterState } from "./Filters";
 import { useCompare } from "./CompareProvider";
@@ -38,7 +39,12 @@ export default function ModelGrid({ models }: { models: Model[] }) {
     });
 
     out.sort((a, b) => {
-      if (state.sort === "name") return a.name.localeCompare(b.name);
+      if (state.sort === "name") {
+        const aHas = hasSamples(a);
+        const bHas = hasSamples(b);
+        if (aHas !== bHas) return aHas ? -1 : 1;
+        return a.name.localeCompare(b.name);
+      }
       if (state.sort === "params") return parseParams(a.params) - parseParams(b.params);
       if (state.sort === "speed") return a.realtime_factor - b.realtime_factor;
       return 0;
@@ -46,9 +52,7 @@ export default function ModelGrid({ models }: { models: Model[] }) {
     return out;
   }, [models, state]);
 
-  const sampledCount = filtered.filter((m) =>
-    m.voices.some((v) => v.samples.neutral)
-  ).length;
+  const sampledCount = filtered.filter(hasSamples).length;
 
   return (
     <div className="flex flex-col lg:flex-row gap-10">

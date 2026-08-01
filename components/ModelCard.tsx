@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { Model } from "@/lib/types";
+import { hasSamples } from "@/lib/data";
 import SamplePlayer from "./SamplePlayer";
 import { ArrowRight } from "./Icons";
 
@@ -35,7 +36,7 @@ export default function ModelCard({
   const voice = model.voices.find((v) => v.id === voiceId) ?? model.voices[0];
   const color = CATEGORY_COLORS[model.category] ?? "bg-zinc-400";
   const hasMultipleVoices = model.voices.length > 1;
-  const commercial = !/non-commercial|cc.*nc/i.test(model.license);
+  const commercial = !/non-commercial|cc.*nc|restricted|research|cpml|bilibili/i.test(model.license);
 
   return (
     <div
@@ -95,11 +96,15 @@ export default function ModelCard({
         <p className="text-[12px] text-fg-muted leading-snug line-clamp-1 mb-3">
           {model.tagline}
         </p>
-        <div className="flex flex-wrap gap-1.5">
-          <SamplePlayer src={voice.samples.neutral} label="Neutral" />
-          <SamplePlayer src={voice.samples.emotional} label="Emotional" />
-          <SamplePlayer src={voice.samples.numbers} label="Numbers" />
-        </div>
+        {hasSamples(model) ? (
+          <div className="flex flex-wrap gap-1.5">
+            <SamplePlayer src={voice.samples.neutral} label="Neutral" />
+            <SamplePlayer src={voice.samples.emotional} label="Emotional" />
+            <SamplePlayer src={voice.samples.numbers} label="Numbers" />
+          </div>
+        ) : (
+          <p className="text-fg-subtle text-xs">No samples yet</p>
+        )}
       </div>
 
       {/* Capability tags — positives only, plus specs */}

@@ -6,7 +6,7 @@ import { models } from "@/lib/data";
 import { ArrowRight } from "@/components/Icons";
 
 export const metadata = {
-  title: "Compare voices — OpenSpeech",
+  title: "Compare voices",
 };
 
 export default async function ComparePage({
@@ -19,6 +19,17 @@ export default async function ComparePage({
   const picked = idList
     .map((id) => models.find((m) => m.id === id))
     .filter((m): m is NonNullable<typeof m> => !!m);
+
+  const RANK_ORDER: Record<string, number> = { gold: 0, silver: 1, bronze: 2 };
+  const defaultPicks = models
+    .filter((m) => m.editorial?.rank)
+    .sort(
+      (a, b) =>
+        RANK_ORDER[a.editorial?.rank ?? ""] - RANK_ORDER[b.editorial?.rank ?? ""]
+    );
+
+  const usingDefault = picked.length < 2;
+  const toShow = usingDefault ? defaultPicks : picked;
 
   return (
     <>
@@ -40,24 +51,17 @@ export default async function ComparePage({
             script to hear all selected models in sequence.
           </p>
 
-          {picked.length < 2 ? (
-            <div className="border border-dashed border-border rounded-xl p-10 text-center">
-              <p className="text-fg-muted mb-4">
-                Pick 2 or more models to compare. Open the{" "}
-                <Link href="/" className="text-accent underline hover:no-underline">
-                  directory
-                </Link>{" "}
-                and check the box on each card.
-              </p>
-              {picked.length === 1 && (
-                <p className="text-xs text-fg-subtle">
-                  Currently selected: {picked[0].name}
-                </p>
-              )}
-            </div>
-          ) : (
-            <CompareView models={picked} />
+          {usingDefault && (
+            <p className="text-sm text-fg-muted mb-6">
+              Showing our top three picks — check the box on any directory
+              card to build your own. See the{" "}
+              <Link href="/directory" className="text-accent underline hover:no-underline">
+                directory
+              </Link>
+              .
+            </p>
           )}
+          <CompareView models={toShow} />
         </div>
       </main>
       <Footer />
