@@ -15,17 +15,17 @@ export default function CalculatorPage() {
       <Navbar />
       <main className="flex-1 w-full">
         <div className="mx-auto max-w-7xl px-6 pt-10 pb-20">
-          <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-4">
-            How much will TTS{" "}
-            actually cost?
-          </h1>
-          <p className="text-lg text-fg-muted leading-relaxed max-w-2xl mb-10">
-            Same job, different vendors, wildly different price tags. Estimate
-            your monthly bill across closed-source, hosted OSS, and self-hosted
-            options.
-          </p>
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-4">
+              How much will TTS{" "}
+              actually cost?
+            </h1>
+            <p className="text-lg text-fg-muted leading-relaxed mb-10">
+              Same job, different vendors, wildly different price tags. Estimate
+              your monthly bill across closed-source, hosted OSS, and self-hosted
+              options.
+            </p>
 
-          <div className="max-w-3xl">
             <Calculator />
 
             <div className="mt-12 text-sm text-fg-muted bg-surface-2/50 border border-border rounded-xl p-5">
@@ -51,22 +51,22 @@ export default function CalculatorPage() {
                 </li>
               </ul>
             </div>
-          </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              href="/"
-              className="inline-flex items-center gap-2 text-sm text-fg-muted hover:text-fg"
-            >
-              ← Browse models
-            </a>
-            <a
-              href="/compare"
-              className="inline-flex items-center gap-2 text-sm text-fg-muted hover:text-fg"
-            >
-              Compare voices
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="/"
+                className="inline-flex items-center gap-2 text-sm text-fg-muted hover:text-fg"
+              >
+                ← Browse models
+              </a>
+              <a
+                href="/compare"
+                className="inline-flex items-center gap-2 text-sm text-fg-muted hover:text-fg"
+              >
+                Compare voices
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </div>
         </div>
       </main>

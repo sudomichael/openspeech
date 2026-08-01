@@ -43,3 +43,15 @@ export const SparkIcon = ({ className = "w-3.5 h-3.5" }: Props) => (
     <path d="M8 0l1.6 4.8L14 6.5l-4.4 1.7L8 13l-1.6-4.8L2 6.5l4.4-1.7L8 0Z" />
   </svg>
 );
+
+export const MenuIcon = ({ className = "w-5 h-5" }: Props) => (
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className={className} aria-hidden>
+    <path d="M2 4h12M2 8h12M2 12h12" />
+  </svg>
+);
+
+export const XIcon = ({ className = "w-5 h-5" }: Props) => (
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className={className} aria-hidden>
+    <path d="M3 3l10 10M13 3L3 13" />
+  </svg>
+);

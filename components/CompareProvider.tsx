@@ -8,6 +8,9 @@ import {
   useMemo,
   useState,
 } from "react";
+import { models } from "@/lib/data";
+
+const STORAGE_KEY = "openspeech-compare";
 
 type Ctx = {
   selected: string[];
@@ -26,15 +29,24 @@ export function CompareProvider({ children }: { children: React.ReactNode }) {
   const [selected, setSelected] = useState<string[]>([]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     try {
-      const raw = sessionStorage.getItem("compare");
-      if (raw) setSelected(JSON.parse(raw));
+      const raw = sessionStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed)) return;
+      const knownIds = new Set(models.map((m) => m.id));
+      const valid = parsed.filter(
+        (id): id is string => typeof id === "string" && knownIds.has(id)
+      );
+      if (valid.length) setSelected(valid.slice(0, MAX_COMPARE));
     } catch {}
   }, []);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     try {
-      sessionStorage.setItem("compare", JSON.stringify(selected));
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(selected));
     } catch {}
   }, [selected]);
 

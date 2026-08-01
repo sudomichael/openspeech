@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import type { Model, ScriptId } from "@/lib/types";
 import { scripts } from "@/lib/data";
 import { PauseIcon, PlayIcon } from "./Icons";
+import { claimPlayback } from "@/lib/audio-bus";
+import { notifyVoteCast } from "./Leaderboard";
 
 const SCRIPT_IDS: ScriptId[] = ["neutral", "emotional", "numbers"];
 
@@ -41,11 +43,13 @@ export default function Arena({ models }: { models: Model[] }) {
   const [pair, setPair] = useState<Pair | null>(null);
   const [reveal, setReveal] = useState(false);
   const [voted, setVoted] = useState(false);
+  const [pick, setPick] = useState<"a" | "b" | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [voteCount, setVoteCount] = useState(0);
+  const [round, setRound] = useState(1);
   const aRef = useRef<HTMLAudioElement | null>(null);
   const bRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState<"a" | "b" | null>(null);
+  const [loading, setLoading] = useState<"a" | "b" | null>(null);
 
   useEffect(() => {
     setPair(pickPair(models));
@@ -57,8 +61,11 @@ export default function Arena({ models }: { models: Model[] }) {
     setPair(pickPair(models));
     setReveal(false);
     setVoted(false);
+    setPick(null);
     setError(null);
     setPlaying(null);
+    setLoading(null);
+    setRound((r) => r + 1);
   };
 
   const play = (which: "a" | "b") => {
@@ -69,16 +76,17 @@ export default function Arena({ models }: { models: Model[] }) {
       setPlaying(null);
       return;
     }
-    setPlaying(which);
+    setLoading(which);
     const el = which === "a" ? aRef.current : bRef.current;
-    el?.play();
+    el?.play().catch(() => {});
   };
 
-  const vote = async (pick: "a" | "b") => {
+  const vote = async (choice: "a" | "b") => {
     if (!pair || voted) return;
     setVoted(true);
-    const winner = pick === "a" ? pair.a.id : pair.b.id;
-    const loser = pick === "a" ? pair.b.id : pair.a.id;
+    setPick(choice);
+    const winner = choice === "a" ? pair.a.id : pair.b.id;
+    const loser = choice === "a" ? pair.b.id : pair.a.id;
     try {
       const res = await fetch("/api/vote", {
         method: "POST",
@@ -87,15 +95,17 @@ export default function Arena({ models }: { models: Model[] }) {
       });
       if (res.ok) {
         setReveal(true);
-        setVoteCount((c) => c + 1);
+        notifyVoteCast();
       } else {
         const data = await res.json().catch(() => ({}));
         setError(data.error || "Vote failed");
         setVoted(false);
+        setPick(null);
       }
     } catch {
       setError("Network error — try again");
       setVoted(false);
+      setPick(null);
     }
   };
 
@@ -113,7 +123,7 @@ export default function Arena({ models }: { models: Model[] }) {
         <div className="text-[11px] font-semibold uppercase tracking-wider text-highlight">
           {scripts[pair.scriptId].label}
         </div>
-        <div className="text-[11px] text-fg-subtle">Round {voteCount + 1}</div>
+        <div className="text-[11px] text-fg-subtle">Round {round}</div>
       </div>
       <p className="display text-xl italic mb-6">
         &ldquo;{scripts[pair.scriptId].text}&rdquo;
@@ -124,11 +134,14 @@ export default function Arena({ models }: { models: Model[] }) {
           const model = which === "a" ? pair.a : pair.b;
           const src = which === "a" ? pair.aSrc : pair.bSrc;
           const isPlaying = playing === which;
+          const isLoading = loading === which;
+          const isChosen = voted && pick === which;
+          const isNotChosen = voted && pick !== null && pick !== which;
           return (
             <div
               key={which}
               className={`border rounded-xl p-4 transition-all ${
-                isPlaying
+                isChosen || isPlaying
                   ? "border-accent shadow-[0_0_0_2px_var(--accent-soft)]"
                   : "border-border"
               }`}
@@ -144,10 +157,10 @@ export default function Arena({ models }: { models: Model[] }) {
               <button
                 onClick={() => play(which)}
                 className={`w-full inline-flex items-center justify-center gap-2.5 rounded-lg px-3 py-3 text-sm font-medium mb-3 transition-colors ${
-                  isPlaying
-                    ? "bg-accent text-accent-fg"
+                  isPlaying || isLoading
+                    ? "border border-accent bg-accent text-accent-fg"
                     : "bg-surface-2 hover:bg-border text-fg"
-                }`}
+                } ${isLoading && !isPlaying ? "animate-pulse" : ""}`}
               >
                 {isPlaying ? <PauseIcon /> : <PlayIcon />}
                 {isPlaying ? "Playing" : "Play"}
@@ -156,12 +169,14 @@ export default function Arena({ models }: { models: Model[] }) {
                 onClick={() => vote(which)}
                 disabled={voted}
                 className={`w-full rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-                  voted
-                    ? "bg-surface-2 text-fg-subtle cursor-not-allowed"
-                    : "bg-fg text-canvas hover:opacity-90"
+                  isChosen
+                    ? "bg-accent text-accent-fg"
+                    : voted
+                      ? "bg-surface-2 text-fg-subtle cursor-not-allowed"
+                      : "bg-fg text-canvas hover:opacity-90"
                 }`}
               >
-                {voted && reveal ? "Voted" : "This one"}
+                {isChosen ? "Your pick ✓" : isNotChosen ? "Not this time" : "This one"}
               </button>
               <audio
                 ref={(el) => {
@@ -170,6 +185,11 @@ export default function Arena({ models }: { models: Model[] }) {
                 }}
                 src={src}
                 preload="none"
+                onPlay={(e) => {
+                  claimPlayback(e.currentTarget);
+                  setPlaying(which);
+                }}
+                onPlaying={() => setLoading((l) => (l === which ? null : l))}
                 onEnded={() => setPlaying(null)}
                 onPause={() => setPlaying((p) => (p === which ? null : p))}
               />

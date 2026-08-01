@@ -6,20 +6,34 @@ import { models } from "@/lib/data";
 
 type RatingRow = { id: string; rating: number; votes: number };
 
+// Bumped after a vote succeeds so the leaderboard knows to refetch.
+// Lives here since Leaderboard is the only consumer; Arena imports the setter.
+let listeners: Array<() => void> = [];
+export function notifyVoteCast() {
+  listeners.forEach((l) => l());
+}
+
 export default function Leaderboard() {
   const [data, setData] = useState<RatingRow[] | null>(null);
   const [totalVotes, setTotalVotes] = useState(0);
 
   useEffect(() => {
-    fetch("/api/vote")
-      .then((r) => r.json())
-      .then((d) => {
-        if (d.enabled) {
-          setData(d.ratings);
-          setTotalVotes(d.totalVotes);
-        }
-      })
-      .catch(() => {});
+    const load = () => {
+      fetch("/api/vote")
+        .then((r) => r.json())
+        .then((d) => {
+          if (d.enabled) {
+            setData(d.ratings);
+            setTotalVotes(d.totalVotes);
+          }
+        })
+        .catch(() => {});
+    };
+    load();
+    listeners.push(load);
+    return () => {
+      listeners = listeners.filter((l) => l !== load);
+    };
   }, []);
 
   if (!data) {

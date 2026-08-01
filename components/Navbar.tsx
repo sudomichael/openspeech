@@ -1,9 +1,18 @@
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import SearchTrigger from "./SearchTrigger";
+import MobileMenu from "./MobileMenu";
 import { GithubIcon } from "./Icons";
 
 const REPO_URL = "https://github.com/sudomichael/openspeech";
+
+const NAV_LINKS = [
+  { href: "/directory", label: "Directory" },
+  { href: "/compare", label: "Compare" },
+  { href: "/arena", label: "Arena" },
+  { href: "/calculator", label: "Calculator" },
+  { href: "/about", label: "About" },
+];
 
 export default function Navbar() {
   return (
@@ -23,36 +32,15 @@ export default function Navbar() {
 
         <div className="flex items-center gap-1 sm:gap-2 text-sm">
           <SearchTrigger />
-          <Link
-            href="/directory"
-            className="hidden sm:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
-          >
-            Directory
-          </Link>
-          <Link
-            href="/compare"
-            className="hidden sm:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
-          >
-            Compare
-          </Link>
-          <Link
-            href="/arena"
-            className="hidden sm:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
-          >
-            Arena
-          </Link>
-          <Link
-            href="/calculator"
-            className="hidden md:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
-          >
-            Calculator
-          </Link>
-          <Link
-            href="/about"
-            className="hidden sm:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
-          >
-            About
-          </Link>
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`hidden ${link.href === "/calculator" ? "md:inline-flex" : "sm:inline-flex"} px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors`}
+            >
+              {link.label}
+            </Link>
+          ))}
           <a
             href={REPO_URL}
             target="_blank"
@@ -71,6 +59,7 @@ export default function Navbar() {
           >
             Contribute
           </a>
+          <MobileMenu links={NAV_LINKS} repoUrl={REPO_URL} />
         </div>
       </div>
     </nav>

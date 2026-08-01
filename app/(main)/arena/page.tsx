@@ -41,7 +41,7 @@ export default function ArenaPage() {
             </div>
           ) : (
             <>
-              <div className="max-w-3xl">
+              <div className="max-w-3xl mx-auto">
                 <Arena models={sampledModels} />
               </div>
               <div className="mt-16">

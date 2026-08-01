@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { PauseIcon, PlayIcon } from "./Icons";
+import { claimPlayback } from "@/lib/audio-bus";
 
 type Props = {
   src: string | null;
@@ -18,6 +19,7 @@ export default function SamplePlayer({
 }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const triggered = useRef(false);
 
@@ -49,7 +51,10 @@ export default function SamplePlayer({
     const a = audioRef.current;
     if (!a) return;
     if (playing) a.pause();
-    else a.play();
+    else {
+      setLoading(true);
+      a.play().catch(() => {});
+    }
   };
 
   if (!src) {
@@ -74,7 +79,7 @@ export default function SamplePlayer({
     <button
       onClick={toggle}
       className={`group inline-flex items-center gap-2 rounded-full border ${sizeClass} relative overflow-hidden transition-colors ${
-        playing
+        playing || loading
           ? "border-accent bg-accent-soft text-fg"
           : "border-border hover:border-border-strong bg-surface hover:bg-surface-2 text-fg"
       }`}
@@ -86,8 +91,8 @@ export default function SamplePlayer({
       />
       <span
         className={`relative ${iconSize} rounded-full flex items-center justify-center transition-colors ${
-          playing ? "bg-accent text-accent-fg" : "bg-fg/5 text-fg group-hover:bg-fg/10"
-        }`}
+          playing || loading ? "bg-accent text-accent-fg" : "bg-fg/5 text-fg group-hover:bg-fg/10"
+        } ${loading && !playing ? "animate-pulse" : ""}`}
       >
         {playing ? <PauseIcon className="w-3 h-3" /> : <PlayIcon className="w-3 h-3" />}
       </span>
@@ -96,10 +101,18 @@ export default function SamplePlayer({
         ref={audioRef}
         src={src}
         preload="none"
-        onPlay={() => setPlaying(true)}
-        onPause={() => setPlaying(false)}
+        onPlay={() => {
+          if (audioRef.current) claimPlayback(audioRef.current);
+          setPlaying(true);
+        }}
+        onPlaying={() => setLoading(false)}
+        onPause={() => {
+          setPlaying(false);
+          setLoading(false);
+        }}
         onEnded={() => {
           setPlaying(false);
+          setLoading(false);
           setProgress(0);
         }}
       />

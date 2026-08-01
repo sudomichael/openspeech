@@ -162,7 +162,7 @@ export default function SearchPalette() {
         <div className="max-h-[50vh] overflow-y-auto py-1">
           {results.length === 0 ? (
             <div className="px-4 py-6 text-sm text-fg-subtle text-center">
-              No matches.
+              No models match — try a language or feature.
             </div>
           ) : (
             results.map((r, idx) => (
@@ -197,7 +197,9 @@ export default function SearchPalette() {
         </div>
         <div className="border-t border-border px-4 py-2 flex items-center justify-between text-[10px] text-fg-subtle">
           <span>↑↓ navigate · Enter to open</span>
-          <span>{results.length} results</span>
+          <span>
+            {results.length} {results.length === 1 ? "result" : "results"}
+          </span>
         </div>
       </div>
     </div>
