@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { comparisons } from "@/lib/comparisons";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomComparison from "@/components/CustomComparison";
@@ -63,7 +64,8 @@ export default async function ComparePage({
               .
             </p>
           )}
-          <CustomComparison />
+          <CustomComparison key={idList.join(",")} initialModels={idList} />
+          <section className="mb-8"><h2 className="text-lg font-semibold mb-3">Popular comparisons</h2><div className="flex flex-wrap gap-3">{comparisons.map(c => <Link key={c.slug} href={`/compare/${c.slug}`} className="text-sm underline text-highlight">{c.title}</Link>)}</div></section>
           <CompareView models={toShow} />
         </div>
       </main>

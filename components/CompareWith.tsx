@@ -1,4 +1,5 @@
 "use client";
+import { comparisonFor } from "@/lib/comparisons";
 
 import Link from "next/link";
 import type { Model } from "@/lib/types";
@@ -29,7 +30,7 @@ export default function CompareWith({ current, similar }: Props) {
         {similar.slice(0, 3).map((m) => (
           <Link
             key={m.id}
-            href={`/compare?ids=${current.id},${m.id}`}
+            href={comparisonFor(current.id, m.id) ? `/compare/${comparisonFor(current.id, m.id)!.slug}` : `/compare?ids=${current.id},${m.id}`}
             className="w-full text-left flex items-center justify-between gap-2 px-3 py-2 rounded-lg bg-surface border border-border hover:border-border-strong text-sm transition-colors"
           >
             <span className="truncate">{m.name}</span>

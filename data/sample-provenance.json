@@ -1,0 +1,62 @@
+[
+  {
+    "model": "piper",
+    "recorded_at": "2026-09-14",
+    "checkpoint": "Piper 1.8.0 · en_US-ljspeech-medium · local CPU",
+    "source": "https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/ljspeech/medium/MODEL_CARD",
+    "reference": "LJ Speech",
+    "samples": {
+      "neutral": "f1d5678359fd5b883c516a0a9c0ac189b18b405a7dec3632304caec11c1a393c",
+      "emotional": "f2e0e7e5c3bf94a72a3bdc3a9e37bd4b390c628c61ac4c432cc69955760fb322",
+      "numbers": "4be27d74ba239de8ec00a13447a238e50646786891e190205dc6610a5075b2eb"
+    }
+  },
+  {
+    "model": "pocket-tts",
+    "recorded_at": "2026-09-14",
+    "checkpoint": "Pocket TTS · English 2026-01 checkpoint · Alba · local CPU",
+    "source": "https://huggingface.co/kyutai/tts-voices",
+    "reference": "Alba",
+    "samples": {
+      "neutral": "d2d5ae70bf214ae4fd66cc685533b5e4420277bb162f078e6f38514acbdeaa10",
+      "emotional": "2eb8d44a9b9694d194567a4c7a077e539c091c85dee299d5bddd4c777033ba97",
+      "numbers": "204d2323ccf0980128d6f775a332f2e0590aac6d4f09f468d64ba2571fb62039"
+    }
+  },
+  {
+    "model": "chatterbox-nano",
+    "recorded_at": "2026-09-14",
+    "checkpoint": "Chatterbox Nano 110M · official demo · synthetic Bella reference",
+    "source": "https://huggingface.co/spaces/ResembleAI/chatterbox-nano-demo",
+    "reference": "Synthetic Kokoro Bella, neutral + emotional scripts",
+    "samples": {
+      "neutral": "4964821f482119b095f720b376a1bc4726bb7a8aff645fc5f74f245e30114bb0",
+      "emotional": "6d2f7585b47d3367b867f607a30c30e607a091d03a6afda6c58bfe5817190add",
+      "numbers": "9339fc9686744beb1490141edea1da1f3c1b4d6b2f5f24f61b1bfa57a811a80e"
+    }
+  },
+  {
+    "model": "moss-tts-nano",
+    "recorded_at": "2026-09-14",
+    "checkpoint": "MOSS-TTS Nano 100M · official ONNX CPU checkpoint · synthetic Bella reference",
+    "source": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Nano-100M-ONNX",
+    "reference": "Synthetic Kokoro Bella, neutral + emotional scripts",
+    "samples": {
+      "neutral": "28b3cc4f2cead1c240189c707635a27be3e853355b0d01916c1b9d67ded8f317",
+      "emotional": "0c99b090126d0f457d991bec6f5b219d1223773c0e74ac360ec1c53f02c1148e",
+      "numbers": "ce53e70218a441f5d3073fe19368170e42f5f12659d023e7e45ec61b56cda627"
+    }
+  },
+  {
+    "model": "llasa",
+    "recorded_at": "2026-09-14",
+    "checkpoint": "Llasa-3B · kjjk10/llasa-3b-long · synthetic Bella reference",
+    "source": "https://replicate.com/kjjk10/llasa-3b-long",
+    "reference": "Synthetic Kokoro Bella, neutral + emotional scripts",
+    "samples": {
+      "neutral": "27d58368e8b576e97c37d047efcd75289b399fcbd79096c5547d2fd18ece23ba",
+      "emotional": "c2049770c33054fcfe79bba306fbdcee4d5949d2c2a8669803444b71933ad8ee",
+      "numbers": "1bbcfebd8e27fddd9e64ce75f725b1bbbc1c1b55e50b82a9b7a149c2cd2f7cb1"
+    }
+  }
+]

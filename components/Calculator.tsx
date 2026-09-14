@@ -8,29 +8,24 @@ import TrackedLink from "./TrackedLink";
 type Granularity = "day" | "month";
 
 const CATEGORY_LABELS: Record<Provider["category"], string> = {
-  openspeech: "OpenSpeech Cloud",
   closed: "Closed-source",
   "hosted-oss": "OSS on Replicate",
   "self-hosted": "Self-hosted OSS",
 };
 
 const CATEGORY_DOT: Record<Provider["category"], string> = {
-  openspeech: "bg-highlight",
   closed: "bg-rose-500",
   "hosted-oss": "bg-violet-500",
   "self-hosted": "bg-emerald-500",
 };
 
 const CATEGORY_BAR: Record<Provider["category"], string> = {
-  openspeech: "bg-highlight",
   closed: "bg-rose-500/80",
   "hosted-oss": "bg-violet-500/80",
   "self-hosted": "bg-emerald-500/80",
 };
 
-// We rank cheapest/most-expensive using only models that are actually shippable
-// today. OpenSpeech Cloud is teaser pricing — exclude it from headline numbers
-// until it goes live.
+// Compare dated provider estimates. The limited free Cloud beta is not a production pricing plan.
 const VISIBLE_FOR_RANKING = PROVIDERS.filter((p) => !p.comingSoon);
 
 export default function Calculator() {
@@ -41,7 +36,6 @@ export default function Calculator() {
 
   const grouped = useMemo(() => {
     const groups: Record<Provider["category"], Provider[]> = {
-      openspeech: [],
       closed: [],
       "hosted-oss": [],
       "self-hosted": [],
@@ -130,7 +124,7 @@ export default function Calculator() {
 
       {/* Comparison table */}
       <div className="space-y-8">
-        {(["openspeech", "closed", "hosted-oss", "self-hosted"] as const).map((cat) => (
+        {(["closed", "hosted-oss", "self-hosted"] as const).map((cat) => (
           <section key={cat}>
             <div className="flex items-center gap-2 mb-3">
               <span className={`w-2 h-2 rounded-full ${CATEGORY_DOT[cat]}`} />

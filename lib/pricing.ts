@@ -1,4 +1,3 @@
-import { CLOUD_URL, CLOUD_PRICING } from "./site";
 /**
  * Per-minute audio pricing estimates. Last reviewed 2026-06.
  *
@@ -9,7 +8,7 @@ import { CLOUD_URL, CLOUD_PRICING } from "./site";
 export type Provider = {
   id: string;
   name: string;
-  category: "closed" | "hosted-oss" | "self-hosted" | "openspeech";
+  category: "closed" | "hosted-oss" | "self-hosted";
   perMinUsd: number;
   notes: string;
   source?: string;
@@ -18,13 +17,6 @@ export type Provider = {
 };
 
 export const PROVIDERS: Provider[] = [
-  // OpenSpeech Cloud — our hosted offering (coming soon)
-  ...CLOUD_PRICING.map((tier): Provider => ({
-    id: `openspeech-${tier.id}`, name: `OpenSpeech Cloud — ${tier.name}`,
-    category: "openspeech", perMinUsd: tier.perMinUsd, notes: tier.notes,
-    comingSoon: true, waitlistUrl: CLOUD_URL,
-  })),
-
   // Closed-source incumbents
   {
     id: "elevenlabs-creator",

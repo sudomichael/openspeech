@@ -31,10 +31,3 @@ const LANGUAGE_NAMES: Record<string, string> = {
 export function languageNames(codes: string[]): string {
   return codes.map((c) => LANGUAGE_NAMES[c] ?? c.toUpperCase()).join(", ");
 }
-
-export const CLOUD_PRICING = [
-  { id: "small", name: "Small models", perMinUsd: 0.10, notes: "Planned tier for lightweight models such as Kokoro." },
-  { id: "medium", name: "Medium models", perMinUsd: 0.20, notes: "Planned tier for models such as Chatterbox and Orpheus." },
-  { id: "large", name: "Large models", perMinUsd: 0.40, notes: "Planned tier for larger, expressive models." },
-] as const;
-export const CLOUD_PRICING_REVIEWED = "2026-09-14";

@@ -73,7 +73,7 @@ function buildFaq(model: Model) {
     },
     {
       q: `Is there a hosted ${model.name} API?`,
-      a: `OpenSpeech Cloud is accepting launch interest for ${model.name}. Hosted availability is not guaranteed yet; use the official repository for current deployment options.`,
+      a: GENERATION_MODELS.some(m => m.id === model.id) ? `Yes. OpenSpeech Cloud offers ${model.name} in its free English preset-voice studio and beta API, subject to generation limits. See the Cloud documentation for current availability.` : `OpenSpeech Cloud is accepting production-access interest for ${model.name}, but this model is not hosted in the beta. Use the official repository for current deployment options.`,
     },
   ];
 }
@@ -143,7 +143,7 @@ export default async function ModelPage({
         operatingSystem: "Linux, macOS, Windows",
         description: model.about ?? model.tagline,
         license: model.repo_url,
-        url: `/models/${model.id}`,
+        url: `https://www.openspeech.dev/models/${model.id}`,
       },
       {
         "@type": "FAQPage",
@@ -209,7 +209,7 @@ export default async function ModelPage({
               <p className="text-xs text-fg-muted mt-3">{model.sample_version ?? `${model.name} · ${defaultVoice.name}`} · Same three scripts across the directory.</p>
               <div className="flex flex-wrap gap-4 mt-4 text-sm">
                 <a href="#install" className="text-highlight underline">Run it yourself</a>
-                {GENERATION_MODELS.some((m) => m.id === model.id) && <Link href="/compare#your-text" className="text-highlight underline">Try your own text</Link>}
+                {GENERATION_MODELS.some((m) => m.id === model.id) && <Link href={`/compare?ids=${model.id}#your-text`} className="text-highlight underline">Try your own text</Link>}
               </div>
             </div>
             <div className="text-sm space-y-3">

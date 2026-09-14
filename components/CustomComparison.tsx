@@ -6,9 +6,9 @@ import { track } from "@/lib/analytics";
 import AudioSequence from "./AudioSequence";
 
 type Result = { model: string; status: string; audio?: string; error?: string };
-export default function CustomComparison() {
+export default function CustomComparison({ initialModels = [] }: { initialModels?: string[] }) {
   const [text, setText] = useState("Welcome back! Your next appointment is on September 21st at 10:30 AM. Let’s find a voice that sounds right for you.");
-  const [selected, setSelected] = useState<string[]>(["kokoro-82m", "chatterbox-turbo"]);
+  const [selected, setSelected] = useState<string[]>(() => { const supported = initialModels.filter(id => GENERATION_MODELS.some(m => m.id === id)).slice(0, 3); return supported.length ? supported : ["kokoro-82m", "chatterbox-turbo"]; });
   const [results, setResults] = useState<Result[]>([]);
   const [busy, setBusy] = useState(false);
   const [submitted, setSubmitted] = useState("");

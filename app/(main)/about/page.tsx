@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, GithubIcon } from "@/components/Icons";
 
+export const metadata = { title: "About OpenSpeech & our comparison method", description: "How OpenSpeech compares open speech models: standardized scripts, labeled checkpoints, sources, and independent editorial guidance.", alternates: { canonical: "/about" } };
+
 const REPO_URL = "https://github.com/sudomichael/openspeech";
 
 export default function About() {

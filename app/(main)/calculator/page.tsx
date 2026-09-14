@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { CLOUD_PRICING_REVIEWED } from "@/lib/site";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Calculator from "@/components/Calculator";
@@ -43,7 +42,7 @@ export default function CalculatorPage() {
                   fleet sits idle 90% of the time, costs go up proportionally.
                 </li>
                 <li>
-                  Cloud launch pricing checked {CLOUD_PRICING_REVIEWED}. Other
+                  Cloud is currently a limited free beta; production prices are not published. Other
                   provider estimates date from June 2026; verify current prices before planning.
                 </li>
                 <li>

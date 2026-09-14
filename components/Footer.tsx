@@ -57,7 +57,7 @@ export default function Footer() {
             </li>
             <li>
               <TrackedLink href={CLOUD_URL} className="text-fg-muted hover:text-fg">
-                Cloud (coming soon)
+                Cloud studio
               </TrackedLink>
             </li>
             <li>

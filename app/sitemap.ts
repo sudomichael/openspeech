@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
+import { comparisons } from "@/lib/comparisons";
 import { models } from "@/lib/data";
 
 const SITE_URL = "https://www.openspeech.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const now = new Date("2026-09-14");
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
@@ -24,5 +25,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...modelRoutes];
+  return [...staticRoutes, ...modelRoutes, ...comparisons.map(c => ({url: `${SITE_URL}/compare/${c.slug}`, lastModified: now}))];
 }

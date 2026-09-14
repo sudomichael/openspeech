@@ -306,9 +306,9 @@
     "id": "piper",
     "name": "Piper",
     "tagline": "Tiny, fast, runs offline on a Raspberry Pi",
-    "repo_url": "https://github.com/rhasspy/piper",
-    "license": "MIT",
-    "params": "20M",
+    "repo_url": "https://github.com/OHF-Voice/piper1-gpl",
+    "license": "GPL-3.0 (current engine); voice licenses vary",
+    "params": "Voice-dependent",
     "vram_gb": 0,
     "languages": [
       "en",
@@ -340,24 +340,35 @@
     ],
     "voice_cloning": false,
     "streaming": true,
-    "realtime_factor": 0.01,
+    "realtime_factor": null,
     "install": "pip install piper-tts",
     "category": "lightweight",
     "voices": [
       {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
+        "id": "ljspeech",
+        "name": "LJ Speech",
+        "gender": "f",
+        "accent": "American",
         "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
+          "neutral": "/samples/piper/ljspeech/neutral.wav",
+          "emotional": "/samples/piper/ljspeech/emotional.wav",
+          "numbers": "/samples/piper/ljspeech/numbers.wav"
         }
       }
     ],
-    "default_voice": "default",
-    "about": "Piper is the workhorse of local text-to-speech — built by the Rhasspy voice-assistant project to run in real time on devices as small as a Raspberry Pi. It offers a huge catalog of community voices across dozens of languages. Through the API you get the same dependable output without managing voice files or ONNX runtimes. The original MIT-licensed rhasspy/piper repo is archived; the actively maintained fork is OHF-Voice/piper1-gpl, licensed GPL-3.0."
+    "default_voice": "ljspeech",
+    "about": "Piper is the workhorse of local text-to-speech — built by the Rhasspy voice-assistant project to run in real time on devices as small as a Raspberry Pi. It offers a huge catalog of community voices across dozens of languages. Through the API you get the same dependable output without managing voice files or ONNX runtimes. The original MIT-licensed rhasspy/piper repo is archived; the actively maintained fork is OHF-Voice/piper1-gpl, licensed GPL-3.0.",
+    "sample_version": "Piper 1.8.0 · en_US-ljspeech-medium · local CPU",
+    "sources": [
+      {
+        "label": "Recording source and voice attribution",
+        "url": "https://huggingface.co/rhasspy/piper-voices/blob/main/en/en_US/ljspeech/medium/MODEL_CARD"
+      }
+    ],
+    "reviewed_at": "2026-09-14",
+    "quickstart": "python -m piper.download_voices en_US-ljspeech-medium\npython -m piper -m en_US-ljspeech-medium.onnx -f output.wav -- \"Hello from OpenSpeech.\"",
+    "limitations": "The current Piper engine uses GPL-3.0; each voice has its own terms. These recordings use the public-domain LJ Speech dataset voice. Older Rhasspy engine releases used MIT.",
+    "hardware_notes": "These samples were generated on an Apple Silicon CPU. No cross-model speed benchmark is claimed."
   },
   {
     "id": "bark",
@@ -1525,18 +1536,25 @@
     "realtime_factor": 0.18,
     "install": "git clone https://huggingface.co/HKUSTAudio/Llasa-3B",
     "category": "voice-cloning",
-    "default_voice": "reference",
+    "default_voice": "default",
     "voices": [
       {
-        "id": "reference",
-        "name": "Reference-based",
-        "gender": "n",
-        "accent": "unspecified",
+        "id": "default",
+        "name": "Bella reference",
+        "gender": "f",
+        "accent": "American",
         "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
+          "neutral": "/samples/llasa/default/neutral.wav",
+          "emotional": "/samples/llasa/default/emotional.wav",
+          "numbers": "/samples/llasa/default/numbers.wav"
         }
+      }
+    ],
+    "sample_version": "Llasa-3B · kjjk10/llasa-3b-long · synthetic Bella reference",
+    "sources": [
+      {
+        "label": "Recording source and voice attribution",
+        "url": "https://replicate.com/kjjk10/llasa-3b-long"
       }
     ]
   },
@@ -1611,13 +1629,13 @@
     "voices": [
       {
         "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
+        "name": "Bella reference",
+        "gender": "f",
+        "accent": "American",
         "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
+          "neutral": "/samples/chatterbox-nano/default/neutral.wav",
+          "emotional": "/samples/chatterbox-nano/default/emotional.wav",
+          "numbers": "/samples/chatterbox-nano/default/numbers.wav"
         }
       }
     ],
@@ -1634,8 +1652,13 @@
       {
         "label": "Model card",
         "url": "https://huggingface.co/ResembleAI/chatterbox-nano"
+      },
+      {
+        "label": "Recording source and voice attribution",
+        "url": "https://huggingface.co/spaces/ResembleAI/chatterbox-nano-demo"
       }
-    ]
+    ],
+    "sample_version": "Chatterbox Nano 110M · official demo · synthetic Bella reference"
   },
   {
     "id": "chatterbox-multilingual-v3",
@@ -1787,17 +1810,17 @@
     "realtime_factor": null,
     "install": "pip install pocket-tts\npocket-tts generate --text \"Hello from OpenSpeech.\"",
     "category": "lightweight",
-    "default_voice": "default",
+    "default_voice": "alba",
     "voices": [
       {
-        "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
+        "id": "alba",
+        "name": "Alba",
+        "gender": "f",
+        "accent": "British",
         "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
+          "neutral": "/samples/pocket-tts/alba/neutral.wav",
+          "emotional": "/samples/pocket-tts/alba/emotional.wav",
+          "numbers": "/samples/pocket-tts/alba/numbers.wav"
         }
       }
     ],
@@ -1814,8 +1837,13 @@
       {
         "label": "Model card",
         "url": "https://huggingface.co/kyutai/pocket-tts"
+      },
+      {
+        "label": "Recording source and voice attribution",
+        "url": "https://huggingface.co/kyutai/tts-voices"
       }
-    ]
+    ],
+    "sample_version": "Pocket TTS · English 2026-01 checkpoint · Alba · local CPU"
   },
   {
     "id": "fish-audio-s2-pro",
@@ -2024,20 +2052,20 @@
     "voices": [
       {
         "id": "default",
-        "name": "Default",
-        "gender": "n",
-        "accent": "unspecified",
+        "name": "Bella reference",
+        "gender": "f",
+        "accent": "American",
         "samples": {
-          "neutral": null,
-          "emotional": null,
-          "numbers": null
+          "neutral": "/samples/moss-tts-nano/default/neutral.wav",
+          "emotional": "/samples/moss-tts-nano/default/emotional.wav",
+          "numbers": "/samples/moss-tts-nano/default/numbers.wav"
         }
       }
     ],
     "added_at": "2026-09-14",
     "reviewed_at": "2026-09-14",
     "best_for": "Compact CPU speech generation with streaming and voice cloning.",
-    "limitations": "Supports 48 kHz stereo through a separate audio tokenizer. Follow the ONNX CPU guide for lightweight deployment; language coverage depends on the checkpoint. The model card does not clearly specify a separate weight license; verify redistribution terms.",
+    "limitations": "Supports 48 kHz stereo through a separate audio tokenizer. Follow the ONNX CPU guide for lightweight deployment; language coverage depends on the checkpoint. The model card does not clearly specify a separate weight license; verify redistribution terms. In this unedited fixed-seed sample, the emotional sentence repeats at the end. Audition your own scripts for repetition.",
     "hardware_notes": "No comparable hardware benchmark verified. Check the official setup for your device.",
     "sources": [
       {
@@ -2051,9 +2079,14 @@
       {
         "label": "Code license",
         "url": "https://github.com/OpenMOSS/MOSS-TTS-Nano/blob/main/LICENSE"
+      },
+      {
+        "label": "Recording source and voice attribution",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Nano-100M-ONNX"
       }
     ],
-    "release_date": "2026-04-10"
+    "release_date": "2026-04-10",
+    "sample_version": "MOSS-TTS Nano 100M · official ONNX CPU checkpoint · synthetic Bella reference"
   },
   {
     "id": "omnivoice",

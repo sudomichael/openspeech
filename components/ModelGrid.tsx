@@ -18,6 +18,8 @@ function parseParams(s: string): number {
 export default function ModelGrid({ models }: { models: Model[] }) {
   const compare = useCompare();
   const [state, setState] = useState<FilterState>({
+    query: "",
+    samplesOnly: false,
     license: "",
     maxVram: null,
     voiceCloning: false,
@@ -29,6 +31,8 @@ export default function ModelGrid({ models }: { models: Model[] }) {
 
   const filtered = useMemo(() => {
     const out = models.filter((m) => {
+      if (state.query && !`${m.name} ${m.tagline} ${m.category} ${m.voices.map(v => v.name).join(" ")}`.toLowerCase().includes(state.query.toLowerCase().trim())) return false;
+      if (state.samplesOnly && !hasSamples(m)) return false;
       if (state.license && m.license !== state.license) return false;
       if (state.maxVram !== null && (m.vram_gb === null || m.vram_gb > state.maxVram)) return false;
       if (state.voiceCloning && !m.voice_cloning) return false;
@@ -59,6 +63,8 @@ export default function ModelGrid({ models }: { models: Model[] }) {
     <div className="flex flex-col lg:flex-row gap-10">
       <Filters state={state} setState={setState} models={models} />
       <div className="flex-1 min-w-0">
+        <label htmlFor="directory-search" className="sr-only">Search models</label>
+        <input id="directory-search" type="search" placeholder="Search models, voices, or use cases…" value={state.query} onChange={e => setState({ ...state, query: e.target.value })} className="w-full rounded-xl border border-border bg-surface p-4 text-sm mb-5" />
         <div className="flex items-baseline justify-between mb-5">
           <p className="text-sm text-fg-muted">
             <span className="text-fg font-medium">{filtered.length}</span>{" "}
@@ -87,7 +93,8 @@ export default function ModelGrid({ models }: { models: Model[] }) {
         </div>
         {filtered.length === 0 && (
           <div className="text-center py-16 text-fg-muted text-sm border border-dashed border-border rounded-xl">
-            No models match these filters.
+            <p>No models match these filters.</p>
+            <button type="button" className="mt-3 text-highlight underline" onClick={() => setState({ query: "", samplesOnly: false, license: "", maxVram: null, voiceCloning: false, streaming: false, language: "", category: "", sort: "name" })}>Clear all filters</button>
           </div>
         )}
       </div>
