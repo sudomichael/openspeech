@@ -19,7 +19,7 @@ export const comparisons = [
     left: "Kokoro keeps the workflow small: choose a preset voice and synthesize speech, including on CPU. It is well suited to a straightforward script-to-audio tool.",
     right:
       "Chatterbox Turbo is a newer release in the Chatterbox family. Its expressive controls and voice-cloning workflow offer a different set of tradeoffs; the recordings here are the Turbo checkpoint, not the original Chatterbox model.",
-    test: "Use the emotional script to compare phrasing, then check the numbers script for pronunciation. Both models are available for your own English text in the free studio.",
+    test: "Use the emotional script to compare phrasing, then check the numbers script for pronunciation. Both models are available for your own English text in the paid studio.",
   },
   {
     slug: "orpheus-vs-chatterbox-turbo",

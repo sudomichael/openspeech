@@ -2,7 +2,7 @@ import Link from "next/link";
 import WaitlistForm from "./WaitlistForm";
 import TrackedLink from "./TrackedLink";
 import { CLOUD_URL } from "@/lib/site";
-import { GENERATION_MODELS } from "@/lib/generation-models";
+import GENERATION_MODELS from "@/data/hosted-models.json";
 export default function HostedCta({
   modelName,
   modelId,
@@ -14,7 +14,7 @@ export default function HostedCta({
   return (
     <div className="bg-highlight-soft border border-highlight/25 rounded-xl p-5">
       <p className="text-xs font-semibold uppercase tracking-wider text-highlight mb-2">
-        OpenSpeech Cloud · Free beta
+        OpenSpeech Cloud · Paid studio
       </p>
       <h2 className="text-lg font-semibold mb-2">
         {available
@@ -23,8 +23,8 @@ export default function HostedCta({
       </h2>
       <p className="text-sm text-fg-muted mb-4">
         {available
-          ? "Try your own English script with a preset voice, listen, and download the audio. No account or card needed."
-          : "Kokoro, Chatterbox Turbo, Orpheus, and Qwen3-TTS are ready to try. Other models are not hosted in the beta yet."}
+          ? "Use prepaid credits to turn your English script into speech. See the price before generating, then listen and download."
+          : `${GENERATION_MODELS.length} verified open and premium models are available through Replicate. This model is not currently hosted in Cloud.`}
       </p>
       <TrackedLink
         href={`${CLOUD_URL}/studio?utm_source=directory&utm_medium=referral${available ? `&model=${encodeURIComponent(modelId!)}` : ""}`}
@@ -34,8 +34,8 @@ export default function HostedCta({
         Open the speech studio →
       </TrackedLink>
       <p className="text-xs text-fg-muted mt-3">
-        300 characters per recording · 9 attempts per network per UTC day,
-        subject to capacity.
+        Prepaid credits from $5 · No free generation allowance · Model-specific
+        limits.
       </p>
       <div className="border-t border-highlight/20 mt-5 pt-4">
         <p className="text-sm font-medium mb-3">

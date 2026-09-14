@@ -1,0 +1,78 @@
+[
+  {
+    "id": "kokoro-82m",
+    "name": "Kokoro-82M"
+  },
+  {
+    "id": "chatterbox-turbo",
+    "name": "Chatterbox Turbo"
+  },
+  {
+    "id": "orpheus-tts",
+    "name": "Orpheus TTS"
+  },
+  {
+    "id": "qwen3-tts",
+    "name": "Qwen3-TTS"
+  },
+  {
+    "id": "chatterbox",
+    "name": "Chatterbox"
+  },
+  {
+    "id": "chatterbox-multilingual",
+    "name": "Chatterbox Multilingual"
+  },
+  {
+    "id": "csm-1b",
+    "name": "Sesame CSM 1B"
+  },
+  {
+    "id": "parler-tts",
+    "name": "Parler TTS"
+  },
+  {
+    "id": "pheme",
+    "name": "Pheme"
+  },
+  {
+    "id": "inworld-realtime-tts-2",
+    "name": "Inworld Realtime TTS 2"
+  },
+  {
+    "id": "inworld-realtime-tts-1.5-mini",
+    "name": "Inworld TTS 1.5 Mini"
+  },
+  {
+    "id": "inworld-realtime-tts-1.5-max",
+    "name": "Inworld TTS 1.5 Max"
+  },
+  {
+    "id": "minimax-speech-2.8-hd",
+    "name": "MiniMax Speech 2.8 HD"
+  },
+  {
+    "id": "minimax-speech-2.8-turbo",
+    "name": "MiniMax Speech 2.8 Turbo"
+  },
+  {
+    "id": "elevenlabs-v3",
+    "name": "ElevenLabs v3"
+  },
+  {
+    "id": "elevenlabs-flash-v2.5",
+    "name": "ElevenLabs Flash v2.5"
+  },
+  {
+    "id": "elevenlabs-turbo-v2.5",
+    "name": "ElevenLabs Turbo v2.5"
+  },
+  {
+    "id": "elevenlabs-v2-multilingual",
+    "name": "ElevenLabs Multilingual v2"
+  },
+  {
+    "id": "gemini-3.1-flash-tts",
+    "name": "Gemini 3.1 Flash TTS"
+  }
+]

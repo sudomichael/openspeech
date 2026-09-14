@@ -25,7 +25,7 @@ const CATEGORY_BAR: Record<Provider["category"], string> = {
   "self-hosted": "bg-emerald-500/80",
 };
 
-// Compare dated provider estimates. The limited free Cloud beta is not a production pricing plan.
+// Compare dated provider estimates. Cloud publishes its prepaid rates on the Cloud pricing page.
 const VISIBLE_FOR_RANKING = PROVIDERS.filter((p) => !p.comingSoon);
 
 export default function Calculator() {

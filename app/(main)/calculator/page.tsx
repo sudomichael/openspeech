@@ -42,7 +42,7 @@ export default function CalculatorPage() {
                   fleet sits idle 90% of the time, costs go up proportionally.
                 </li>
                 <li>
-                  Cloud is currently a limited free beta; production prices are not published. Other
+                  Cloud uses prepaid credits with per-model rates published on its pricing page. Other
                   provider estimates date from June 2026; verify current prices before planning.
                 </li>
                 <li>

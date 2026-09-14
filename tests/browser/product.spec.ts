@@ -111,40 +111,21 @@ test("comparison stops cross-script playback and skips missing samples", async (
     .toBe(0);
 });
 
-test("custom comparison handles mixed success and quota errors without losing successful audio", async ({
+test("custom text moves to paid Cloud and directory API cannot incur provider costs", async ({
   page,
+  request,
 }) => {
-  await page.route("**/api/generate", async (route) => {
-    const data = route.request().postDataJSON();
-    await route.fulfill(
-      data.model === "kokoro-82m"
-        ? {
-            json: {
-              id: "test",
-              status: "succeeded",
-              audio: "/samples/kokoro-82m/af_bella/neutral.wav",
-            },
-          }
-        : { status: 429, json: { error: "Daily capacity reached." } },
-    );
-  });
   await page.goto("/compare");
-  await page
-    .getByLabel("What should they say?")
-    .fill("A custom phrase for testing.");
-  await page.getByRole("button", { name: "Generate & compare" }).click();
-  await expect(page.getByText("Kokoro-82M: Ready to listen")).toBeVisible();
   await expect(
-    page.getByText("Chatterbox Turbo: Daily capacity reached."),
+    page.getByRole("link", { name: "Open paid speech studio" }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Play Kokoro-82M custom" }).click();
-  await expect(
-    page.getByRole("button", { name: "Pause Kokoro-82M custom" }),
-  ).toBeVisible();
-  const events = await page.evaluate(
-    () => (window as unknown as { auditEvents: unknown[] }).auditEvents,
+  const response = await request.post("/api/generate", {
+    data: { model: "kokoro-82m", text: "No unpaid generation" },
+  });
+  expect(response.status()).toBe(402);
+  expect((await response.json()).studio).toBe(
+    "https://app.openspeech.dev/studio",
   );
-  expect(JSON.stringify(events)).not.toContain("A custom phrase for testing.");
 });
 
 test("new models and model pages fit mobile and link to live Cloud", async ({
@@ -199,6 +180,10 @@ test("named comparison has its own canonical and carries the chosen models into 
   );
   await expect(page.locator("h1")).toHaveText("Orpheus vs Chatterbox Turbo");
   await page.getByRole("link", { name: "Compare your own text" }).click();
-  await expect(page.getByLabel("Orpheus TTS (Tara)")).toBeChecked();
-  await expect(page.getByLabel("Chatterbox Turbo (Andy)")).toBeChecked();
+  await expect(
+    page.getByRole("link", { name: "Open paid speech studio" }),
+  ).toHaveAttribute(
+    "href",
+    "https://app.openspeech.dev/studio?model=orpheus-tts",
+  );
 });

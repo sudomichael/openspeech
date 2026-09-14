@@ -119,7 +119,7 @@ const FAQ = [
   },
   {
     q: "What's the catch with self-hosting these models?",
-    a: "Setup and hardware. Each model has its own Python environment, weights, and quirks, and most want a CUDA GPU. If you'd rather skip that, OpenSpeech Cloud has a limited free studio and API for Kokoro, Chatterbox Turbo, Orpheus, and Qwen3-TTS. Other directory models are not hosted in the beta.",
+    a: "Setup and hardware. Each model has its own Python environment, weights, and quirks, and most want a CUDA GPU. If you'd rather skip that, OpenSpeech Cloud offers prepaid studio and API access to verified Replicate models, including open models and premium providers. Check its current hosted catalog and per-model prices.",
   },
   {
     q: "How do I compare these models fairly?",

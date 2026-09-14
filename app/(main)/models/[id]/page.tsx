@@ -8,7 +8,7 @@ import ShareButton from "@/components/ShareButton";
 import CompareWith from "@/components/CompareWith";
 import EmbedButton from "@/components/EmbedButton";
 import InstallSnippet from "@/components/InstallSnippet";
-import { GENERATION_MODELS } from "@/lib/generation-models";
+import GENERATION_MODELS from "@/data/hosted-models.json";
 import HostedCta from "@/components/HostedCta";
 import { ArrowRight, GithubIcon } from "@/components/Icons";
 import { getModel, getDefaultVoice, hasSamples, models, scripts } from "@/lib/data";
@@ -73,7 +73,7 @@ function buildFaq(model: Model) {
     },
     {
       q: `Is there a hosted ${model.name} API?`,
-      a: GENERATION_MODELS.some(m => m.id === model.id) ? `Yes. OpenSpeech Cloud offers ${model.name} in its free English preset-voice studio and beta API, subject to generation limits. See the Cloud documentation for current availability.` : `OpenSpeech Cloud is accepting production-access interest for ${model.name}, but this model is not hosted in the beta. Use the official repository for current deployment options.`,
+      a: GENERATION_MODELS.some(m => m.id === model.id) ? `Yes. OpenSpeech Cloud offers ${model.name} in its paid English preset-voice studio and API, using prepaid credits. See the Cloud documentation for current availability.` : `OpenSpeech Cloud is accepting production-access interest for ${model.name}, but this model is not currently hosted in Cloud. Use the official repository for current deployment options.`,
     },
   ];
 }
