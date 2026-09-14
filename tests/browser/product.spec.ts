@@ -146,7 +146,7 @@ test("new models and model pages fit mobile and link to live Cloud", async ({
     page.getByRole("heading", { name: "Chatterbox Turbo", exact: true }),
   ).toBeVisible();
   await expect(
-    page.locator('a[href="https://app.openspeech.dev"]'),
+    page.locator('a[href^="https://app.openspeech.dev/?utm_source=directory"]'),
   ).toBeVisible();
   await page.screenshot({
     path: "/tmp/openspeech-mobile-new-models.png",
@@ -180,10 +180,9 @@ test("named comparison has its own canonical and carries the chosen models into 
   );
   await expect(page.locator("h1")).toHaveText("Orpheus vs Chatterbox Turbo");
   await page.getByRole("link", { name: "Compare your own text" }).click();
-  await expect(
-    page.getByRole("link", { name: "Open paid speech studio" }),
-  ).toHaveAttribute(
-    "href",
-    "https://app.openspeech.dev/studio?model=orpheus-tts",
-  );
+  const destination = new URL((await page.getByRole("link", { name: "Open paid speech studio" }).getAttribute("href"))!);
+  expect(destination.origin + destination.pathname).toBe("https://app.openspeech.dev/studio");
+  expect(destination.searchParams.get("model")).toBe("orpheus-tts");
+  expect(destination.searchParams.get("utm_source")).toBe("directory");
+  expect(destination.searchParams.get("utm_campaign")).toBe("paid_cloud");
 });
