@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import { PROVIDERS, formatUsd, type Provider } from "@/lib/pricing";
 
+import TrackedLink from "./TrackedLink";
+
 type Granularity = "day" | "month";
 
 const CATEGORY_LABELS: Record<Provider["category"], string> = {
@@ -113,13 +115,13 @@ export default function Calculator() {
       {/* Headline numbers */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         <Headline
-          label="Cheapest option"
+          label="Lowest estimate"
           name={cheapest.name}
           amount={cheapest.perMinUsd * minutesPerMonth}
           accent="text-emerald-600 dark:text-emerald-400"
         />
         <Headline
-          label="Most expensive"
+          label="Highest estimate"
           name={mostExpensive.name}
           amount={mostExpensive.perMinUsd * minutesPerMonth}
           accent="text-rose-600 dark:text-rose-400"
@@ -177,14 +179,14 @@ export default function Calculator() {
                       />
                     </div>
                     {p.waitlistUrl && (
-                      <a
+                      <TrackedLink
                         href={p.waitlistUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 mt-3 text-xs font-medium text-highlight hover:underline"
                       >
                         Join the waitlist →
-                      </a>
+                      </TrackedLink>
                     )}
                   </div>
                 );

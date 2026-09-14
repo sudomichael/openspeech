@@ -1,9 +1,12 @@
+import Link from "next/link";
+import { CLOUD_PRICING_REVIEWED } from "@/lib/site";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Calculator from "@/components/Calculator";
 import { ArrowRight } from "@/components/Icons";
 
 export const metadata = {
+  alternates: { canonical: "/calculator" },
   title: "Cost calculator",
   description:
     "Estimate the monthly cost of TTS for your usage. Compare ElevenLabs, OpenAI, hosted OSS, and self-hosted options.",
@@ -40,32 +43,29 @@ export default function CalculatorPage() {
                   fleet sits idle 90% of the time, costs go up proportionally.
                 </li>
                 <li>
-                  Vendor prices change. Reviewed mid-2026 — for production
-                  planning, always confirm with the vendor.
+                  Cloud launch pricing checked {CLOUD_PRICING_REVIEWED}. Other
+                  provider estimates date from June 2026; verify current prices before planning.
                 </li>
                 <li>
-                  Latency, voice library size, voice cloning quality, and SLA are
-                  NOT priced in. ElevenLabs charges more partly because it does
-                  things the OSS models don&rsquo;t yet match (5,000+ voices,
-                  sub-200ms TTFB, enterprise contracts).
+                  These estimates exclude latency, cold starts, support, and service guarantees. Per-character billing also depends on speaking rate.
                 </li>
               </ul>
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a
+              <Link
                 href="/"
                 className="inline-flex items-center gap-2 text-sm text-fg-muted hover:text-fg"
               >
                 ← Browse models
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/compare"
                 className="inline-flex items-center gap-2 text-sm text-fg-muted hover:text-fg"
               >
                 Compare voices
                 <ArrowRight className="w-3.5 h-3.5" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

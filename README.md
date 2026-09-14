@@ -24,17 +24,20 @@ OpenSpeech fixes that:
 
 ## What's inside
 
-- **22 curated models** from the broader OSS TTS ecosystem
-- **~40 voices** across them
-- **3 standardized scripts** per voice: neutral, emotional, numbers
-- Side-by-side audio so you can pick the model that fits your use case
+- 44 model entries, including version-specific recent releases
+- Standardized neutral, emotional, and numbers recordings, with missing samples clearly labeled
+- Custom-text comparisons for Kokoro, Chatterbox Turbo, Orpheus, and Qwen3-TTS
+- Source-linked model decisions, license notes, and installation examples
+- Weekly new-model discovery and review pull requests
+
+See [September improvements and operations](docs/improvements-2026-09.md) for configuration, limits, analytics, and the recurring catalog workflow.
 
 ## Stack
 
 - [Next.js 16](https://nextjs.org) (App Router, static site)
 - [Tailwind CSS v4](https://tailwindcss.com)
 - [Replicate](https://replicate.com) for sample generation
-- Data lives in plain JSON in `data/` — no database
+- Catalog data lives in JSON in `data/`; Redis handles votes, demo quotas, and waitlist signup
 
 ## Run locally
 

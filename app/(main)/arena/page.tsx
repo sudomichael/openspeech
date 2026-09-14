@@ -6,6 +6,7 @@ import { models } from "@/lib/data";
 import { isVotingEnabled } from "@/lib/redis";
 
 export const metadata = {
+  alternates: { canonical: "/arena" },
   title: "Arena",
   description:
     "Blind A/B test open-source TTS models. Vote on which voice sounds better, drive a community Elo leaderboard.",

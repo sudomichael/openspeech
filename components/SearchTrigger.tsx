@@ -1,13 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 export default function SearchTrigger() {
-  const [isMac, setIsMac] = useState(false);
-
-  useEffect(() => {
-    setIsMac(navigator.platform.toLowerCase().includes("mac"));
-  }, []);
+  const isMac = useSyncExternalStore(() => () => {}, () => navigator.platform.toLowerCase().includes("mac"), () => false);
 
   const open = () => {
     window.dispatchEvent(

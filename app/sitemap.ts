@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: `${SITE_URL}/new-models`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/directory`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/compare`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_URL}/arena`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
@@ -18,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const modelRoutes: MetadataRoute.Sitemap = models.map((m) => ({
     url: `${SITE_URL}/models/${m.id}`,
-    lastModified: now,
+    lastModified: m.reviewed_at ? new Date(m.reviewed_at) : undefined,
     changeFrequency: "weekly",
     priority: 0.8,
   }));

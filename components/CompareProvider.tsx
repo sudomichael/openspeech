@@ -4,13 +4,17 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
-  useState,
+  useSyncExternalStore,
 } from "react";
+import { track } from "@/lib/analytics";
 import { models } from "@/lib/data";
 
 const STORAGE_KEY = "openspeech-compare";
+const CHANGE_EVENT = "openspeech-selection";
+function readSelection() { try { return sessionStorage.getItem(STORAGE_KEY) ?? "[]"; } catch { return "[]"; } }
+function subscribe(callback: () => void) { window.addEventListener(CHANGE_EVENT, callback); return () => window.removeEventListener(CHANGE_EVENT, callback); }
+function saveSelection(value: string[]) { try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(value)); } catch {} window.dispatchEvent(new Event(CHANGE_EVENT)); }
 
 type Ctx = {
   selected: string[];
@@ -26,39 +30,22 @@ const CompareContext = createContext<Ctx | null>(null);
 export const MAX_COMPARE = 5;
 
 export function CompareProvider({ children }: { children: React.ReactNode }) {
-  const [selected, setSelected] = useState<string[]>([]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+  const raw = useSyncExternalStore(subscribe, readSelection, () => "[]");
+  const selected = useMemo(() => {
     try {
-      const raw = sessionStorage.getItem(STORAGE_KEY);
-      if (!raw) return;
-      const parsed = JSON.parse(raw);
-      if (!Array.isArray(parsed)) return;
-      const knownIds = new Set(models.map((m) => m.id));
-      const valid = parsed.filter(
-        (id): id is string => typeof id === "string" && knownIds.has(id)
-      );
-      if (valid.length) setSelected(valid.slice(0, MAX_COMPARE));
-    } catch {}
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(selected));
-    } catch {}
-  }, [selected]);
-
+      const parsed: unknown = JSON.parse(raw);
+      return Array.isArray(parsed) ? Array.from(new Set(parsed.filter((id): id is string => typeof id === "string" && models.some((m) => m.id === id)))).slice(0, MAX_COMPARE) : [];
+    } catch { return []; }
+  }, [raw]);
   const toggle = useCallback((id: string) => {
-    setSelected((cur) => {
-      if (cur.includes(id)) return cur.filter((x) => x !== id);
-      if (cur.length >= MAX_COMPARE) return cur;
-      return [...cur, id];
-    });
+    if (!models.some((m) => m.id === id)) return;
+    let current: string[] = [];
+    try { const parsed = JSON.parse(readSelection()); if (Array.isArray(parsed)) current = parsed; } catch {}
+    const next = current.includes(id) ? current.filter((x) => x !== id) : current.length < MAX_COMPARE ? [...current, id] : current;
+    saveSelection(next);
+    track("comparison_select", { model: id });
   }, []);
-
-  const clear = useCallback(() => setSelected([]), []);
+  const clear = useCallback(() => saveSelection([]), []);
 
   const value = useMemo<Ctx>(
     () => ({

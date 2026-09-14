@@ -9,7 +9,7 @@ const REPO_URL = "https://github.com/sudomichael/openspeech";
 const NAV_LINKS = [
   { href: "/directory", label: "Directory" },
   { href: "/compare", label: "Compare" },
-  { href: "/arena", label: "Arena" },
+  { href: "/new-models", label: "New models" },
   { href: "/calculator", label: "Calculator" },
   { href: "/about", label: "About" },
 ];
@@ -25,7 +25,7 @@ export default function Navbar() {
           <span className="font-semibold tracking-tight text-[15px]">
             OpenSpeech
           </span>
-          <span className="text-[10px] uppercase tracking-widest text-fg-subtle ml-1 border border-border rounded px-1.5 py-0.5">
+          <span className="hidden sm:inline text-[10px] uppercase tracking-widest text-fg-subtle ml-1 border border-border rounded px-1.5 py-0.5">
             beta
           </span>
         </Link>
@@ -36,7 +36,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`hidden ${link.href === "/calculator" ? "md:inline-flex" : "sm:inline-flex"} px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors`}
+              className="hidden lg:inline-flex px-3 py-1.5 rounded-md text-fg-muted hover:text-fg hover:bg-surface-2 transition-colors"
             >
               {link.label}
             </Link>
@@ -55,7 +55,7 @@ export default function Navbar() {
             href={`${REPO_URL}/blob/main/CONTRIBUTING.md`}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-1 px-3.5 py-1.5 rounded-md bg-accent text-accent-fg text-[13px] font-medium hover:opacity-90 transition-opacity"
+            className="hidden sm:inline-flex ml-1 px-3.5 py-1.5 rounded-md bg-accent text-accent-fg text-[13px] font-medium hover:opacity-90 transition-opacity"
           >
             Contribute
           </a>

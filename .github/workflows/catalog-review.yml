@@ -1,0 +1,45 @@
+name: Weekly model catalog review
+on:
+  schedule:
+    - cron: '17 13 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: catalog-review
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check publishers, model cards, and stale entries
+        run: node scripts/catalog-watch.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish review artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-review
+          path: |
+            docs/catalog-review.md
+            data/catalog-candidates.json
+      - name: Open or update catalog review pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/catalog-review
+          title: 'Review new TTS models and refresh catalog sources'
+          commit-message: 'chore: refresh model discovery and source checks'
+          body: |
+            Weekly scan of official publishers and trending TTS model cards.
+            Read docs/catalog-review.md for candidates, changed sources, stale entries, and missing samples.
+            Verify and add new releases using the checklist before merging. This scan does not relabel old samples or change recommendations.
+          add-paths: |
+            docs/catalog-review.md
+            data/catalog-candidates.json
+            data/catalog-source-snapshot.json

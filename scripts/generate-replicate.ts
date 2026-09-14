@@ -18,7 +18,7 @@
 import { writeFile, mkdir, readFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const MODELS_PATH = join(ROOT, "data/models.json");
@@ -28,7 +28,7 @@ function loadEnv() {
   for (const name of [".env.local", ".env"]) {
     const p = join(ROOT, name);
     if (!existsSync(p)) continue;
-    const txt = require("node:fs").readFileSync(p, "utf-8");
+    const txt = readFileSync(p, "utf-8");
     for (const line of txt.split("\n")) {
       const m = line.match(/^\s*([A-Z_]+)\s*=\s*(.+?)\s*$/);
       if (m) process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
@@ -315,8 +315,7 @@ async function runPrediction(
 }
 
 async function uploadReference(path: string, token: string): Promise<string> {
-  const fs = require("node:fs");
-  const buf = fs.readFileSync(path);
+  const buf = readFileSync(path);
   const form = new FormData();
   form.append("content", new Blob([buf], { type: "audio/wav" }), "reference.wav");
   form.append("type", "audio/wav");

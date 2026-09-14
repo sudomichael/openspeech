@@ -6,21 +6,26 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:catalog": "node scripts/check-catalog.mjs",
+    "catalog:watch": "node scripts/catalog-watch.mjs",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:browser": "playwright test"
   },
   "dependencies": {
     "@upstash/redis": "^1.38.0",
-    "next": "16.2.6",
+    "next": "^16.3.5",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.6",
+    "eslint-config-next": "^16.3.5",
     "tailwindcss": "^4",
     "tsx": "^4.22.3",
     "typescript": "^5"

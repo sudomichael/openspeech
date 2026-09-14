@@ -1,21 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { MoonIcon, SunIcon } from "./Icons";
 
-export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
-  const [mounted, setMounted] = useState(false);
+function subscribe(callback: () => void) {
+  const observer = new MutationObserver(callback);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+  return () => observer.disconnect();
+}
 
-  useEffect(() => {
-    setIsDark(document.documentElement.classList.contains("dark"));
-    setMounted(true);
-  }, []);
+export default function ThemeToggle() {
+  const isDark = useSyncExternalStore(subscribe, () => document.documentElement.classList.contains("dark"), () => false);
 
   const toggle = () => {
     const next = !isDark;
-    setIsDark(next);
-    localStorage.setItem("theme", next ? "dark" : "light");
+    try { localStorage.setItem("theme", next ? "dark" : "light"); } catch {}
     document.documentElement.classList.toggle("dark", next);
   };
 
@@ -26,7 +25,7 @@ export default function ThemeToggle() {
       className="w-9 h-9 rounded-full border border-border hover:border-border-strong hover:bg-surface-2 transition-colors flex items-center justify-center text-fg-muted hover:text-fg"
       suppressHydrationWarning
     >
-      {mounted && (isDark ? <SunIcon /> : <MoonIcon />)}
+      {isDark ? <SunIcon /> : <MoonIcon />}
     </button>
   );
 }

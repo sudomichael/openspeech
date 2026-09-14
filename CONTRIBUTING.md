@@ -127,3 +127,9 @@ PRs missing any of the above will be asked for more info before review.
 ## Questions
 
 [Open an issue](https://github.com/sudomichael/openspeech/issues/new/choose) — we're happy to help.
+
+## Keeping the catalog current
+
+Run `npm run catalog:watch` to create a primary-source discovery report. The weekly workflow opens a review PR every Monday. Follow `docs/catalog-review.md`, verify exact checkpoints and code/weight licenses, then add `added_at`, `reviewed_at`, `sources`, `best_for`, and `limitations`. Use null for unverified VRAM or speed. A new version gets a new ID; never reuse an older version’s audio. Add a `newer_model_id` link to its predecessor where appropriate.
+
+Run `npm run check:catalog`, `npm test`, `npm run lint`, and `npm run build` before publishing. New models can be listed with samples marked pending until standardized recordings are available.

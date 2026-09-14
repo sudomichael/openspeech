@@ -7,7 +7,7 @@
     "hf_url": "https://huggingface.co/hexgrad/Kokoro-82M",
     "license": "Apache-2.0",
     "params": "82M",
-    "vram_gb": 1,
+    "vram_gb": 0,
     "languages": [
       "en",
       "ja",
@@ -20,7 +20,7 @@
     ],
     "voice_cloning": false,
     "streaming": true,
-    "realtime_factor": 0.005,
+    "realtime_factor": null,
     "install": "pip install kokoro",
     "category": "lightweight",
     "voices": [
@@ -119,43 +119,36 @@
       "pitch": "The current default recommendation.",
       "good_for": "Excellent quality. Tiny model. Runs almost anywhere."
     },
-    "about": "Kokoro is an 82-million-parameter text-to-speech model that consistently punches far above its weight, topping community TTS leaderboards against models many times its size. It ships with a set of polished preset voices and is fast enough to run in real time on modest hardware — which makes it even faster behind a hosted API."
+    "about": "Kokoro is an 82-million-parameter text-to-speech model that consistently punches far above its weight, topping community TTS leaderboards against models many times its size. It ships with a set of polished preset voices and is fast enough to run in real time on modest hardware — which makes it even faster behind a hosted API.",
+    "best_for": "Lightweight narration and app voices when preset voices are enough.",
+    "limitations": "No voice cloning. Language and voice quality vary; test names, numbers, and longer passages.",
+    "hardware_notes": "CPU inference is supported. Speed depends on processor, text length, and runtime; the old speed estimate is not a standardized benchmark.",
+    "reviewed_at": "2026-09-14",
+    "sources": [
+      {
+        "label": "Official model card",
+        "url": "https://huggingface.co/hexgrad/Kokoro-82M"
+      },
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/hexgrad/kokoro"
+      }
+    ],
+    "quickstart": "# Install system dependency espeak-ng if required by your OS.\n# pip install kokoro soundfile\nfrom kokoro import KPipeline\nimport soundfile as sf\npipeline = KPipeline(lang_code=\"a\")\nfor i, (_, _, audio) in enumerate(pipeline(\"Hello from OpenSpeech.\", voice=\"af_bella\")):\n    sf.write(f\"speech-{i}.wav\", audio, 24000)"
   },
   {
     "id": "chatterbox",
     "name": "Chatterbox",
-    "tagline": "ElevenLabs-tier quality, MIT licensed, voice cloning from a clip",
+    "tagline": "English voice cloning with emotion-exaggeration controls",
     "repo_url": "https://github.com/resemble-ai/chatterbox",
     "license": "MIT",
     "params": "500M",
     "vram_gb": 8,
     "languages": [
-      "en",
-      "es",
-      "fr",
-      "de",
-      "it",
-      "pt",
-      "ja",
-      "zh",
-      "ko",
-      "ar",
-      "hi",
-      "ru",
-      "tr",
-      "nl",
-      "pl",
-      "sv",
-      "id",
-      "th",
-      "vi",
-      "he",
-      "cs",
-      "el",
-      "ro"
+      "en"
     ],
     "voice_cloning": true,
-    "streaming": true,
+    "streaming": false,
     "realtime_factor": 0.2,
     "install": "pip install chatterbox-tts",
     "category": "flagship",
@@ -176,14 +169,29 @@
     "editorial": {
       "rank": "bronze",
       "pitch": "Best voice cloning, MIT-licensed.",
-      "good_for": "ElevenLabs-tier quality from a few seconds of reference audio."
+      "good_for": "An English voice-cloning baseline with MIT-licensed weights."
     },
-    "about": "Chatterbox is Resemble AI's open-source TTS model — a 0.5B-parameter system with zero-shot voice cloning from a few seconds of reference audio and a unique emotion-exaggeration control. In blind tests it's frequently preferred over leading commercial systems. Outputs include Resemble's PerTh watermark."
+    "about": "Chatterbox is Resemble AI's open-source TTS model — a 0.5B-parameter system with zero-shot voice cloning from a few seconds of reference audio and a unique emotion-exaggeration control. In blind tests it's frequently preferred over leading commercial systems. Outputs include Resemble's PerTh watermark.",
+    "newer_model_id": "chatterbox-turbo",
+    "sample_version": "Original English Chatterbox 500M",
+    "best_for": "English voice cloning with controllable exaggeration.",
+    "limitations": "This page represents the original English model. Turbo and Multilingual V3 are separate releases; samples here are not V3.",
+    "reviewed_at": "2026-09-14",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/resemble-ai/chatterbox"
+      },
+      {
+        "label": "Sample provider",
+        "url": "https://replicate.com/resemble-ai/chatterbox"
+      }
+    ]
   },
   {
     "id": "xtts-v2",
     "name": "XTTS v2",
-    "tagline": "Most-downloaded TTS on HF, 6-second voice cloning",
+    "tagline": "Voice cloning from a short reference clip across 17 languages",
     "repo_url": "https://github.com/coqui-ai/TTS",
     "hf_url": "https://huggingface.co/coqui/XTTS-v2",
     "license": "CPML (non-commercial)",
@@ -210,7 +218,7 @@
     ],
     "voice_cloning": true,
     "streaming": true,
-    "realtime_factor": 0.3,
+    "realtime_factor": null,
     "install": "pip install TTS",
     "category": "voice-cloning",
     "voices": [
@@ -231,15 +239,30 @@
       "pitch": "The most-downloaded TTS on Hugging Face for a reason.",
       "good_for": "17 languages, voice cloning from 6 seconds."
     },
-    "about": "XTTS v2 is the flagship model of the Coqui TTS framework and one of the most widely used open voice-cloning models ever released. It clones a voice from a ~6-second sample and speaks 17 languages, with cross-language cloning — record in English, speak in Japanese. Coqui the company shut down, but the model remains a community staple."
+    "about": "XTTS v2 is the flagship model of the Coqui TTS framework and one of the most widely used open voice-cloning models ever released. It clones a voice from a ~6-second sample and speaks 17 languages, with cross-language cloning — record in English, speak in Japanese. Coqui the company shut down, but the model remains a community staple.",
+    "best_for": "Cross-language cloning from a short reference recording.",
+    "limitations": "The weights use CPML with non-commercial restrictions. Review the model license before choosing it for a product.",
+    "hardware_notes": "The catalog’s 6 GB figure is a rough historical estimate, not a measured minimum. CUDA is useful for practical inference; follow the maintained Coqui TTS instructions.",
+    "reviewed_at": "2026-09-14",
+    "sources": [
+      {
+        "label": "XTTS documentation",
+        "url": "https://docs.coqui.ai/en/latest/models/xtts.html"
+      },
+      {
+        "label": "Model card",
+        "url": "https://huggingface.co/coqui/XTTS-v2"
+      }
+    ],
+    "quickstart": "# Use the Python environment described in the Coqui documentation.\n# Provide a clean reference clip that you have permission to use.\nfrom TTS.api import TTS\ntts = TTS(\"tts_models/multilingual/multi-dataset/xtts_v2\").to(\"cuda\")\ntts.tts_to_file(text=\"Hello from OpenSpeech.\",\n    speaker_wav=\"reference.wav\", language=\"en\", file_path=\"speech.wav\")"
   },
   {
     "id": "fish-speech",
-    "name": "Fish Speech",
-    "tagline": "Open-source TTS that benchmarks above closed-source",
+    "name": "Fish Speech 1.5",
+    "tagline": "Earlier Fish Speech voice-cloning model; compare with S2 Pro",
     "repo_url": "https://github.com/fishaudio/fish-speech",
     "license": "Apache-2.0 (code) · CC-BY-NC-SA-4.0 (weights)",
-    "params": "0.5B / 4B",
+    "params": "0.5B",
     "vram_gb": 12,
     "languages": [
       "en",
@@ -273,7 +296,11 @@
     "editorial": {
       "pitch": "Benchmarks above closed-source models on multilingual quality."
     },
-    "about": "Fish Speech (and its successor OpenAudio) is a multilingual TTS family with strong zero-shot voice cloning across a dozen-plus languages, no phoneme dependency, and consistently top rankings on open TTS leaderboards. The hosted version skips its fairly heavy local setup. The newer OpenAudio S1/S2 weights moved to a more restricted Fish Audio research license."
+    "about": "These recordings were generated with Fish Speech 1.5. Fish Audio S2 Pro is a separate release with different weights and licensing. Keep this page for comparing the original samples.",
+    "sample_version": "Fish Speech 1.5 · ttsds/fishspeech_1_5",
+    "newer_model_id": "fish-audio-s2-pro",
+    "best_for": "Comparing earlier Fish Speech recordings with newer releases.",
+    "limitations": "Historical sample set. Check the exact 1.5 code and weight licenses; current repository instructions target S2 Pro."
   },
   {
     "id": "piper",
@@ -628,7 +655,8 @@
       }
     ],
     "default_voice": "default",
-    "about": "CosyVoice 2 from Alibaba's FunAudioLLM team is engineered for real-time use: streaming synthesis at roughly 150ms first-packet latency with quality nearly identical to offline mode. It supports zero-shot cloning, cross-lingual synthesis, dialect control, and natural-language instructions over emotion and style. CosyVoice 3, a newer 0.5B Apache-2.0 model in the same family, has since been released."
+    "about": "CosyVoice 2 from Alibaba's FunAudioLLM team is engineered for real-time use: streaming synthesis at roughly 150ms first-packet latency with quality nearly identical to offline mode. It supports zero-shot cloning, cross-lingual synthesis, dialect control, and natural-language instructions over emotion and style. CosyVoice 3, a newer 0.5B Apache-2.0 model in the same family, has since been released.",
+    "newer_model_id": "cosyvoice3"
   },
   {
     "id": "indextts2",
@@ -740,7 +768,17 @@
       }
     ],
     "default_voice": "default",
-    "about": "Qwen3-TTS is the text-to-speech line from Alibaba's Qwen team, known for strong multilingual coverage — including Chinese dialects like Cantonese, Wu, and Sichuanese — with expressive preset voices and fast synthesis backed by the Qwen model family."
+    "about": "Qwen3-TTS is the text-to-speech line from Alibaba's Qwen team, known for strong multilingual coverage — including Chinese dialects like Cantonese, Wu, and Sichuanese — with expressive preset voices and fast synthesis backed by the Qwen model family.",
+    "reviewed_at": "2026-09-14",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/QwenLM/Qwen3-TTS"
+      }
+    ],
+    "sample_version": "Qwen3-TTS · CustomVoice Serena",
+    "best_for": "Multilingual preset voices, voice design, and cloning across model variants.",
+    "limitations": "CustomVoice, VoiceDesign, and Base checkpoints provide different capabilities. The demo uses the English Serena preset."
   },
   {
     "id": "orpheus-tts",
@@ -751,20 +789,11 @@
     "params": "3B",
     "vram_gb": 12,
     "languages": [
-      "en",
-      "es",
-      "fr",
-      "de",
-      "it",
-      "pt",
-      "hi",
-      "zh",
-      "ja",
-      "ko"
+      "en"
     ],
     "voice_cloning": true,
     "streaming": true,
-    "realtime_factor": 0.15,
+    "realtime_factor": null,
     "install": "pip install orpheus-speech",
     "category": "realtime",
     "voices": [
@@ -819,7 +848,22 @@
       "pitch": "Most natural-sounding conversations.",
       "good_for": "Llama-3 based. Empathetic. Built for interactive apps."
     },
-    "about": "Orpheus is a Llama-3B-based speech model from Canopy Labs. It generates remarkably human intonation and supports inline emotive tags like laughter and sighs, plus zero-shot voice cloning and low-latency streaming. One of the most natural conversational voices in open source."
+    "about": "Orpheus is a Llama-3B-based speech model from Canopy Labs. It generates remarkably human intonation and supports inline emotive tags like laughter and sighs, plus zero-shot voice cloning and low-latency streaming. One of the most natural conversational voices in open source.",
+    "best_for": "Expressive English dialogue with preset voices and emotion tags.",
+    "limitations": "These samples use the English 3B 0.1 fine-tune. Other language releases are separate checkpoints. Local inference has a heavier GPU setup than Kokoro.",
+    "hardware_notes": "The catalog’s 12 GB figure is an estimate. Follow the author’s vLLM and CUDA requirements for the chosen checkpoint.",
+    "reviewed_at": "2026-09-14",
+    "sample_version": "English Orpheus 3B 0.1 fine-tune",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/canopyai/Orpheus-TTS"
+      },
+      {
+        "label": "Sample provider",
+        "url": "https://replicate.com/lucataco/orpheus-3b-0.1-ft"
+      }
+    ]
   },
   {
     "id": "kittentts",
@@ -1309,7 +1353,7 @@
     "name": "Maya1",
     "tagline": "Design a voice from a text description, not a reference clip",
     "about": "Maya1 from Maya Research skips voice cloning entirely: you describe the voice you want in natural language and it designs one from scratch, with over 20 inline emotion tags — laugh, sigh, whisper, and more — for expressive delivery. Served through vLLM it hits sub-100ms latency, making it viable for live, interactive use.",
-    "repo_url": "https://github.com/MayaResearch/maya1-fastapi",
+    "repo_url": "https://huggingface.co/maya-research/maya1",
     "hf_url": "https://huggingface.co/maya-research/maya1",
     "license": "Apache-2.0",
     "params": "3B",
@@ -1334,6 +1378,12 @@
           "emotional": null,
           "numbers": null
         }
+      }
+    ],
+    "sources": [
+      {
+        "label": "Official model card and inference example",
+        "url": "https://huggingface.co/maya-research/maya1"
       }
     ]
   },
@@ -1487,6 +1537,637 @@
           "emotional": null,
           "numbers": null
         }
+      }
+    ]
+  },
+  {
+    "id": "chatterbox-turbo",
+    "name": "Chatterbox Turbo",
+    "tagline": "English voice cloning and expressive speech with a smaller model.",
+    "about": "English voice cloning and expressive speech with a smaller model. English only. Distinct from the original 500M model; supports tags such as [laugh].",
+    "repo_url": "https://github.com/resemble-ai/chatterbox",
+    "hf_url": "https://huggingface.co/ResembleAI/chatterbox-turbo",
+    "license": "MIT",
+    "params": "350M",
+    "vram_gb": null,
+    "languages": [
+      "en"
+    ],
+    "voice_cloning": true,
+    "streaming": false,
+    "realtime_factor": null,
+    "install": "pip install chatterbox-tts",
+    "category": "voice-cloning",
+    "default_voice": "default",
+    "voices": [
+      {
+        "id": "default",
+        "name": "Andy",
+        "gender": "n",
+        "accent": "unspecified",
+        "samples": {
+          "neutral": "/samples/chatterbox-turbo/default/neutral.wav",
+          "emotional": "/samples/chatterbox-turbo/default/emotional.wav",
+          "numbers": "/samples/chatterbox-turbo/default/numbers.wav"
+        }
+      }
+    ],
+    "added_at": "2026-09-14",
+    "reviewed_at": "2026-09-14",
+    "best_for": "English voice cloning and expressive speech with a smaller model.",
+    "limitations": "English only. Distinct from the original 500M model; supports tags such as [laugh].",
+    "hardware_notes": "No comparable hardware benchmark verified. Check the official setup for your device.",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/resemble-ai/chatterbox"
+      },
+      {
+        "label": "Model card",
+        "url": "https://huggingface.co/ResembleAI/chatterbox-turbo"
+      }
+    ],
+    "sample_version": "Chatterbox Turbo · Replicate preset Andy"
+  },
+  {
+    "id": "chatterbox-nano",
+    "name": "Chatterbox Nano",
+    "tagline": "Compact English speech for CPU and on-device experiments.",
+    "about": "Compact English speech for CPU and on-device experiments. Uses the Turbo class with nano=True. Performance depends on CPU and thread count.",
+    "repo_url": "https://github.com/resemble-ai/chatterbox",
+    "hf_url": "https://huggingface.co/ResembleAI/chatterbox-nano",
+    "license": "MIT",
+    "params": "110M",
+    "vram_gb": 0,
+    "languages": [
+      "en"
+    ],
+    "voice_cloning": true,
+    "streaming": false,
+    "realtime_factor": null,
+    "install": "pip install chatterbox-tts",
+    "category": "lightweight",
+    "default_voice": "default",
+    "voices": [
+      {
+        "id": "default",
+        "name": "Default",
+        "gender": "n",
+        "accent": "unspecified",
+        "samples": {
+          "neutral": null,
+          "emotional": null,
+          "numbers": null
+        }
+      }
+    ],
+    "added_at": "2026-09-14",
+    "reviewed_at": "2026-09-14",
+    "best_for": "Compact English speech for CPU and on-device experiments.",
+    "limitations": "Uses the Turbo class with nano=True. Performance depends on CPU and thread count.",
+    "hardware_notes": "No comparable hardware benchmark verified. Check the official setup for your device.",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/resemble-ai/chatterbox"
+      },
+      {
+        "label": "Model card",
+        "url": "https://huggingface.co/ResembleAI/chatterbox-nano"
+      }
+    ]
+  },
+  {
+    "id": "chatterbox-multilingual-v3",
+    "name": "Chatterbox Multilingual V3",
+    "tagline": "Cross-language voice cloning with the V3 multilingual checkpoint.",
+    "about": "Cross-language voice cloning with the V3 multilingual checkpoint. Select t3_model=\"v3\" explicitly; the current Python loader still defaults to V2.",
+    "repo_url": "https://github.com/resemble-ai/chatterbox",
+    "hf_url": "https://huggingface.co/ResembleAI/chatterbox",
+    "license": "MIT",
+    "params": "500M",
+    "vram_gb": null,
+    "languages": [
+      "ar",
+      "da",
+      "de",
+      "el",
+      "en",
+      "es",
+      "fi",
+      "fr",
+      "he",
+      "hi",
+      "it",
+      "ja",
+      "ko",
+      "ms",
+      "nl",
+      "no",
+      "pl",
+      "pt",
+      "ru",
+      "sv",
+      "sw",
+      "tr",
+      "zh"
+    ],
+    "voice_cloning": true,
+    "streaming": false,
+    "realtime_factor": null,
+    "install": "pip install chatterbox-tts",
+    "category": "voice-cloning",
+    "default_voice": "default",
+    "voices": [
+      {
+        "id": "default",
+        "name": "Default",
+        "gender": "n",
+        "accent": "unspecified",
+        "samples": {
+          "neutral": null,
+          "emotional": null,
+          "numbers": null
+        }
+      }
+    ],
+    "added_at": "2026-09-14",
+    "reviewed_at": "2026-09-14",
+    "best_for": "Cross-language voice cloning with the V3 multilingual checkpoint.",
+    "limitations": "Select t3_model=\"v3\" explicitly; the current Python loader still defaults to V2.",
+    "hardware_notes": "No comparable hardware benchmark verified. Check the official setup for your device.",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/resemble-ai/chatterbox"
+      },
+      {
+        "label": "Model card",
+        "url": "https://huggingface.co/ResembleAI/chatterbox"
+      }
+    ]
+  },
+  {
+    "id": "cosyvoice3",
+    "name": "CosyVoice 3",
+    "tagline": "Streaming multilingual synthesis with pronunciation and instruction controls.",
+    "about": "Streaming multilingual synthesis with pronunciation and instruction controls. Setup includes repository dependencies and model downloads. The 2512 checkpoint is distinct from CosyVoice 2.",
+    "repo_url": "https://github.com/QwenAudio/CosyVoice",
+    "hf_url": "https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512",
+    "license": "Apache-2.0",
+    "params": "500M",
+    "vram_gb": null,
+    "languages": [
+      "zh",
+      "en",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "ru"
+    ],
+    "voice_cloning": true,
+    "streaming": true,
+    "realtime_factor": null,
+    "install": "git clone --recursive https://github.com/QwenAudio/CosyVoice.git\ncd CosyVoice\n# Follow the official installation and model-download guide.",
+    "category": "realtime",
+    "default_voice": "default",
+    "voices": [
+      {
+        "id": "default",
+        "name": "Default",
+        "gender": "n",
+        "accent": "unspecified",
+        "samples": {
+          "neutral": null,
+          "emotional": null,
+          "numbers": null
+        }
+      }
+    ],
+    "added_at": "2026-09-14",
+    "reviewed_at": "2026-09-14",
+    "best_for": "Streaming multilingual synthesis with pronunciation and instruction controls.",
+    "limitations": "Setup includes repository dependencies and model downloads. The 2512 checkpoint is distinct from CosyVoice 2.",
+    "hardware_notes": "No comparable hardware benchmark verified. Check the official setup for your device.",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/QwenAudio/CosyVoice"
+      },
+      {
+        "label": "Model card",
+        "url": "https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512"
+      }
+    ],
+    "sample_version": "Fun-CosyVoice3-0.5B-2512"
+  },
+  {
+    "id": "pocket-tts",
+    "name": "Pocket TTS",
+    "tagline": "CPU speech generation, streaming, and voice cloning in a small model.",
+    "about": "CPU speech generation, streaming, and voice cloning in a small model. Voice files have their own terms. Model downloads can require accepting Hugging Face access conditions.",
+    "repo_url": "https://github.com/kyutai-labs/pocket-tts",
+    "hf_url": "https://huggingface.co/kyutai/pocket-tts",
+    "license": "MIT (code) · CC-BY-4.0 (weights)",
+    "params": "100M",
+    "vram_gb": 0,
+    "languages": [
+      "en",
+      "fr",
+      "de",
+      "pt",
+      "it",
+      "es"
+    ],
+    "voice_cloning": true,
+    "streaming": true,
+    "realtime_factor": null,
+    "install": "pip install pocket-tts\npocket-tts generate --text \"Hello from OpenSpeech.\"",
+    "category": "lightweight",
+    "default_voice": "default",
+    "voices": [
+      {
+        "id": "default",
+        "name": "Default",
+        "gender": "n",
+        "accent": "unspecified",
+        "samples": {
+          "neutral": null,
+          "emotional": null,
+          "numbers": null
+        }
+      }
+    ],
+    "added_at": "2026-09-14",
+    "reviewed_at": "2026-09-14",
+    "best_for": "CPU speech generation, streaming, and voice cloning in a small model.",
+    "limitations": "Voice files have their own terms. Model downloads can require accepting Hugging Face access conditions.",
+    "hardware_notes": "No comparable hardware benchmark verified. Check the official setup for your device.",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/kyutai-labs/pocket-tts"
+      },
+      {
+        "label": "Model card",
+        "url": "https://huggingface.co/kyutai/pocket-tts"
+      }
+    ]
+  },
+  {
+    "id": "fish-audio-s2-pro",
+    "name": "Fish Audio S2 Pro",
+    "tagline": "Expressive multilingual speech with inline emotion control and multi-speaker support.",
+    "about": "Expressive multilingual speech with inline emotion control and multi-speaker support. Research license: do not assume commercial permission. The author reports 80+ languages; listed codes are a subset. S2 samples must not be confused with Fish Speech 1.5.",
+    "repo_url": "https://github.com/fishaudio/fish-speech",
+    "hf_url": "https://huggingface.co/fishaudio/s2-pro",
+    "license": "Fish Audio Research License",
+    "params": "4B",
+    "vram_gb": null,
+    "languages": [
+      "en",
+      "zh",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "ar",
+      "ru",
+      "fr",
+      "de",
+      "it",
+      "hi"
+    ],
+    "voice_cloning": true,
+    "streaming": true,
+    "realtime_factor": null,
+    "install": "git clone https://github.com/fishaudio/fish-speech.git\ncd fish-speech\n# Follow https://speech.fish.audio/install/",
+    "category": "expressive",
+    "default_voice": "default",
+    "voices": [
+      {
+        "id": "default",
+        "name": "Default",
+        "gender": "n",
+        "accent": "unspecified",
+        "samples": {
+          "neutral": null,
+          "emotional": null,
+          "numbers": null
+        }
+      }
+    ],
+    "added_at": "2026-09-14",
+    "reviewed_at": "2026-09-14",
+    "best_for": "Expressive multilingual speech with inline emotion control and multi-speaker support.",
+    "limitations": "Research license: do not assume commercial permission. The author reports 80+ languages; listed codes are a subset. S2 samples must not be confused with Fish Speech 1.5.",
+    "hardware_notes": "No comparable hardware benchmark verified. Check the official setup for your device.",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/fishaudio/fish-speech"
+      },
+      {
+        "label": "Model card",
+        "url": "https://huggingface.co/fishaudio/s2-pro"
+      }
+    ],
+    "sample_version": "Fish Audio S2 Pro"
+  },
+  {
+    "id": "moss-tts-v1-5",
+    "name": "MOSS-TTS v1.5",
+    "tagline": "Long-form multilingual narration with cloning and explicit pause controls.",
+    "about": "Long-form multilingual narration with cloning and explicit pause controls. The model card lists 31 languages; shown language codes are a subset. This is the 8B delay model, not the Local Transformer or Nano variant.",
+    "repo_url": "https://github.com/OpenMOSS/MOSS-TTS",
+    "hf_url": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5",
+    "license": "Apache-2.0",
+    "params": "8B",
+    "vram_gb": null,
+    "languages": [
+      "en",
+      "zh",
+      "ja",
+      "ko",
+      "de",
+      "fr",
+      "es",
+      "it",
+      "pt",
+      "ru",
+      "ar",
+      "hi"
+    ],
+    "voice_cloning": true,
+    "streaming": false,
+    "realtime_factor": null,
+    "install": "git clone https://github.com/OpenMOSS/MOSS-TTS.git\ncd MOSS-TTS\n# Follow the v1.5 model-card quickstart.",
+    "category": "long-form",
+    "default_voice": "default",
+    "voices": [
+      {
+        "id": "default",
+        "name": "Default",
+        "gender": "n",
+        "accent": "unspecified",
+        "samples": {
+          "neutral": null,
+          "emotional": null,
+          "numbers": null
+        }
+      }
+    ],
+    "added_at": "2026-09-14",
+    "reviewed_at": "2026-09-14",
+    "best_for": "Long-form multilingual narration with cloning and explicit pause controls.",
+    "limitations": "The model card lists 31 languages; shown language codes are a subset. This is the 8B delay model, not the Local Transformer or Nano variant.",
+    "hardware_notes": "No comparable hardware benchmark verified. Check the official setup for your device.",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/OpenMOSS/MOSS-TTS"
+      },
+      {
+        "label": "Model card",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5"
+      }
+    ],
+    "release_date": "2026-05-26"
+  },
+  {
+    "id": "moss-tts-local-v1-5",
+    "name": "MOSS-TTS Local Transformer v1.5",
+    "tagline": "48 kHz stereo speech and cloning with the Local Transformer v1.5 architecture.",
+    "about": "48 kHz stereo speech and cloning with the Local Transformer v1.5 architecture. A separate 4B checkpoint. Streaming support depends on the inference backend; use the linked SGLang-Omni recipe.",
+    "repo_url": "https://github.com/OpenMOSS/MOSS-TTS",
+    "hf_url": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5",
+    "license": "Apache-2.0",
+    "params": "4B",
+    "vram_gb": null,
+    "languages": [
+      "en",
+      "zh",
+      "ja",
+      "ko",
+      "de",
+      "fr",
+      "es",
+      "it",
+      "pt",
+      "ru",
+      "ar",
+      "hi"
+    ],
+    "voice_cloning": true,
+    "streaming": true,
+    "realtime_factor": null,
+    "install": "git clone https://github.com/OpenMOSS/MOSS-TTS.git\ncd MOSS-TTS\n# Follow the Local Transformer v1.5 setup.",
+    "category": "long-form",
+    "default_voice": "default",
+    "voices": [
+      {
+        "id": "default",
+        "name": "Default",
+        "gender": "n",
+        "accent": "unspecified",
+        "samples": {
+          "neutral": null,
+          "emotional": null,
+          "numbers": null
+        }
+      }
+    ],
+    "added_at": "2026-09-14",
+    "reviewed_at": "2026-09-14",
+    "best_for": "48 kHz stereo speech and cloning with the Local Transformer v1.5 architecture.",
+    "limitations": "A separate 4B checkpoint. Streaming support depends on the inference backend; use the linked SGLang-Omni recipe.",
+    "hardware_notes": "No comparable hardware benchmark verified. Check the official setup for your device.",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/OpenMOSS/MOSS-TTS"
+      },
+      {
+        "label": "Model card",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Local-Transformer-v1.5"
+      },
+      {
+        "label": "SGLang-Omni setup",
+        "url": "https://www.lmsys.org/blog/2026-06-17-moss-tts-local-v15/"
+      }
+    ],
+    "release_date": "2026-06-18"
+  },
+  {
+    "id": "moss-tts-nano",
+    "name": "MOSS-TTS Nano",
+    "tagline": "Compact CPU speech generation with streaming and voice cloning.",
+    "about": "Compact CPU speech generation with streaming and voice cloning. Supports 48 kHz stereo through a separate audio tokenizer. Follow the ONNX CPU guide for lightweight deployment; language coverage depends on the checkpoint.",
+    "repo_url": "https://github.com/OpenMOSS/MOSS-TTS-Nano",
+    "hf_url": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Nano-100M",
+    "license": "Apache-2.0 (code) · weight terms require review",
+    "params": "100M",
+    "vram_gb": 0,
+    "languages": [
+      "en",
+      "zh"
+    ],
+    "voice_cloning": true,
+    "streaming": true,
+    "realtime_factor": null,
+    "install": "git clone https://github.com/OpenMOSS/MOSS-TTS-Nano.git\ncd MOSS-TTS-Nano\npip install -e .",
+    "category": "lightweight",
+    "default_voice": "default",
+    "voices": [
+      {
+        "id": "default",
+        "name": "Default",
+        "gender": "n",
+        "accent": "unspecified",
+        "samples": {
+          "neutral": null,
+          "emotional": null,
+          "numbers": null
+        }
+      }
+    ],
+    "added_at": "2026-09-14",
+    "reviewed_at": "2026-09-14",
+    "best_for": "Compact CPU speech generation with streaming and voice cloning.",
+    "limitations": "Supports 48 kHz stereo through a separate audio tokenizer. Follow the ONNX CPU guide for lightweight deployment; language coverage depends on the checkpoint. The model card does not clearly specify a separate weight license; verify redistribution terms.",
+    "hardware_notes": "No comparable hardware benchmark verified. Check the official setup for your device.",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/OpenMOSS/MOSS-TTS-Nano"
+      },
+      {
+        "label": "Model card",
+        "url": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Nano-100M"
+      },
+      {
+        "label": "Code license",
+        "url": "https://github.com/OpenMOSS/MOSS-TTS-Nano/blob/main/LICENSE"
+      }
+    ],
+    "release_date": "2026-04-10"
+  },
+  {
+    "id": "omnivoice",
+    "name": "OmniVoice",
+    "tagline": "Voice cloning and voice design across a broad language range.",
+    "about": "Voice cloning and voice design across a broad language range. The author reports 600+ languages; displayed codes are a subset. Code and weights have different terms: the pretrained weights are non-commercial.",
+    "repo_url": "https://github.com/k2-fsa/OmniVoice",
+    "hf_url": "https://huggingface.co/k2-fsa/OmniVoice",
+    "license": "Apache-2.0 (code) · CC-BY-NC (weights)",
+    "params": "600M",
+    "vram_gb": null,
+    "languages": [
+      "en",
+      "zh",
+      "ja",
+      "ko",
+      "de",
+      "fr",
+      "es",
+      "it",
+      "pt",
+      "ru",
+      "ar",
+      "hi"
+    ],
+    "voice_cloning": true,
+    "streaming": false,
+    "realtime_factor": null,
+    "install": "pip install omnivoice\n# Install the PyTorch build appropriate for your CUDA or Apple Silicon environment.",
+    "category": "voice-cloning",
+    "default_voice": "default",
+    "voices": [
+      {
+        "id": "default",
+        "name": "Default",
+        "gender": "n",
+        "accent": "unspecified",
+        "samples": {
+          "neutral": null,
+          "emotional": null,
+          "numbers": null
+        }
+      }
+    ],
+    "added_at": "2026-09-14",
+    "reviewed_at": "2026-09-14",
+    "best_for": "Voice cloning and voice design across a broad language range.",
+    "limitations": "The author reports 600+ languages; displayed codes are a subset. Code and weights have different terms: the pretrained weights are non-commercial.",
+    "hardware_notes": "No comparable hardware benchmark verified. Check the official setup for your device.",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/k2-fsa/OmniVoice"
+      },
+      {
+        "label": "Model card",
+        "url": "https://huggingface.co/k2-fsa/OmniVoice"
+      }
+    ]
+  },
+  {
+    "id": "tada-3b-ml",
+    "name": "TADA 3B Multilingual",
+    "tagline": "Aligned text and speech generation with multilingual reference prompts.",
+    "about": "Aligned text and speech generation with multilingual reference prompts. Requires the separate TADA codec and access to the Llama base model. Non-English reference audio should include a transcript.",
+    "repo_url": "https://github.com/HumeAI/tada",
+    "hf_url": "https://huggingface.co/HumeAI/tada-3b-ml",
+    "license": "MIT (code) · Llama 3.2 Community License (weights)",
+    "params": "3B base / ~4B total",
+    "vram_gb": null,
+    "languages": [
+      "en",
+      "ar",
+      "zh",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "ja",
+      "pl",
+      "pt"
+    ],
+    "voice_cloning": true,
+    "streaming": false,
+    "realtime_factor": null,
+    "install": "pip install hume-tada\n# Accept the Llama 3.2 access terms and follow the TADA inference example.",
+    "category": "expressive",
+    "default_voice": "default",
+    "voices": [
+      {
+        "id": "default",
+        "name": "Default",
+        "gender": "n",
+        "accent": "unspecified",
+        "samples": {
+          "neutral": null,
+          "emotional": null,
+          "numbers": null
+        }
+      }
+    ],
+    "added_at": "2026-09-14",
+    "reviewed_at": "2026-09-14",
+    "best_for": "Aligned text and speech generation with multilingual reference prompts.",
+    "limitations": "Requires the separate TADA codec and access to the Llama base model. Non-English reference audio should include a transcript.",
+    "hardware_notes": "No comparable hardware benchmark verified. Check the official setup for your device.",
+    "sources": [
+      {
+        "label": "Official documentation",
+        "url": "https://github.com/HumeAI/tada"
+      },
+      {
+        "label": "Model card",
+        "url": "https://huggingface.co/HumeAI/tada-3b-ml"
       }
     ]
   }

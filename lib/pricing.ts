@@ -1,3 +1,4 @@
+import { CLOUD_URL, CLOUD_PRICING } from "./site";
 /**
  * Per-minute audio pricing estimates. Last reviewed 2026-06.
  *
@@ -18,15 +19,11 @@ export type Provider = {
 
 export const PROVIDERS: Provider[] = [
   // OpenSpeech Cloud — our hosted offering (coming soon)
-  {
-    id: "openspeech-cloud",
-    name: "OpenSpeech Cloud",
-    category: "openspeech",
-    perMinUsd: 0.015,
-    notes: "OSS models, hosted by us. Pay per minute, no commitments.",
-    comingSoon: true,
-    waitlistUrl: "https://app.openspeech.dev",
-  },
+  ...CLOUD_PRICING.map((tier): Provider => ({
+    id: `openspeech-${tier.id}`, name: `OpenSpeech Cloud — ${tier.name}`,
+    category: "openspeech", perMinUsd: tier.perMinUsd, notes: tier.notes,
+    comingSoon: true, waitlistUrl: CLOUD_URL,
+  })),
 
   // Closed-source incumbents
   {
@@ -49,8 +46,8 @@ export const PROVIDERS: Provider[] = [
     id: "openai-tts",
     name: "OpenAI TTS-1",
     category: "closed",
-    perMinUsd: 0.09,
-    notes: "$15 per 1M chars ≈ $0.09/min at typical pace",
+    perMinUsd: 0.0135,
+    notes: "$15 per 1M chars × 900 chars/min ≈ $0.0135/min (June 2026 estimate)",
     source: "openai.com/api/pricing",
   },
 

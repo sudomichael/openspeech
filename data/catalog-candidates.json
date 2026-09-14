@@ -1,0 +1,487 @@
+{
+  "checked_at": "2026-09-14",
+  "candidates": [
+    {
+      "id": "nari-labs/Dia-1.6B",
+      "url": "https://huggingface.co/nari-labs/Dia-1.6B",
+      "updated": "2025-06-01T13:13:54.000Z",
+      "downloads": 29012,
+      "likes": 2909,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "microsoft/VibeVoice-1.5B",
+      "url": "https://huggingface.co/microsoft/VibeVoice-1.5B",
+      "updated": "2026-01-22T07:22:28.000Z",
+      "downloads": 400836,
+      "likes": 2482,
+      "license": "mit"
+    },
+    {
+      "id": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+      "updated": "2026-01-29T08:00:54.000Z",
+      "downloads": 2601762,
+      "likes": 1965,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "openbmb/VoxCPM2",
+      "url": "https://huggingface.co/openbmb/VoxCPM2",
+      "updated": "2026-08-18T07:37:17.000Z",
+      "downloads": 383884,
+      "likes": 1607,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "microsoft/VibeVoice-Realtime-0.5B",
+      "url": "https://huggingface.co/microsoft/VibeVoice-Realtime-0.5B",
+      "updated": "2025-12-12T15:35:46.000Z",
+      "downloads": 416821,
+      "likes": 1285,
+      "license": "mit"
+    },
+    {
+      "id": "Supertone/supertonic-3",
+      "url": "https://huggingface.co/Supertone/supertonic-3",
+      "updated": "2026-05-18T08:59:01.000Z",
+      "downloads": 30050,
+      "likes": 959,
+      "license": "openrail"
+    },
+    {
+      "id": "fishaudio/fish-speech-1.5",
+      "url": "https://huggingface.co/fishaudio/fish-speech-1.5",
+      "updated": "2025-03-25T10:07:44.000Z",
+      "downloads": 4125,
+      "likes": 774,
+      "license": "cc-by-nc-sa-4.0"
+    },
+    {
+      "id": "bosonai/higgs-tts-3-4b",
+      "url": "https://huggingface.co/bosonai/higgs-tts-3-4b",
+      "updated": "2026-09-04T00:12:39.000Z",
+      "downloads": 156456,
+      "likes": 763,
+      "license": "other"
+    },
+    {
+      "id": "canopylabs/orpheus-3b-0.1-ft",
+      "url": "https://huggingface.co/canopylabs/orpheus-3b-0.1-ft",
+      "updated": "2025-05-06T17:40:48.000Z",
+      "downloads": 228313,
+      "likes": 734,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "fishaudio/s1-mini",
+      "url": "https://huggingface.co/fishaudio/s1-mini",
+      "updated": "2026-02-06T12:49:42.000Z",
+      "downloads": 2130,
+      "likes": 709,
+      "license": "cc-by-nc-sa-4.0"
+    },
+    {
+      "id": "bosonai/higgs-tts-2-3b-base",
+      "url": "https://huggingface.co/bosonai/higgs-tts-2-3b-base",
+      "updated": "2026-06-25T16:58:29.000Z",
+      "downloads": 352693,
+      "likes": 693,
+      "license": "other"
+    },
+    {
+      "id": "BreezeBlue/Breeze-TTS-2",
+      "url": "https://huggingface.co/BreezeBlue/Breeze-TTS-2",
+      "updated": "2026-09-09T18:59:45.000Z",
+      "downloads": 9416,
+      "likes": 547,
+      "license": "other"
+    },
+    {
+      "id": "fishaudio/fish-speech-1.4",
+      "url": "https://huggingface.co/fishaudio/fish-speech-1.4",
+      "updated": "2024-11-05T03:56:00.000Z",
+      "downloads": 377,
+      "likes": 460,
+      "license": "cc-by-nc-sa-4.0"
+    },
+    {
+      "id": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+      "url": "https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+      "updated": "2026-01-29T08:04:19.000Z",
+      "downloads": 302862,
+      "likes": 411,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "Edge0/Audio8-TTS-Preview-0.6b",
+      "url": "https://huggingface.co/Edge0/Audio8-TTS-Preview-0.6b",
+      "updated": "2026-08-19T07:10:30.000Z",
+      "downloads": 8916,
+      "likes": 402,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "ai4bharat/indic-parler-tts",
+      "url": "https://huggingface.co/ai4bharat/indic-parler-tts",
+      "updated": "2025-09-24T06:25:30.000Z",
+      "downloads": 341167,
+      "likes": 333,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "ResembleAI/Dramabox",
+      "url": "https://huggingface.co/ResembleAI/Dramabox",
+      "updated": "2026-05-13T16:39:38.000Z",
+      "downloads": 232,
+      "likes": 318,
+      "license": "other"
+    },
+    {
+      "id": "fishaudio/fish-agent-v0.1-3b",
+      "url": "https://huggingface.co/fishaudio/fish-agent-v0.1-3b",
+      "updated": "2024-11-01T16:39:56.000Z",
+      "downloads": 74,
+      "likes": 275,
+      "license": "cc-by-nc-sa-4.0"
+    },
+    {
+      "id": "onnx-community/Kokoro-82M-v1.0-ONNX",
+      "url": "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX",
+      "updated": "2025-02-08T12:15:27.000Z",
+      "downloads": 763697,
+      "likes": 261,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "HumeAI/tada-1b",
+      "url": "https://huggingface.co/HumeAI/tada-1b",
+      "updated": "2026-03-17T18:08:47.000Z",
+      "downloads": 7410,
+      "likes": 241,
+      "license": "llama3.2"
+    },
+    {
+      "id": "maya-research/Veena",
+      "url": "https://huggingface.co/maya-research/Veena",
+      "updated": "2025-10-05T06:17:53.000Z",
+      "downloads": 14934,
+      "likes": 240,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "hexgrad/Kokoro-82M-v1.1-zh",
+      "url": "https://huggingface.co/hexgrad/Kokoro-82M-v1.1-zh",
+      "updated": "2025-03-04T05:39:52.000Z",
+      "downloads": 20942,
+      "likes": 227,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "Edge0/Audio8-TTS-Preview-0.1b",
+      "url": "https://huggingface.co/Edge0/Audio8-TTS-Preview-0.1b",
+      "updated": "2026-08-25T14:00:10.000Z",
+      "downloads": 8702,
+      "likes": 219,
+      "license": "other"
+    },
+    {
+      "id": "nvidia/magpie_tts_multilingual_357m",
+      "url": "https://huggingface.co/nvidia/magpie_tts_multilingual_357m",
+      "updated": "2026-09-09T17:14:42.000Z",
+      "downloads": 6749,
+      "likes": 216,
+      "license": "other"
+    },
+    {
+      "id": "tencent/AuK",
+      "url": "https://huggingface.co/tencent/AuK",
+      "updated": "2026-09-10T02:54:12.000Z",
+      "downloads": 1928,
+      "likes": 213,
+      "license": "mit"
+    },
+    {
+      "id": "ai4bharat/IndicF5",
+      "url": "https://huggingface.co/ai4bharat/IndicF5",
+      "updated": "2026-03-03T03:06:36.000Z",
+      "downloads": 27758,
+      "likes": 212,
+      "license": "mit"
+    },
+    {
+      "id": "fishaudio/fish-speech-1.2",
+      "url": "https://huggingface.co/fishaudio/fish-speech-1.2",
+      "updated": "2024-07-02T04:31:26.000Z",
+      "downloads": 135,
+      "likes": 210,
+      "license": "cc-by-nc-sa-4.0"
+    },
+    {
+      "id": "IndexTeam/IndexTTS-2.5",
+      "url": "https://huggingface.co/IndexTeam/IndexTTS-2.5",
+      "updated": "2026-08-12T07:23:44.000Z",
+      "downloads": 14613,
+      "likes": 204,
+      "license": "other"
+    },
+    {
+      "id": "nari-labs/Dia2-2B",
+      "url": "https://huggingface.co/nari-labs/Dia2-2B",
+      "updated": "2025-12-01T07:48:51.000Z",
+      "downloads": 2622,
+      "likes": 186,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "Soul-AILab/SoulX-Singer",
+      "url": "https://huggingface.co/Soul-AILab/SoulX-Singer",
+      "updated": "2026-03-13T03:43:34.000Z",
+      "downloads": 1418,
+      "likes": 176,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "canopylabs/orpheus-3b-0.1-pretrained",
+      "url": "https://huggingface.co/canopylabs/orpheus-3b-0.1-pretrained",
+      "updated": "2025-03-19T19:00:00.000Z",
+      "downloads": 2152,
+      "likes": 173,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "nari-labs/Dia-1.6B-0626",
+      "url": "https://huggingface.co/nari-labs/Dia-1.6B-0626",
+      "updated": "2025-07-03T14:45:09.000Z",
+      "downloads": 13764,
+      "likes": 134,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "audio-cpp/audio.cpp-gguf",
+      "url": "https://huggingface.co/audio-cpp/audio.cpp-gguf",
+      "updated": "2026-09-14T01:09:58.000Z",
+      "downloads": 3480168,
+      "likes": 134,
+      "license": "other"
+    },
+    {
+      "id": "phasefield-audio/Irodori-TTS-v4.1-Anime",
+      "url": "https://huggingface.co/phasefield-audio/Irodori-TTS-v4.1-Anime",
+      "updated": "2026-09-04T14:44:26.000Z",
+      "downloads": 0,
+      "likes": 117,
+      "license": "mit"
+    },
+    {
+      "id": "OpenMOSS-Team/MOSS-TTS-Realtime",
+      "url": "https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Realtime",
+      "updated": "2026-07-27T14:32:11.000Z",
+      "downloads": 16434,
+      "likes": 107,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "Thomcles/Chatterbox-TTS-Persian-Farsi",
+      "url": "https://huggingface.co/Thomcles/Chatterbox-TTS-Persian-Farsi",
+      "updated": "2026-05-22T07:14:04.000Z",
+      "downloads": 0,
+      "likes": 106,
+      "license": "cc-by-nc-4.0"
+    },
+    {
+      "id": "FunAudioLLM/CosyVoice2-0.5B",
+      "url": "https://huggingface.co/FunAudioLLM/CosyVoice2-0.5B",
+      "updated": "2026-05-31T03:10:15.000Z",
+      "downloads": 4323,
+      "likes": 91,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "fishaudio/fish-speech-1",
+      "url": "https://huggingface.co/fishaudio/fish-speech-1",
+      "updated": "2024-05-20T11:41:32.000Z",
+      "downloads": 0,
+      "likes": 86,
+      "license": "cc-by-nc-sa-4.0"
+    },
+    {
+      "id": "ResembleAI/chatterbox-turbo-ONNX",
+      "url": "https://huggingface.co/ResembleAI/chatterbox-turbo-ONNX",
+      "updated": "2025-12-15T15:48:47.000Z",
+      "downloads": 3484,
+      "likes": 85,
+      "license": "mit"
+    },
+    {
+      "id": "tencent/AuK-Flash",
+      "url": "https://huggingface.co/tencent/AuK-Flash",
+      "updated": "2026-09-09T05:08:40.000Z",
+      "downloads": 1385,
+      "likes": 77,
+      "license": "mit"
+    },
+    {
+      "id": "FunAudioLLM/Fun-CineForge",
+      "url": "https://huggingface.co/FunAudioLLM/Fun-CineForge",
+      "updated": "2026-05-31T03:11:15.000Z",
+      "downloads": 36,
+      "likes": 63,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "Serveurperso/OmniVoice-GGUF",
+      "url": "https://huggingface.co/Serveurperso/OmniVoice-GGUF",
+      "updated": "2026-09-09T15:03:21.000Z",
+      "downloads": 71437,
+      "likes": 63,
+      "license": "cc-by-nc-4.0"
+    },
+    {
+      "id": "k2-fsa/ZipVoice",
+      "url": "https://huggingface.co/k2-fsa/ZipVoice",
+      "updated": "2026-07-09T07:21:12.000Z",
+      "downloads": 0,
+      "likes": 62,
+      "license": "Needs review"
+    },
+    {
+      "id": "rumik-ai/rumik-oss-1",
+      "url": "https://huggingface.co/rumik-ai/rumik-oss-1",
+      "updated": "2026-09-10T11:06:07.000Z",
+      "downloads": 1640,
+      "likes": 59,
+      "license": "cc-by-nc-4.0"
+    },
+    {
+      "id": "ampixa/sanoTTS",
+      "url": "https://huggingface.co/ampixa/sanoTTS",
+      "updated": "2026-09-10T15:25:39.000Z",
+      "downloads": 93503,
+      "likes": 50,
+      "license": "gpl-3.0"
+    },
+    {
+      "id": "Aratako/Irodori-TTS-v4.1-Small",
+      "url": "https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small",
+      "updated": "2026-08-11T02:21:55.000Z",
+      "downloads": 0,
+      "likes": 48,
+      "license": "mit"
+    },
+    {
+      "id": "Serveurperso/Qwen3-TTS-GGUF",
+      "url": "https://huggingface.co/Serveurperso/Qwen3-TTS-GGUF",
+      "updated": "2026-09-09T15:05:30.000Z",
+      "downloads": 527757,
+      "likes": 44,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "canopylabs/3b-zh-pretrain-research_release",
+      "url": "https://huggingface.co/canopylabs/3b-zh-pretrain-research_release",
+      "updated": "2025-04-09T13:23:26.000Z",
+      "downloads": 2,
+      "likes": 34,
+      "license": "llama3.2"
+    },
+    {
+      "id": "fishaudio/speech-lm-v1",
+      "url": "https://huggingface.co/fishaudio/speech-lm-v1",
+      "updated": "2024-03-01T09:49:33.000Z",
+      "downloads": 0,
+      "likes": 33,
+      "license": "cc-by-nc-sa-4.0"
+    },
+    {
+      "id": "AlicanKiraz0/Kahya-TTS-v1.0",
+      "url": "https://huggingface.co/AlicanKiraz0/Kahya-TTS-v1.0",
+      "updated": "2026-09-10T20:31:31.000Z",
+      "downloads": 284,
+      "likes": 29,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "zeroweight-ai/ZeroTTS",
+      "url": "https://huggingface.co/zeroweight-ai/ZeroTTS",
+      "updated": "2026-09-06T16:23:12.000Z",
+      "downloads": 1315,
+      "likes": 28,
+      "license": "mit"
+    },
+    {
+      "id": "contextboxai/Kokoro-Vietnamese",
+      "url": "https://huggingface.co/contextboxai/Kokoro-Vietnamese",
+      "updated": "2026-06-27T15:37:01.000Z",
+      "downloads": 46974,
+      "likes": 28,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "nari-labs/Dia2-1B",
+      "url": "https://huggingface.co/nari-labs/Dia2-1B",
+      "updated": "2025-12-03T10:07:54.000Z",
+      "downloads": 1635,
+      "likes": 27,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "mehdi-hf/pocket-tts-farsi",
+      "url": "https://huggingface.co/mehdi-hf/pocket-tts-farsi",
+      "updated": "2026-09-14T00:53:29.000Z",
+      "downloads": 0,
+      "likes": 27,
+      "license": "mit"
+    },
+    {
+      "id": "ResembleAI/chatterbox-flash",
+      "url": "https://huggingface.co/ResembleAI/chatterbox-flash",
+      "updated": "2026-07-06T18:55:19.000Z",
+      "downloads": 0,
+      "likes": 25,
+      "license": "mit"
+    },
+    {
+      "id": "canopylabs/3b-hi-ft-research_release",
+      "url": "https://huggingface.co/canopylabs/3b-hi-ft-research_release",
+      "updated": "2025-04-09T13:23:38.000Z",
+      "downloads": 235,
+      "likes": 25,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "Soul-AILab/SoulX-Podcast-1.7B-dialect",
+      "url": "https://huggingface.co/Soul-AILab/SoulX-Podcast-1.7B-dialect",
+      "updated": "2025-12-18T05:08:09.000Z",
+      "downloads": 117,
+      "likes": 25,
+      "license": "apache-2.0"
+    },
+    {
+      "id": "hexgrad/styletts2",
+      "url": "https://huggingface.co/hexgrad/styletts2",
+      "updated": "2025-01-26T21:08:18.000Z",
+      "downloads": 0,
+      "likes": 23,
+      "license": "mit"
+    },
+    {
+      "id": "bodhan-ai/indic-speak",
+      "url": "https://huggingface.co/bodhan-ai/indic-speak",
+      "updated": "2026-09-07T09:05:27.000Z",
+      "downloads": 1024,
+      "likes": 23,
+      "license": "other"
+    },
+    {
+      "id": "HumeAI/tada-codec",
+      "url": "https://huggingface.co/HumeAI/tada-codec",
+      "updated": "2026-03-13T19:25:55.000Z",
+      "downloads": 0,
+      "likes": 22,
+      "license": "mit"
+    }
+  ],
+  "changed_repositories": [],
+  "failures": []
+}

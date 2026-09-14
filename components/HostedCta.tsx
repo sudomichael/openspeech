@@ -1,30 +1,15 @@
 import Link from "next/link";
-import { ArrowRight } from "@/components/Icons";
+import WaitlistForm from "./WaitlistForm";
+import TrackedLink from "./TrackedLink";
+import { CLOUD_URL, CLOUD_PRICING } from "@/lib/site";
 
-export default function HostedCta({ modelName }: { modelName?: string }) {
-  return (
-    <div className="bg-highlight-soft border border-highlight/25 rounded-xl p-5">
-      <div className="flex items-center gap-2 mb-2">
-        <div className="text-[11px] font-semibold uppercase tracking-wider text-highlight">
-          Skip the setup
-        </div>
-        <span className="text-[10px] uppercase tracking-wider font-semibold bg-highlight-soft text-highlight rounded px-1.5 py-0.5">
-          Coming soon
-        </span>
-      </div>
-      <p className="text-sm text-fg-muted leading-relaxed mb-4">
-        {modelName ? `Want ${modelName} without` : "Want these models without"}{" "}
-        the CUDA, Docker, and GPU wrangling? OpenSpeech Cloud is launching
-        every model in this directory behind one API — metered per minute,
-        from $0.10/min.
-      </p>
-      <Link
-        href="/calculator"
-        className="inline-flex items-center gap-2 text-sm font-medium bg-fg text-canvas rounded-lg px-4 py-2.5 hover:opacity-90 transition-opacity"
-      >
-        Estimate your cost
-        <ArrowRight className="w-3.5 h-3.5" />
-      </Link>
-    </div>
-  );
+export default function HostedCta({ modelName, modelId }: { modelName?: string; modelId?: string }) {
+  return <div className="bg-highlight-soft border border-highlight/25 rounded-xl p-5">
+    <p className="text-xs font-semibold uppercase tracking-wider text-highlight mb-2">Skip the setup · Coming soon</p>
+    <h2 className="text-lg font-semibold mb-2">{modelName ? `Host ${modelName} with us` : "OpenSpeech Cloud"}</h2>
+    <p className="text-sm text-fg-muted mb-4">Join the waitlist for hosted open models. Planned pricing starts at ${CLOUD_PRICING[0].perMinUsd.toFixed(2)}/min; availability will vary by model.</p>
+    <WaitlistForm model={modelId} />
+    <TrackedLink href={`${CLOUD_URL}?utm_source=directory&utm_medium=referral${modelId ? `&model=${encodeURIComponent(modelId)}` : ""}`} model={modelId} className="block mt-3 text-xs text-highlight underline">Cloud launch details →</TrackedLink>
+    <Link href="/calculator" className="inline-block mt-3 text-xs text-fg-muted underline">Estimate your cost</Link>
+  </div>;
 }

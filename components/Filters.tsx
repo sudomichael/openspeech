@@ -9,7 +9,7 @@ export type FilterState = {
   streaming: boolean;
   language: string;
   category: string;
-  sort: "name" | "params" | "speed";
+  sort: "name" | "params" | "speed" | "newest";
 };
 
 type Props = {
@@ -43,6 +43,7 @@ export default function Filters({ state, setState, models }: Props) {
             className={selectCls}
           >
             <option value="name">Name</option>
+            <option value="newest">Recently added</option>
             <option value="params">Size (small → large)</option>
             <option value="speed">Speed (fastest first)</option>
           </select>

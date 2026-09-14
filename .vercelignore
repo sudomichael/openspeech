@@ -1,0 +1,4 @@
+.serena/
+test-results/
+playwright-report/
+.env*

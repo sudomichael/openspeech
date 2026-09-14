@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { MenuIcon, XIcon } from "./Icons";
@@ -14,17 +14,15 @@ export default function MobileMenu({
   links: NavLink[];
   repoUrl: string;
 }) {
-  const [open, setOpen] = useState(false);
+  const [openAt, setOpenAt] = useState<string | null>(null);
   const pathname = usePathname();
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  const open = openAt === pathname;
 
   return (
-    <div className="sm:hidden">
+    <div className="lg:hidden">
       <button
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => setOpenAt(open ? null : pathname)}
         aria-label="Menu"
         aria-expanded={open}
         className="px-2 py-1.5 rounded-md text-fg-muted hover:text-fg transition-colors inline-flex items-center"
@@ -39,7 +37,7 @@ export default function MobileMenu({
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setOpen(false)}
+                onClick={() => setOpenAt(null)}
                 className="py-3 text-sm text-fg-muted hover:text-fg transition-colors"
               >
                 {link.label}
@@ -49,7 +47,7 @@ export default function MobileMenu({
               href={repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setOpen(false)}
+              onClick={() => setOpenAt(null)}
               className="py-3 text-sm text-fg-muted hover:text-fg transition-colors"
             >
               GitHub

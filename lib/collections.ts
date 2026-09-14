@@ -33,7 +33,7 @@ export const COLLECTIONS: Collection[] = [
     filter: (models) =>
       [...models]
         .filter((m) => m.streaming && sampled(m))
-        .sort((a, b) => a.realtime_factor - b.realtime_factor)
+        .sort((a, b) => (a.realtime_factor ?? Infinity) - (b.realtime_factor ?? Infinity))
         .slice(0, 8),
   },
   {

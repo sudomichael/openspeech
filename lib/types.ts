@@ -28,16 +28,26 @@ export type Model = {
   hf_url?: string;
   license: string;
   params: string;
-  vram_gb: number;
+  vram_gb: number | null;
   languages: string[];
   voice_cloning: boolean;
   streaming: boolean;
-  realtime_factor: number;
+  realtime_factor: number | null;
   install: string;
   category: string;
   default_voice: string;
   voices: Voice[];
   editorial?: Editorial;
+  added_at?: string;
+  reviewed_at?: string;
+  release_date?: string;
+  sources?: { label: string; url: string }[];
+  best_for?: string;
+  limitations?: string;
+  hardware_notes?: string;
+  quickstart?: string;
+  newer_model_id?: string;
+  sample_version?: string;
 };
 
 export type ScriptId = "neutral" | "emotional" | "numbers";

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { PauseIcon, PlayIcon } from "./Icons";
+import { track, sampleProperties } from "@/lib/analytics";
 import { claimPlayback } from "@/lib/audio-bus";
 
 type Props = {
@@ -11,7 +12,11 @@ type Props = {
   autoplayKey?: string;
 };
 
-export default function SamplePlayer({
+export default function SamplePlayer(props: Props) {
+  return <Player key={props.src ?? "missing"} {...props} />;
+}
+
+function Player({
   src,
   label,
   variant = "default",
@@ -22,6 +27,8 @@ export default function SamplePlayer({
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const triggered = useRef(false);
+  const logged = useRef(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const a = audioRef.current;
@@ -52,8 +59,9 @@ export default function SamplePlayer({
     if (!a) return;
     if (playing) a.pause();
     else {
+      setError(false);
       setLoading(true);
-      a.play().catch(() => {});
+      a.play().catch(() => { setLoading(false); setPlaying(false); setError(true); });
     }
   };
 
@@ -78,6 +86,8 @@ export default function SamplePlayer({
   return (
     <button
       onClick={toggle}
+      aria-label={`${playing ? "Pause" : "Play"} ${label}`}
+      title={error ? "Playback failed. Click to retry." : undefined}
       className={`group inline-flex items-center gap-2 rounded-full border ${sizeClass} relative overflow-hidden transition-colors ${
         playing || loading
           ? "border-accent bg-accent-soft text-fg"
@@ -96,7 +106,7 @@ export default function SamplePlayer({
       >
         {playing ? <PauseIcon className="w-3 h-3" /> : <PlayIcon className="w-3 h-3" />}
       </span>
-      <span className="relative font-medium tracking-tight">{label}</span>
+      <span className="relative font-medium tracking-tight">{error ? `${label} · Retry` : label}</span>
       <audio
         ref={audioRef}
         src={src}
@@ -105,7 +115,11 @@ export default function SamplePlayer({
           if (audioRef.current) claimPlayback(audioRef.current);
           setPlaying(true);
         }}
-        onPlaying={() => setLoading(false)}
+        onPlaying={() => {
+          setLoading(false); setError(false);
+          if (!logged.current) { logged.current = true; track("sample_play", sampleProperties(src)); }
+        }}
+        onError={() => { setPlaying(false); setLoading(false); setError(true); }}
         onPause={() => {
           setPlaying(false);
           setLoading(false);

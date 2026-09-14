@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { models } from "@/lib/data";
 import type { Model } from "@/lib/types";
 
@@ -77,6 +78,7 @@ function searchModels(query: string): Result[] {
 }
 
 export default function SearchPalette() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIdx, setActiveIdx] = useState(0);
@@ -87,10 +89,10 @@ export default function SearchPalette() {
       const isMod = e.metaKey || e.ctrlKey;
       if (isMod && e.key.toLowerCase() === "k") {
         e.preventDefault();
-        setOpen((o) => !o);
+        setOpen((o) => !o); setQuery(""); setActiveIdx(0);
       } else if (e.key === "/" && !open && (e.target as HTMLElement)?.tagName !== "INPUT" && (e.target as HTMLElement)?.tagName !== "TEXTAREA") {
         e.preventDefault();
-        setOpen(true);
+        setOpen(true); setQuery(""); setActiveIdx(0);
       } else if (e.key === "Escape" && open) {
         setOpen(false);
       }
@@ -100,19 +102,12 @@ export default function SearchPalette() {
   }, [open]);
 
   useEffect(() => {
-    if (open) {
-      setTimeout(() => inputRef.current?.focus(), 50);
-      setActiveIdx(0);
-    } else {
-      setQuery("");
-    }
+    if (!open) return;
+    const timeout = setTimeout(() => inputRef.current?.focus(), 50);
+    return () => clearTimeout(timeout);
   }, [open]);
 
   const results = useMemo(() => searchModels(query), [query]);
-
-  useEffect(() => {
-    setActiveIdx(0);
-  }, [query]);
 
   if (!open) return null;
 
@@ -127,7 +122,8 @@ export default function SearchPalette() {
       e.preventDefault();
       const r = results[activeIdx];
       if (r) {
-        window.location.href = `/models/${r.model.id}`;
+        setOpen(false);
+        router.push(`/models/${r.model.id}`);
       }
     }
   };
@@ -150,7 +146,7 @@ export default function SearchPalette() {
             ref={inputRef}
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => { setQuery(e.target.value); setActiveIdx(0); }}
             onKeyDown={handleKeyDown}
             placeholder="Search models, languages, features…"
             className="flex-1 bg-transparent outline-none text-sm text-fg placeholder:text-fg-subtle"

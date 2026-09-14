@@ -7,9 +7,11 @@ import SamplePlayer from "@/components/SamplePlayer";
 import ShareButton from "@/components/ShareButton";
 import CompareWith from "@/components/CompareWith";
 import EmbedButton from "@/components/EmbedButton";
+import InstallSnippet from "@/components/InstallSnippet";
+import { GENERATION_MODELS } from "@/lib/generation-models";
 import HostedCta from "@/components/HostedCta";
 import { ArrowRight, GithubIcon } from "@/components/Icons";
-import { getModel, hasSamples, models, scripts } from "@/lib/data";
+import { getModel, getDefaultVoice, hasSamples, models, scripts } from "@/lib/data";
 import { languageNames } from "@/lib/site";
 import type { Model, ScriptId, Voice } from "@/lib/types";
 
@@ -51,8 +53,9 @@ function buildFaq(model: Model) {
       q: `Do I need a GPU to run ${model.name}?`,
       a:
         model.vram_gb === 0
-          ? `No — ${model.name} runs in real time on a CPU, no GPU required. It's one of the few open TTS models that does.`
-          : `For practical speeds, yes — plan on roughly ${model.vram_gb} GB of VRAM. If you'd rather not manage a GPU, hosted access to every model in this directory is coming via OpenSpeech Cloud.`,
+          ? `${model.name} supports CPU inference. Speed depends on your processor, runtime, and text.`
+          : model.vram_gb === null ? "We have not verified a hardware requirement for this release. Follow the official setup instructions."
+          : `The directory lists roughly ${model.vram_gb} GB of VRAM as a historical estimate. Check the model documentation for your checkpoint and runtime.`,
     },
     {
       q: `Can ${model.name} clone voices?`,
@@ -70,7 +73,7 @@ function buildFaq(model: Model) {
     },
     {
       q: `Is there a hosted ${model.name} API?`,
-      a: `Yes — OpenSpeech Cloud is launching hosted, pay-per-minute access to ${model.name} and every other model in this directory. No CUDA, Docker, or GPU needed.`,
+      a: `OpenSpeech Cloud is accepting launch interest for ${model.name}. Hosted availability is not guaranteed yet; use the official repository for current deployment options.`,
     },
   ];
 }
@@ -126,6 +129,8 @@ export default async function ModelPage({
   };
   const color = CATEGORY_COLORS[model.category] ?? "bg-zinc-400";
   const similar = findSimilar(model, models);
+  const defaultVoice = getDefaultVoice(model);
+  const newer = model.newer_model_id ? getModel(model.newer_model_id) : undefined;
   const modelPath = `/models/${model.id}`;
   const faq = buildFaq(model);
   const jsonLd = {
@@ -196,6 +201,25 @@ export default async function ModelPage({
             )}
           </div>
 
+          {newer && <p className="mb-6 rounded-xl border border-highlight/30 bg-highlight-soft p-4 text-sm">Looking for the newer release? <Link href={`/models/${newer.id}`} className="font-medium underline">See {newer.name} →</Link> These recordings remain labeled with their original version.</p>}
+          <section className="mb-10 grid gap-5 md:grid-cols-2 rounded-xl border border-border bg-surface p-5">
+            <div>
+              <h2 className="text-lg font-semibold mb-3">Hear {model.name}</h2>
+              {hasSamples(model) ? <div className="flex flex-wrap gap-2">{scriptIds.map((sid) => <SamplePlayer key={sid} src={defaultVoice.samples[sid]} label={scripts[sid].label} />)}</div> : <p className="text-sm text-fg-muted">Standardized samples are pending for this release. See the official sources below for the author’s demo.</p>}
+              <p className="text-xs text-fg-muted mt-3">{model.sample_version ?? `${model.name} · ${defaultVoice.name}`} · Same three scripts across the directory.</p>
+              <div className="flex flex-wrap gap-4 mt-4 text-sm">
+                <a href="#install" className="text-highlight underline">Run it yourself</a>
+                {GENERATION_MODELS.some((m) => m.id === model.id) && <Link href="/compare#your-text" className="text-highlight underline">Try your own text</Link>}
+              </div>
+            </div>
+            <div className="text-sm space-y-3">
+              <p><strong>Best for: </strong>{model.best_for ?? model.editorial?.good_for ?? model.tagline}</p>
+              <p><strong>Before you choose: </strong>{model.limitations ?? "Compare the samples with your own use case. Check the linked documentation for code, weight, and voice license terms."}</p>
+              {model.hardware_notes && <p className="text-fg-muted">{model.hardware_notes}</p>}
+              <p className="text-xs text-fg-muted">{model.reviewed_at ? `Details reviewed ${model.reviewed_at}` : "Details awaiting a fresh review"}. Hardware figures are estimates unless a benchmark is linked.</p>
+            </div>
+          </section>
+          <div className="mb-10"><CompareWith current={model} similar={similar} /></div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="lg:col-span-2 min-w-0">
               {hasSamples(model) ? (
@@ -306,10 +330,10 @@ export default async function ModelPage({
               )}
 
               {/* Install */}
-              <h2 className="text-xl font-semibold tracking-tight mb-4">Install</h2>
-              <pre className="bg-surface-2 border border-border rounded-xl p-4 text-sm font-mono overflow-x-auto mb-12">
-                {model.install}
-              </pre>
+              <h2 id="install" className="text-xl font-semibold tracking-tight mb-4 scroll-mt-24">Run {model.name}</h2>
+              <InstallSnippet code={model.install} model={model.id} />
+              {model.quickstart && <><h3 className="text-base font-semibold mb-3">First audio example</h3><p className="text-sm text-fg-muted mb-3">Based on the author’s API. Install the documented dependencies and choose a compatible Python environment first.</p><InstallSnippet code={model.quickstart} model={model.id} /></>}
+              <div className="mb-10 text-sm"><h3 className="font-semibold mb-2">Sources &amp; setup details</h3><ul className="space-y-2">{(model.sources ?? [{ label: "Official repository", url: model.repo_url }]).map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer" className="text-highlight underline">{source.label} ↗</a></li>)}</ul></div>
 
               {/* FAQ */}
               <h2 className="text-xl font-semibold tracking-tight mb-5">
@@ -333,11 +357,11 @@ export default async function ModelPage({
                 <Spec label="Parameters" value={model.params} mono />
                 <Spec
                   label="VRAM"
-                  value={model.vram_gb === 0 ? "CPU only" : `${model.vram_gb} GB`}
+                  value={model.vram_gb === 0 ? "CPU supported" : model.vram_gb === null ? "Not verified" : `~${model.vram_gb} GB (estimate)`}
                 />
                 <Spec
                   label="Realtime"
-                  value={`${model.realtime_factor}× (lower = faster)`}
+                  value={model.realtime_factor === null ? "Not benchmarked here" : `${model.realtime_factor}× (historical estimate)`}
                 />
                 <Spec
                   label="Voice cloning"
@@ -361,9 +385,9 @@ export default async function ModelPage({
                 </div>
               </div>
 
-              <HostedCta modelName={model.name} />
+              <HostedCta modelName={model.name} modelId={model.id} />
 
-              <CompareWith current={model} similar={similar} />
+
 
               <div className="flex flex-col gap-2">
                 <a

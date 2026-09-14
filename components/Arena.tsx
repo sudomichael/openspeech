@@ -52,6 +52,8 @@ export default function Arena({ models }: { models: Model[] }) {
   const [loading, setLoading] = useState<"a" | "b" | null>(null);
 
   useEffect(() => {
+    // Random pairing happens after hydration so the server and client agree.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPair(pickPair(models));
   }, [models]);
 

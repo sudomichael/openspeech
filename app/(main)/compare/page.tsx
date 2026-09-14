@@ -1,12 +1,14 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CustomComparison from "@/components/CustomComparison";
 import CompareView from "@/components/CompareView";
 import { models } from "@/lib/data";
 import { ArrowRight } from "@/components/Icons";
 
 export const metadata = {
   title: "Compare voices",
+  alternates: { canonical: "/compare" },
 };
 
 export default async function ComparePage({
@@ -15,7 +17,7 @@ export default async function ComparePage({
   searchParams: Promise<{ ids?: string }>;
 }) {
   const { ids } = await searchParams;
-  const idList = (ids ?? "").split(",").filter(Boolean);
+  const idList = Array.from(new Set((ids ?? "").split(",").filter(Boolean))).slice(0, 5);
   const picked = idList
     .map((id) => models.find((m) => m.id === id))
     .filter((m): m is NonNullable<typeof m> => !!m);
@@ -61,6 +63,7 @@ export default async function ComparePage({
               .
             </p>
           )}
+          <CustomComparison />
           <CompareView models={toShow} />
         </div>
       </main>

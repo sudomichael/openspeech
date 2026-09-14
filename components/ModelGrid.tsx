@@ -30,7 +30,7 @@ export default function ModelGrid({ models }: { models: Model[] }) {
   const filtered = useMemo(() => {
     const out = models.filter((m) => {
       if (state.license && m.license !== state.license) return false;
-      if (state.maxVram !== null && m.vram_gb > state.maxVram) return false;
+      if (state.maxVram !== null && (m.vram_gb === null || m.vram_gb > state.maxVram)) return false;
       if (state.voiceCloning && !m.voice_cloning) return false;
       if (state.streaming && !m.streaming) return false;
       if (state.language && !m.languages.includes(state.language)) return false;
@@ -45,8 +45,9 @@ export default function ModelGrid({ models }: { models: Model[] }) {
         if (aHas !== bHas) return aHas ? -1 : 1;
         return a.name.localeCompare(b.name);
       }
+      if (state.sort === "newest") return (b.added_at ?? "").localeCompare(a.added_at ?? "") || a.name.localeCompare(b.name);
       if (state.sort === "params") return parseParams(a.params) - parseParams(b.params);
-      if (state.sort === "speed") return a.realtime_factor - b.realtime_factor;
+      if (state.sort === "speed") return (a.realtime_factor ?? Infinity) - (b.realtime_factor ?? Infinity);
       return 0;
     });
     return out;

@@ -36,7 +36,7 @@ export default function ModelCard({
   const voice = model.voices.find((v) => v.id === voiceId) ?? model.voices[0];
   const color = CATEGORY_COLORS[model.category] ?? "bg-zinc-400";
   const hasMultipleVoices = model.voices.length > 1;
-  const commercial = !/non-commercial|cc.*nc|restricted|research|cpml|bilibili/i.test(model.license);
+  const commercial = !/non-commercial|cc.*nc|restricted|research|cpml|bilibili|require review|llama/i.test(model.license);
 
   return (
     <div
@@ -64,6 +64,7 @@ export default function ModelCard({
         </button>
       )}
 
+      {model.added_at && <p className="px-5 pt-3 text-[11px] text-highlight">Added {model.added_at} · {hasSamples(model) ? "Listen below" : "Samples pending"}</p>}
       {/* Hero: audio is the product */}
       <div className="bg-surface-2/60 px-5 pt-5 pb-4 border-b border-border">
         <div className="flex items-center justify-between gap-2 mb-1.5">
@@ -115,7 +116,7 @@ export default function ModelCard({
         {model.vram_gb === 0 && <Tag>CPU</Tag>}
         <span className="text-fg-subtle ml-auto font-mono text-[10.5px]">
           {model.params}
-          {model.vram_gb > 0 && (
+          {model.vram_gb !== null && model.vram_gb > 0 && (
             <span className="ml-1.5 text-fg-subtle">· {model.vram_gb}GB</span>
           )}
         </span>

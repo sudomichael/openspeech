@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { Model } from "@/lib/types";
-import { useCompare } from "./CompareProvider";
+
 
 type Props = {
   current: Model;
@@ -10,7 +10,6 @@ type Props = {
 };
 
 export default function CompareWith({ current, similar }: Props) {
-  const compare = useCompare();
   if (similar.length === 0) return null;
 
   const compareIds = [current.id, ...similar.slice(0, 2).map((m) => m.id)].join(",");
@@ -28,23 +27,18 @@ export default function CompareWith({ current, similar }: Props) {
       </div>
       <div className="space-y-2">
         {similar.slice(0, 3).map((m) => (
-          <button
+          <Link
             key={m.id}
-            onClick={() => {
-              if (!compare.isSelected(current.id)) compare.toggle(current.id);
-              if (!compare.isSelected(m.id)) compare.toggle(m.id);
-            }}
+            href={`/compare?ids=${current.id},${m.id}`}
             className="w-full text-left flex items-center justify-between gap-2 px-3 py-2 rounded-lg bg-surface border border-border hover:border-border-strong text-sm transition-colors"
           >
             <span className="truncate">{m.name}</span>
-            <span className="text-[11px] text-fg-subtle whitespace-nowrap">
-              {m.params}
-            </span>
-          </button>
+            <span className="text-[11px] text-highlight whitespace-nowrap">Listen side-by-side →</span>
+          </Link>
         ))}
       </div>
       <p className="text-[11px] text-fg-subtle mt-3">
-        Click any model to add it to the comparison bar.
+        Choose an alternative to hear both models together.
       </p>
     </div>
   );

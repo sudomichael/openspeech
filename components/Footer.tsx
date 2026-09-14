@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { CLOUD_URL } from "@/lib/site";
+import TrackedLink from "./TrackedLink";
 import { GithubIcon } from "./Icons";
 
 const REPO_URL = "https://github.com/sudomichael/openspeech";
@@ -15,7 +17,7 @@ export default function Footer() {
             <span className="font-semibold tracking-tight">OpenSpeech</span>
           </div>
           <p className="text-sm text-fg-muted leading-relaxed max-w-sm">
-            An open directory of open-source text-to-speech models. Same scripts,
+            An open directory of open-source and open-weight text-to-speech models. Same scripts,
             every voice — so you can actually compare them.
           </p>
         </div>
@@ -24,6 +26,7 @@ export default function Footer() {
             Project
           </div>
           <ul className="space-y-2 text-sm">
+            <li><Link href="/new-models" className="text-fg-muted hover:text-fg">New models</Link></li>
             <li>
               <a
                 href={REPO_URL}
@@ -53,9 +56,9 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/calculator" className="text-fg-muted hover:text-fg">
+              <TrackedLink href={CLOUD_URL} className="text-fg-muted hover:text-fg">
                 Cloud (coming soon)
-              </Link>
+              </TrackedLink>
             </li>
             <li>
               <a

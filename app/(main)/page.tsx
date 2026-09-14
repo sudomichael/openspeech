@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ModelCard from "@/components/ModelCard";
 import RecommendationCard from "@/components/RecommendationCard";
 import CompareLeaders from "@/components/CompareLeaders";
 import Shelf from "@/components/Shelf";
@@ -75,6 +76,10 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="mx-auto max-w-7xl px-6 pt-7 flex flex-wrap gap-3">
+          <Link href="/compare#your-text" className="rounded-full bg-fg text-canvas px-5 py-2.5 text-sm font-medium">Compare with your own text →</Link>
+          <Link href="/new-models" className="rounded-full border border-border px-5 py-2.5 text-sm">Explore newly added models</Link>
+        </section>
         <section className="mx-auto max-w-7xl px-6 pt-10 sm:pt-14">
           <div className="flex items-baseline justify-between mb-6 flex-wrap gap-2">
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">
@@ -84,7 +89,7 @@ export default function Home() {
               href="/arena"
               className="text-xs text-fg-muted hover:text-fg inline-flex items-center gap-1"
             >
-              Picks updated by community votes
+              Editorial picks · try the community arena
               <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
@@ -99,6 +104,11 @@ export default function Home() {
           <CompareLeaders models={recs} />
         </section>
 
+        <section className="mx-auto max-w-7xl px-6 mb-14">
+          <div className="flex flex-wrap items-baseline justify-between gap-3 mb-5"><h2 className="text-2xl font-semibold">New to the directory</h2><Link href="/new-models" className="text-sm text-highlight underline">See all recent additions →</Link></div>
+          <p className="text-sm text-fg-muted mb-5">New releases get their own pages and recordings. Start with these additions, then compare them with the established models.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">{["chatterbox-turbo", "pocket-tts", "moss-tts-v1-5"].map((id) => models.find((m) => m.id === id)).filter((m): m is NonNullable<typeof m> => !!m).map((model) => <ModelCard key={model.id} model={model} />)}</div>
+        </section>
         <section className="border-y border-border bg-surface-2/40">
           <div className="mx-auto max-w-7xl px-6 py-10">
             <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-fg-subtle font-semibold mb-4">
@@ -188,7 +198,7 @@ export default function Home() {
               <p className="text-fg-muted leading-relaxed mb-6">
                 OpenSpeech is community-maintained. Adding a model is a single
                 PR: edit one JSON file, drop in three audio samples, open the
-                pull request. Models must be genuinely open-source.
+                pull request. Code and weight licenses must be documented.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
