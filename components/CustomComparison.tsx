@@ -1,4 +1,4 @@
-import Link from "next/link";
+import TrackedLink from "./TrackedLink";
 import hostedModels from "@/data/hosted-models.json";
 import { CLOUD_URL } from "@/lib/site";
 export default function CustomComparison({
@@ -20,18 +20,20 @@ export default function CustomComparison({
         credits, see the price for your script, and generate audio to keep.
         Recorded directory samples remain available to listen to.
       </p>
-      <Link
+      <TrackedLink
+        model={first}
         href={`${CLOUD_URL}/studio${first ? `?model=${encodeURIComponent(first)}` : ""}`}
         className="inline-block mt-5 rounded-full bg-fg text-canvas px-5 py-3 text-sm font-medium"
       >
         Open paid speech studio →
-      </Link>
-      <Link
+      </TrackedLink>
+      <TrackedLink
+        model={first}
         href={`${CLOUD_URL}/pricing`}
         className="inline-block ml-5 mt-5 text-sm underline"
       >
         Model prices
-      </Link>
+      </TrackedLink>
     </section>
   );
 }
