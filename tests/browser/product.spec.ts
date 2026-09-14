@@ -15,6 +15,7 @@ test('model landing page has instant audio, comparisons, working copy, and signu
   await expect(page.getByRole('heading', { name: 'Hear Kokoro-82M' })).toBeVisible();
   await page.getByRole('button', { name: 'Play Neutral', exact: true }).first().click();
   await expect.poll(() => page.evaluate(() => [...document.querySelectorAll('audio')].filter((a) => !a.paused).length)).toBe(1);
+  await expect.poll(() => page.evaluate(() => (window as unknown as {auditEvents:{name:string}[]}).auditEvents.some((event) => event.name === 'sample_play'))).toBeTruthy();
   await page.getByRole('button', { name: 'Copy instructions' }).first().click();
   await expect(page.getByRole('status').filter({hasText:'Copied'})).toBeVisible();
   await page.getByLabel('Email for launch updates').fill('test@example.com');

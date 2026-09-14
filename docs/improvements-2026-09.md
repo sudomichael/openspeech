@@ -32,3 +32,5 @@ Baseline August 15–September 13: 451 visitors, 824 pageviews, 105 organic-attr
 ## Validation
 
 Production build, TypeScript, ESLint, catalog validation (44 models / 132 recordings), four unit tests, and four browser tests passed. Real provider tests returned audio for all four custom-text models. The Cloud database test verified signup and duplicate handling, then removed its temporary subscriber. Dependency upgrades to Next.js 16.3.5 and patched transitive dependencies resulted in zero npm audit findings.
+
+The release is deployed at https://www.openspeech.dev. All four browser tests also passed against production, and production API tests generated audio with every supported custom-text model and verified the real waitlist database without retaining the test subscriber.
