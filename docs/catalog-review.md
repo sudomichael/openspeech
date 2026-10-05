@@ -1,4 +1,4 @@
-# Catalog review — 2026-09-14
+# Catalog review — 2026-10-05
 
 Automated discovery from Hugging Face and official repository READMEs. Candidates are not endorsements or verified new releases; forks and quantizations need manual review. No existing sample or editorial ranking was changed.
 
@@ -6,75 +6,76 @@ Automated discovery from Hugging Face and official repository READMEs. Candidate
 
 | Model | Likes | Downloads | Declared license |
 | --- | ---: | ---: | --- |
-| [nari-labs/Dia-1.6B](https://huggingface.co/nari-labs/Dia-1.6B) | 2909 | 29012 | apache-2.0 |
-| [microsoft/VibeVoice-1.5B](https://huggingface.co/microsoft/VibeVoice-1.5B) | 2482 | 400836 | mit |
-| [Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice) | 1965 | 2601762 | apache-2.0 |
-| [openbmb/VoxCPM2](https://huggingface.co/openbmb/VoxCPM2) | 1607 | 383884 | apache-2.0 |
-| [microsoft/VibeVoice-Realtime-0.5B](https://huggingface.co/microsoft/VibeVoice-Realtime-0.5B) | 1285 | 416821 | mit |
-| [Supertone/supertonic-3](https://huggingface.co/Supertone/supertonic-3) | 959 | 30050 | openrail |
-| [fishaudio/fish-speech-1.5](https://huggingface.co/fishaudio/fish-speech-1.5) | 774 | 4125 | cc-by-nc-sa-4.0 |
-| [bosonai/higgs-tts-3-4b](https://huggingface.co/bosonai/higgs-tts-3-4b) | 763 | 156456 | other |
-| [canopylabs/orpheus-3b-0.1-ft](https://huggingface.co/canopylabs/orpheus-3b-0.1-ft) | 734 | 228313 | apache-2.0 |
-| [fishaudio/s1-mini](https://huggingface.co/fishaudio/s1-mini) | 709 | 2130 | cc-by-nc-sa-4.0 |
-| [bosonai/higgs-tts-2-3b-base](https://huggingface.co/bosonai/higgs-tts-2-3b-base) | 693 | 352693 | other |
-| [BreezeBlue/Breeze-TTS-2](https://huggingface.co/BreezeBlue/Breeze-TTS-2) | 547 | 9416 | other |
-| [fishaudio/fish-speech-1.4](https://huggingface.co/fishaudio/fish-speech-1.4) | 460 | 377 | cc-by-nc-sa-4.0 |
-| [Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign) | 411 | 302862 | apache-2.0 |
-| [Edge0/Audio8-TTS-Preview-0.6b](https://huggingface.co/Edge0/Audio8-TTS-Preview-0.6b) | 402 | 8916 | apache-2.0 |
-| [ai4bharat/indic-parler-tts](https://huggingface.co/ai4bharat/indic-parler-tts) | 333 | 341167 | apache-2.0 |
-| [ResembleAI/Dramabox](https://huggingface.co/ResembleAI/Dramabox) | 318 | 232 | other |
-| [fishaudio/fish-agent-v0.1-3b](https://huggingface.co/fishaudio/fish-agent-v0.1-3b) | 275 | 74 | cc-by-nc-sa-4.0 |
-| [onnx-community/Kokoro-82M-v1.0-ONNX](https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX) | 261 | 763697 | apache-2.0 |
-| [HumeAI/tada-1b](https://huggingface.co/HumeAI/tada-1b) | 241 | 7410 | llama3.2 |
-| [maya-research/Veena](https://huggingface.co/maya-research/Veena) | 240 | 14934 | apache-2.0 |
-| [hexgrad/Kokoro-82M-v1.1-zh](https://huggingface.co/hexgrad/Kokoro-82M-v1.1-zh) | 227 | 20942 | apache-2.0 |
-| [Edge0/Audio8-TTS-Preview-0.1b](https://huggingface.co/Edge0/Audio8-TTS-Preview-0.1b) | 219 | 8702 | other |
-| [nvidia/magpie_tts_multilingual_357m](https://huggingface.co/nvidia/magpie_tts_multilingual_357m) | 216 | 6749 | other |
-| [tencent/AuK](https://huggingface.co/tencent/AuK) | 213 | 1928 | mit |
-| [ai4bharat/IndicF5](https://huggingface.co/ai4bharat/IndicF5) | 212 | 27758 | mit |
-| [fishaudio/fish-speech-1.2](https://huggingface.co/fishaudio/fish-speech-1.2) | 210 | 135 | cc-by-nc-sa-4.0 |
-| [IndexTeam/IndexTTS-2.5](https://huggingface.co/IndexTeam/IndexTTS-2.5) | 204 | 14613 | other |
-| [nari-labs/Dia2-2B](https://huggingface.co/nari-labs/Dia2-2B) | 186 | 2622 | apache-2.0 |
-| [Soul-AILab/SoulX-Singer](https://huggingface.co/Soul-AILab/SoulX-Singer) | 176 | 1418 | apache-2.0 |
-| [canopylabs/orpheus-3b-0.1-pretrained](https://huggingface.co/canopylabs/orpheus-3b-0.1-pretrained) | 173 | 2152 | apache-2.0 |
-| [nari-labs/Dia-1.6B-0626](https://huggingface.co/nari-labs/Dia-1.6B-0626) | 134 | 13764 | apache-2.0 |
-| [audio-cpp/audio.cpp-gguf](https://huggingface.co/audio-cpp/audio.cpp-gguf) | 134 | 3480168 | other |
-| [phasefield-audio/Irodori-TTS-v4.1-Anime](https://huggingface.co/phasefield-audio/Irodori-TTS-v4.1-Anime) | 117 | 0 | mit |
-| [OpenMOSS-Team/MOSS-TTS-Realtime](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Realtime) | 107 | 16434 | apache-2.0 |
-| [Thomcles/Chatterbox-TTS-Persian-Farsi](https://huggingface.co/Thomcles/Chatterbox-TTS-Persian-Farsi) | 106 | 0 | cc-by-nc-4.0 |
-| [FunAudioLLM/CosyVoice2-0.5B](https://huggingface.co/FunAudioLLM/CosyVoice2-0.5B) | 91 | 4323 | apache-2.0 |
+| [nari-labs/Dia-1.6B](https://huggingface.co/nari-labs/Dia-1.6B) | 2914 | 27627 | apache-2.0 |
+| [microsoft/VibeVoice-1.5B](https://huggingface.co/microsoft/VibeVoice-1.5B) | 2491 | 725194 | mit |
+| [Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice) | 2028 | 2349857 | apache-2.0 |
+| [openbmb/VoxCPM2](https://huggingface.co/openbmb/VoxCPM2) | 1657 | 513228 | apache-2.0 |
+| [Supertone/supertonic-3](https://huggingface.co/Supertone/supertonic-3) | 982 | 30575 | openrail |
+| [bosonai/higgs-tts-3-4b](https://huggingface.co/bosonai/higgs-tts-3-4b) | 791 | 104459 | other |
+| [fishaudio/fish-speech-1.5](https://huggingface.co/fishaudio/fish-speech-1.5) | 776 | 3501 | cc-by-nc-sa-4.0 |
+| [canopylabs/orpheus-3b-0.1-ft](https://huggingface.co/canopylabs/orpheus-3b-0.1-ft) | 745 | 30034 | apache-2.0 |
+| [fishaudio/s1-mini](https://huggingface.co/fishaudio/s1-mini) | 744 | 1869 | cc-by-nc-sa-4.0 |
+| [bosonai/higgs-tts-2-3b-base](https://huggingface.co/bosonai/higgs-tts-2-3b-base) | 692 | 53666 | other |
+| [BreezeBlue/Breeze-TTS-2](https://huggingface.co/BreezeBlue/Breeze-TTS-2) | 666 | 12231 | other |
+| [fishaudio/fish-speech-1.4](https://huggingface.co/fishaudio/fish-speech-1.4) | 460 | 264 | cc-by-nc-sa-4.0 |
+| [Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign) | 431 | 337027 | apache-2.0 |
+| [Edge0/Audio8-TTS-Preview-0.6b](https://huggingface.co/Edge0/Audio8-TTS-Preview-0.6b) | 413 | 5289 | apache-2.0 |
+| [ai4bharat/indic-parler-tts](https://huggingface.co/ai4bharat/indic-parler-tts) | 386 | 265836 | apache-2.0 |
+| [tencent/AuK](https://huggingface.co/tencent/AuK) | 378 | 5003 | mit |
+| [ResembleAI/Dramabox](https://huggingface.co/ResembleAI/Dramabox) | 321 | 376 | other |
+| [Qwen/Qwen3-TTS-12Hz-0.6B-Base](https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-Base) | 313 | 591347 | apache-2.0 |
+| [ai4bharat/IndicF5](https://huggingface.co/ai4bharat/IndicF5) | 280 | 31349 | mit |
+| [fishaudio/fish-agent-v0.1-3b](https://huggingface.co/fishaudio/fish-agent-v0.1-3b) | 276 | 56 | cc-by-nc-sa-4.0 |
+| [HumeAI/tada-1b](https://huggingface.co/HumeAI/tada-1b) | 241 | 7438 | llama3.2 |
+| [maya-research/Veena](https://huggingface.co/maya-research/Veena) | 240 | 4077 | apache-2.0 |
+| [Misha24-10/F5-TTS_RUSSIAN](https://huggingface.co/Misha24-10/F5-TTS_RUSSIAN) | 239 | 99823 | cc-by-nc-4.0 |
+| [hexgrad/Kokoro-82M-v1.1-zh](https://huggingface.co/hexgrad/Kokoro-82M-v1.1-zh) | 236 | 24821 | apache-2.0 |
+| [Edge0/Audio8-TTS-Preview-0.1b](https://huggingface.co/Edge0/Audio8-TTS-Preview-0.1b) | 233 | 1946 | other |
+| [IndexTeam/IndexTTS-2.5](https://huggingface.co/IndexTeam/IndexTTS-2.5) | 231 | 14300 | other |
+| [fishaudio/fish-speech-1.2](https://huggingface.co/fishaudio/fish-speech-1.2) | 210 | 121 | cc-by-nc-sa-4.0 |
+| [kugelaudio/kugelaudio-0-open](https://huggingface.co/kugelaudio/kugelaudio-0-open) | 210 | 2872 | mit |
+| [audio-cpp/audio.cpp-gguf](https://huggingface.co/audio-cpp/audio.cpp-gguf) | 202 | 5957300 | other |
+| [nari-labs/Dia2-2B](https://huggingface.co/nari-labs/Dia2-2B) | 187 | 3767 | apache-2.0 |
+| [Soul-AILab/SoulX-Singer](https://huggingface.co/Soul-AILab/SoulX-Singer) | 178 | 1563 | apache-2.0 |
+| [canopylabs/orpheus-3b-0.1-pretrained](https://huggingface.co/canopylabs/orpheus-3b-0.1-pretrained) | 174 | 2143 | apache-2.0 |
+| [nari-labs/Dia-1.6B-0626](https://huggingface.co/nari-labs/Dia-1.6B-0626) | 134 | 11285 | apache-2.0 |
+| [Thomcles/Chatterbox-TTS-Persian-Farsi](https://huggingface.co/Thomcles/Chatterbox-TTS-Persian-Farsi) | 125 | 0 | cc-by-nc-4.0 |
+| [FunAudioLLM/CosyVoice2-0.5B](https://huggingface.co/FunAudioLLM/CosyVoice2-0.5B) | 94 | 4593 | apache-2.0 |
+| [ResembleAI/chatterbox-turbo-ONNX](https://huggingface.co/ResembleAI/chatterbox-turbo-ONNX) | 87 | 4625 | mit |
 | [fishaudio/fish-speech-1](https://huggingface.co/fishaudio/fish-speech-1) | 86 | 0 | cc-by-nc-sa-4.0 |
-| [ResembleAI/chatterbox-turbo-ONNX](https://huggingface.co/ResembleAI/chatterbox-turbo-ONNX) | 85 | 3484 | mit |
-| [tencent/AuK-Flash](https://huggingface.co/tencent/AuK-Flash) | 77 | 1385 | mit |
-| [FunAudioLLM/Fun-CineForge](https://huggingface.co/FunAudioLLM/Fun-CineForge) | 63 | 36 | apache-2.0 |
-| [Serveurperso/OmniVoice-GGUF](https://huggingface.co/Serveurperso/OmniVoice-GGUF) | 63 | 71437 | cc-by-nc-4.0 |
+| [Serveurperso/OmniVoice-GGUF](https://huggingface.co/Serveurperso/OmniVoice-GGUF) | 76 | 37506 | cc-by-nc-4.0 |
+| [AlicanKiraz0/Kizagan-TTS-v1.0](https://huggingface.co/AlicanKiraz0/Kizagan-TTS-v1.0) | 64 | 1426 | apache-2.0 |
+| [FunAudioLLM/Fun-CineForge](https://huggingface.co/FunAudioLLM/Fun-CineForge) | 63 | 57 | apache-2.0 |
+| [Aratako/Irodori-TTS-v4-Large](https://huggingface.co/Aratako/Irodori-TTS-v4-Large) | 63 | 0 | gemma |
 | [k2-fsa/ZipVoice](https://huggingface.co/k2-fsa/ZipVoice) | 62 | 0 | Needs review |
-| [rumik-ai/rumik-oss-1](https://huggingface.co/rumik-ai/rumik-oss-1) | 59 | 1640 | cc-by-nc-4.0 |
-| [ampixa/sanoTTS](https://huggingface.co/ampixa/sanoTTS) | 50 | 93503 | gpl-3.0 |
-| [Aratako/Irodori-TTS-v4.1-Small](https://huggingface.co/Aratako/Irodori-TTS-v4.1-Small) | 48 | 0 | mit |
-| [Serveurperso/Qwen3-TTS-GGUF](https://huggingface.co/Serveurperso/Qwen3-TTS-GGUF) | 44 | 527757 | apache-2.0 |
-| [canopylabs/3b-zh-pretrain-research_release](https://huggingface.co/canopylabs/3b-zh-pretrain-research_release) | 34 | 2 | llama3.2 |
+| [prathoshap/vagdhenu](https://huggingface.co/prathoshap/vagdhenu) | 61 | 2082 | apache-2.0 |
+| [samuel-vitorino/sopro-v2-turbo](https://huggingface.co/samuel-vitorino/sopro-v2-turbo) | 45 | 29666 | apache-2.0 |
+| [canopylabs/3b-zh-pretrain-research_release](https://huggingface.co/canopylabs/3b-zh-pretrain-research_release) | 34 | 7 | llama3.2 |
+| [mehdi-hf/pocket-tts-farsi-v2](https://huggingface.co/mehdi-hf/pocket-tts-farsi-v2) | 34 | 0 | cc-by-nc-4.0 |
 | [fishaudio/speech-lm-v1](https://huggingface.co/fishaudio/speech-lm-v1) | 33 | 0 | cc-by-nc-sa-4.0 |
-| [AlicanKiraz0/Kahya-TTS-v1.0](https://huggingface.co/AlicanKiraz0/Kahya-TTS-v1.0) | 29 | 284 | apache-2.0 |
-| [zeroweight-ai/ZeroTTS](https://huggingface.co/zeroweight-ai/ZeroTTS) | 28 | 1315 | mit |
-| [contextboxai/Kokoro-Vietnamese](https://huggingface.co/contextboxai/Kokoro-Vietnamese) | 28 | 46974 | apache-2.0 |
-| [nari-labs/Dia2-1B](https://huggingface.co/nari-labs/Dia2-1B) | 27 | 1635 | apache-2.0 |
-| [mehdi-hf/pocket-tts-farsi](https://huggingface.co/mehdi-hf/pocket-tts-farsi) | 27 | 0 | mit |
-| [ResembleAI/chatterbox-flash](https://huggingface.co/ResembleAI/chatterbox-flash) | 25 | 0 | mit |
-| [canopylabs/3b-hi-ft-research_release](https://huggingface.co/canopylabs/3b-hi-ft-research_release) | 25 | 235 | apache-2.0 |
-| [Soul-AILab/SoulX-Podcast-1.7B-dialect](https://huggingface.co/Soul-AILab/SoulX-Podcast-1.7B-dialect) | 25 | 117 | apache-2.0 |
+| [ResembleAI/chatterbox-flash](https://huggingface.co/ResembleAI/chatterbox-flash) | 27 | 0 | mit |
+| [nari-labs/Dia2-1B](https://huggingface.co/nari-labs/Dia2-1B) | 27 | 982 | apache-2.0 |
+| [canopylabs/3b-hi-ft-research_release](https://huggingface.co/canopylabs/3b-hi-ft-research_release) | 26 | 131 | apache-2.0 |
+| [Soul-AILab/SoulX-Podcast-1.7B-dialect](https://huggingface.co/Soul-AILab/SoulX-Podcast-1.7B-dialect) | 25 | 154 | apache-2.0 |
+| [HoppouAI/Breeze-TTS-2.cpp](https://huggingface.co/HoppouAI/Breeze-TTS-2.cpp) | 24 | 11852 | other |
 | [hexgrad/styletts2](https://huggingface.co/hexgrad/styletts2) | 23 | 0 | mit |
-| [bodhan-ai/indic-speak](https://huggingface.co/bodhan-ai/indic-speak) | 23 | 1024 | other |
 | [HumeAI/tada-codec](https://huggingface.co/HumeAI/tada-codec) | 22 | 0 | mit |
+| [canopylabs/3b-es_it-ft-research_release](https://huggingface.co/canopylabs/3b-es_it-ft-research_release) | 22 | 624 | apache-2.0 |
+| [9r4n4y/LongCat-AudioDiT-3.5B-tts-text-to-speech-SOTA](https://huggingface.co/9r4n4y/LongCat-AudioDiT-3.5B-tts-text-to-speech-SOTA) | 21 | 73 | mit |
+| [canopylabs/3b-ko-ft-research_release](https://huggingface.co/canopylabs/3b-ko-ft-research_release) | 20 | 86 | apache-2.0 |
+| [Aratako/Irodori-TTS-v4-Large-Quantized](https://huggingface.co/Aratako/Irodori-TTS-v4-Large-Quantized) | 20 | 0 | gemma |
+| [SupraLabs/SupraTTS-0.1-Beta](https://huggingface.co/SupraLabs/SupraTTS-0.1-Beta) | 20 | 324 | mit |
+| [kyutai/tts-0.75b-en-public](https://huggingface.co/kyutai/tts-0.75b-en-public) | 18 | 3047 | cc-by-4.0 |
 
 ## Changed source documentation
 
-No changes against the previous snapshot.
+- https://github.com/index-tts/index-tts
+- https://github.com/KittenML/KittenTTS
+- https://github.com/kyutai-labs/pocket-tts
 
 ## Details due for review
 
 - Fish Speech 1.5: no review date recorded
-- Piper: no review date recorded
 - Bark: no review date recorded
 - F5-TTS: no review date recorded
 - Parler-TTS: no review date recorded
@@ -104,7 +105,6 @@ No changes against the previous snapshot.
 
 ## Missing standardized samples
 
-- Piper
 - MegaTTS 3
 - GPT-SoVITS
 - Step-Audio-EditX
@@ -113,15 +113,11 @@ No changes against the previous snapshot.
 - SoulX-Podcast
 - Muyan-TTS
 - Voxtral TTS
-- Llasa
-- Chatterbox Nano
 - Chatterbox Multilingual V3
 - CosyVoice 3
-- Pocket TTS
 - Fish Audio S2 Pro
 - MOSS-TTS v1.5
 - MOSS-TTS Local Transformer v1.5
-- MOSS-TTS Nano
 - OmniVoice
 - TADA 3B Multilingual
 
